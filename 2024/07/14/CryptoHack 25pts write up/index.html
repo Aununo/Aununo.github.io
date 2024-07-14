@@ -1,0 +1,463 @@
+<!DOCTYPE html><html lang="zh-TW" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>Aununo's zone | Aununo's zone</title><meta name="author" content="Aununo"><meta name="copyright" content="Aununo"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="CryptoHack 25pts write upCryptoHack – A fun, free platform for learning cryptography  Can I share my solutions?  However, for “Starter” challenges, and challenges worth 25 points or less, we make an e">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Aununo&#39;s zone">
+<meta property="og:url" content="http://aununo.xyz/2024/07/14/CryptoHack%2025pts%20write%20up/index.html">
+<meta property="og:site_name" content="Aununo&#39;s zone">
+<meta property="og:description" content="CryptoHack 25pts write upCryptoHack – A fun, free platform for learning cryptography  Can I share my solutions?  However, for “Starter” challenges, and challenges worth 25 points or less, we make an e">
+<meta property="og:locale" content="zh_TW">
+<meta property="og:image" content="https://i.pinimg.com/564x/1b/0c/4e/1b0c4ecc1b786c0966a57c1088b4a149.jpg">
+<meta property="article:published_time" content="2024-07-14T02:27:09.527Z">
+<meta property="article:modified_time" content="2024-07-14T05:23:32.877Z">
+<meta property="article:author" content="Aununo">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.pinimg.com/564x/1b/0c/4e/1b0c4ecc1b786c0966a57c1088b4a149.jpg"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://aununo.xyz/2024/07/14/CryptoHack%2025pts%20write%20up/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=4.13.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '複製成功',
+    error: '複製錯誤',
+    noSupport: '瀏覽器不支援'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '剛剛',
+    min: '分鐘前',
+    hour: '小時前',
+    day: '天前',
+    month: '個月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.11.1/dist/infinitegrid.min.js',
+    buttonText: '載入更多'
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Aununo\'s zone',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2024-07-14 13:23:32'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+        if (t === 'dark') activateDarkMode()
+        else if (t === 'light') activateLightMode()
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><link rel="stylesheet" href="/css/custom.css"><!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://i.pinimg.com/564x/1b/0c/4e/1b0c4ecc1b786c0966a57c1088b4a149.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">4</div></a><a href="/tags/"><div class="headline">標籤</div><div class="length-num">0</div></a><a href="/categories/"><div class="headline">分類</div><div class="length-num">2</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Links</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="not-top-img" id="page-header"><nav id="nav"><span id="blog-info"><a href="/" title="Aununo's zone"><img class="site-icon" src="https://i.pinimg.com/564x/1b/0c/4e/1b0c4ecc1b786c0966a57c1088b4a149.jpg# image"/><span class="site-name">Aununo's zone</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Links</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav></header><main class="layout" id="content-inner"><div id="post"><div id="post-info"><h1 class="post-title">無標題</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">發表於</span><time class="post-meta-date-created" datetime="2024-07-14T02:27:09.527Z" title="發表於 2024-07-14 10:27:09">2024-07-14</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新於</span><time class="post-meta-date-updated" datetime="2024-07-14T05:23:32.877Z" title="更新於 2024-07-14 13:23:32">2024-07-14</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">閱讀量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div><article class="post-content" id="article-container"><h1 id="CryptoHack-25pts-write-up"><a href="#CryptoHack-25pts-write-up" class="headerlink" title="CryptoHack 25pts write up"></a>CryptoHack 25pts write up</h1><p><a target="_blank" rel="noopener" href="https://cryptohack.org/">CryptoHack – A fun, free platform for learning cryptography</a> </p>
+<p><a target="_blank" rel="noopener" href="https://cryptohack.org/faq/#solutions">Can I share my solutions?</a></p>
+<blockquote>
+<p>However, for “Starter” challenges, and challenges worth 25 points or less, we make an exception – feel free to discuss those publicly.</p>
+</blockquote>
+<h2 id="introduction-to-cryptohack"><a href="#introduction-to-cryptohack" class="headerlink" title="introduction to cryptohack"></a>introduction to cryptohack</h2><h3 id="Finding-Flags-2-pts"><a href="#Finding-Flags-2-pts" class="headerlink" title="Finding Flags(2 pts)"></a>Finding Flags(2 pts)</h3><p>your_first_flag.<code>crypto&#123;y0ur_f1rst_fl4g&#125;</code></p>
+<h3 id="Great-Snakes-3-pts"><a href="#Great-Snakes-3-pts" class="headerlink" title="Great Snakes(3 pts)"></a>Great Snakes(3 pts)</h3><p>Modern cryptography involves code, and code involves coding. CryptoHack provides a good opportunity to sharpen your skills.</p>
+<p>Of all modern programming languages, Python 3 stands out as ideal for quickly writing cryptographic scripts and attacks. For more information about why we think Python is so great for this, please see the <a target="_blank" rel="noopener" href="https://cryptohack.org/faq#python3">FAQ</a>.</p>
+<p>Run the attached Python script and it will output your flag.</p>
+<p><strong>Challenge files:</strong><br> - <a target="_blank" rel="noopener" href="https://cryptohack.org/static/challenges/great_snakes_35381fca29d68d8f3f25c9fa0a9026fb.py">great_snakes.py</a></p>
+<p><strong>Resources:</strong><br> - <a target="_blank" rel="noopener" href="https://wiki.python.org/moin/BeginnersGuide/Download">Downloading Python</a></p>
+<p><a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Zen_of_Python">Zen of Python?</a><code>crypto&#123;z3n_0f_pyth0n&#125;</code></p>
+<h3 id="ASCII-5-pts"><a href="#ASCII-5-pts" class="headerlink" title="ASCII(5 pts)"></a>ASCII(5 pts)</h3><p>ASCII is a 7-bit encoding standard which allows the representation of text using the integers 0-127.</p>
+<p>Using the below integer array, convert the numbers to their corresponding ASCII characters to obtain a flag.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">[99, 114, 121, 112, 116, 111, 123, 65, 83, 67, 73, 73, 95, 112, 114, 49, 110, 116, 52, 98, 108, 51, 125]<br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p> In Python, the <code>chr()</code> function can be used to convert an ASCII ordinal number to a character (the <code>ord()</code> function does the opposite).</p>
+</blockquote>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-comment">## exp.py</span><br>ords = [<span class="hljs-number">99</span>, <span class="hljs-number">114</span>, <span class="hljs-number">121</span>, <span class="hljs-number">112</span>, <span class="hljs-number">116</span>, <span class="hljs-number">111</span>, <span class="hljs-number">123</span>, <span class="hljs-number">65</span>, <span class="hljs-number">83</span>, <span class="hljs-number">67</span>, <span class="hljs-number">73</span>, <span class="hljs-number">73</span>, <span class="hljs-number">95</span>, <span class="hljs-number">112</span>, <span class="hljs-number">114</span>, <span class="hljs-number">49</span>, <span class="hljs-number">110</span>, <span class="hljs-number">116</span>, <span class="hljs-number">52</span>, <span class="hljs-number">98</span>, <span class="hljs-number">108</span>, <span class="hljs-number">51</span>, <span class="hljs-number">125</span>]<br><br>flag = <span class="hljs-string">&quot;&quot;</span>.join(<span class="hljs-built_in">chr</span>(o) <span class="hljs-keyword">for</span> o <span class="hljs-keyword">in</span> ords)<br><span class="hljs-built_in">print</span>(flag)<br></code></pre></td></tr></table></figure>
+
+<p>ASCII printable.<code>crypto&#123;ASCII_pr1nt4bl3&#125;</code> </p>
+<h3 id="Hex-5-pts"><a href="#Hex-5-pts" class="headerlink" title="Hex(5 pts)"></a>Hex(5 pts)</h3><p>When we encrypt something the resulting ciphertext commonly has bytes which are not printable ASCII characters. If we want to share our encrypted data, it’s common to encode it into something more user-friendly and portable across different systems.</p>
+<p>Hexadecimal can be used in such a way to represent ASCII strings. First each letter is converted to an ordinal number according to the ASCII table (as in the previous challenge). Then the decimal numbers are converted to base-16 numbers, otherwise known as hexadecimal. The numbers can be combined together, into one long hex string.</p>
+<p>Included below is a flag encoded as a hex string. Decode this back into bytes to get the flag.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">63727970746f7b596f755f77696c6c5f62655f776f726b696e675f776974685f6865785f737472696e67735f615f6c6f747d<br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p> In Python, the <code>bytes.fromhex()</code> function can be used to convert hex to bytes. The <code>.hex()</code> instance method can be called on byte strings to get the hex representation.</p>
+</blockquote>
+<p><strong>Resources:</strong><br> - <a target="_blank" rel="noopener" href="https://www.rapidtables.com/code/text/ascii-table.html">ASCII table</a><br> - <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Hexadecimal">Wikipedia: Hexadecimal</a></p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-comment">## exp.py</span><br>hex_str = <span class="hljs-string">&quot;63727970746f7b596f755f77696c6c5f62655f776f726b696e675f776974685f6865785f737472696e67735f615f6c6f747d&quot;</span><br><br>flag = <span class="hljs-built_in">bytes</span>.fromhex(hex_str).decode() <span class="hljs-comment">## bytes 2 str</span><br><span class="hljs-built_in">print</span>(flag)<br></code></pre></td></tr></table></figure>
+
+<p><code>crypto&#123;You_will_be_working_with_hex_strings_a_lot&#125;</code></p>
+<h3 id="Base64-10-pts"><a href="#Base64-10-pts" class="headerlink" title="Base64(10 pts)"></a>Base64(10 pts)</h3><p>Another common encoding scheme is Base64, which allows us to represent binary data as an ASCII string using an alphabet of 64 characters. One character of a Base64 string encodes 6 binary digits (bits), and so 4 characters of Base64 encode three 8-bit bytes.</p>
+<p>Base64 is most commonly used online, so binary data such as images can be easily included into HTML or CSS files.</p>
+<p>Take the below hex string, <em>decode</em> it into bytes and then <em>encode</em> it into Base64.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">72bca9b68fc16ac7beeb8f849dca1d8a783e8acf9679bf9269f7bf<br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p> In Python, after importing the base64 module with <code>import base64</code>, you can use the <code>base64.b64encode()</code> function. Remember to decode the hex first as the challenge description states.</p>
+</blockquote>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-comment">## exp.py</span><br><span class="hljs-keyword">import</span> base64<br>hex_str = <span class="hljs-string">&quot;72bca9b68fc16ac7beeb8f849dca1d8a783e8acf9679bf9269f7bf&quot;</span><br><br>bytes_str = <span class="hljs-built_in">bytes</span>.fromhex(hex_str)<br>flag = base64.b64encode(bytes_str).decode()<br><span class="hljs-built_in">print</span>(flag)<br></code></pre></td></tr></table></figure>
+
+<p><code>crypto/Base+64+Encoding+is+Web+Safe/</code></p>
+<h3 id="Bytes-and-Big-Integers-10-pts"><a href="#Bytes-and-Big-Integers-10-pts" class="headerlink" title="Bytes and Big Integers(10 pts)"></a>Bytes and Big Integers(10 pts)</h3><p>Cryptosystems like RSA works on numbers, but messages are made up of characters. How should we convert our messages into numbers so that mathematical operations can be applied?</p>
+<p>The most common way is to take the ordinal bytes of the message, convert them into hexadecimal, and concatenate. This can be interpreted as a base-16&#x2F;hexadecimal number, and also represented in base-10&#x2F;decimal.</p>
+<p>To illustrate:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">message: HELLO<br>ascii bytes: [72, 69, 76, 76, 79]<br>hex bytes: [0x48, 0x45, 0x4c, 0x4c, 0x4f]<br>base-16: 0x48454c4c4f<br>base-10: 310400273487<br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p> Python’s PyCryptodome library implements this with the methods <code>bytes_to_long()</code> and <code>long_to_bytes()</code>. You will first have to install PyCryptodome and import it with <code>from Crypto.Util.number import *</code>. For more details check the <a target="_blank" rel="noopener" href="https://cryptohack.org/faq/#install">FAQ</a>.</p>
+</blockquote>
+<p>Convert the following integer back into a message:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">11515195063862318899931685488813747395775516287289682636499965282714637259206269<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-comment">##exp.py</span><br><span class="hljs-keyword">from</span> Crypto.Util.number <span class="hljs-keyword">import</span> *<br><br>m = <span class="hljs-number">11515195063862318899931685488813747395775516287289682636499965282714637259206269</span><br>flag = long_to_bytes(<span class="hljs-built_in">int</span>(m)).decode()<br><span class="hljs-built_in">print</span>(flag)<br></code></pre></td></tr></table></figure>
+
+<p>encoding all the way down!!!<code>crypto&#123;3nc0d1n6_4ll_7h3_w4y_d0wn&#125;</code> </p>
+<h3 id="XOR-starter-10-pts"><a href="#XOR-starter-10-pts" class="headerlink" title="XOR starter(10 pts)"></a>XOR starter(10 pts)</h3><p>XOR is a bitwise operator which returns 0 if the bits are the same, and 1 otherwise. In textbooks the XOR operator is denoted by ⊕, but in most challenges and programming languages you will see the caret <code>^</code> used instead.</p>
+<table>
+<thead>
+<tr>
+<th align="center">A</th>
+<th align="center">B</th>
+<th align="center">Output</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+</tr>
+<tr>
+<td align="center">0</td>
+<td align="center">1</td>
+<td align="center">1</td>
+</tr>
+<tr>
+<td align="center">1</td>
+<td align="center">0</td>
+<td align="center">1</td>
+</tr>
+<tr>
+<td align="center">1</td>
+<td align="center">1</td>
+<td align="center">0</td>
+</tr>
+</tbody></table>
+<p>For longer binary numbers we XOR bit by bit: <code>0110 ^ 1010 = 1100</code>. We can XOR integers by first converting the integer from decimal to binary. We can XOR strings by first converting each character to the integer representing the Unicode character.</p>
+<p>Given the string <code>label</code>, XOR each character with the integer <code>13</code>. Convert these integers back to a string and submit the flag as <code>crypto&#123;new_string&#125;</code>.</p>
+<blockquote>
+<p> The Python <code>pwntools</code> library has a convenient <code>xor()</code> function that can XOR together data of different types and lengths. But first, you may want to implement your own function to solve this.</p>
+</blockquote>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-comment">##exp1.py</span><br>ords = [<span class="hljs-built_in">ord</span>(c) <span class="hljs-keyword">for</span> c <span class="hljs-keyword">in</span> <span class="hljs-string">&#x27;label&#x27;</span>]<br><span class="hljs-keyword">def</span> <span class="hljs-title function_">xor</span>(<span class="hljs-params">ords, num</span>):<br>    flag = <span class="hljs-string">&quot;&quot;</span>.join(<span class="hljs-built_in">chr</span>(o ^ num) <span class="hljs-keyword">for</span> o <span class="hljs-keyword">in</span> ords)<br>    <span class="hljs-keyword">return</span> flag<br>flag = xor(ords, <span class="hljs-number">13</span>)<br><span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;crypto&#123;&#123;<span class="hljs-subst">&#123;flag&#125;</span>&#125;&#125;&quot;</span>)<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-comment">##exp2.py</span><br><span class="hljs-keyword">from</span> pwn <span class="hljs-keyword">import</span> xor<br>flag = xor(<span class="hljs-string">&#x27;label&#x27;</span>, <span class="hljs-number">13</span>).decode()<br><span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;crypto&#123;&#123;<span class="hljs-subst">&#123;flag&#125;</span>&#125;&#125;&quot;</span>) <br><span class="hljs-string">&quot;&quot;&quot;</span><br><span class="hljs-string">你需要 `&#123;&#123;` 和 `&#125;&#125;` 来插入字面上的 `&#123;` 和 `&#125;`，然后在其中插入你的变量 `flag`。</span><br><span class="hljs-string">&quot;&quot;&quot;</span><br></code></pre></td></tr></table></figure>
+
+<p> <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Aloha">aloha</a>!<code>crypto&#123;aloha&#125;</code></p>
+<h3 id="XOR-Properties-15-pts"><a href="#XOR-Properties-15-pts" class="headerlink" title="XOR Properties(15 pts)"></a>XOR Properties(15 pts)</h3><p>In the last challenge, you saw how XOR worked at the level of bits. In this one, we’re going to cover the properties of the XOR operation and then use them to undo a chain of operations that have encrypted a flag. Gaining an intuition for how this works will help greatly when you come to attacking real cryptosystems later, especially in the block ciphers category.</p>
+<p>There are four main properties we should consider when we solve challenges using the XOR operator</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">Commutative: A ⊕ B = B ⊕ A<br>Associative: A ⊕ (B ⊕ C) = (A ⊕ B) ⊕ C<br>Identity: A ⊕ 0 = A<br>Self-Inverse: A ⊕ A = 0<br></code></pre></td></tr></table></figure>
+
+<p>Let’s break this down. Commutative means that the order of the XOR operations is not important. Associative means that a chain of operations can be carried out without order (we do not need to worry about brackets). The identity is 0, so XOR with 0 “does nothing”, and lastly something XOR’d with itself returns zero.</p>
+<p>Let’s put this into practice! Below is a series of outputs where three random keys have been XOR’d together and with the flag. Use the above properties to undo the encryption in the final line to obtain the flag.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">KEY1 = a6c8b6733c9b22de7bc0253266a3867df55acde8635e19c73313<br>KEY2 ^ KEY1 = 37dcb292030faa90d07eec17e3b1c6d8daf94c35d4c9191a5e1e<br>KEY2 ^ KEY3 = c1545756687e7573db23aa1c3452a098b71a7fbf0fddddde5fc1<br>FLAG ^ KEY1 ^ KEY3 ^ KEY2 = 04ee9855208a2cd59091d04767ae47963170d1660df7f56f5faf<br></code></pre></td></tr></table></figure>
+
+<p> Before you XOR these objects, be sure to decode from hex to bytes.</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-comment">##exp.py</span><br><span class="hljs-keyword">from</span> pwn <span class="hljs-keyword">import</span> xor<br>KEY1 = <span class="hljs-string">&quot;a6c8b6733c9b22de7bc0253266a3867df55acde8635e19c73313&quot;</span><br>KEY2_KEY1 = <span class="hljs-string">&quot;37dcb292030faa90d07eec17e3b1c6d8daf94c35d4c9191a5e1e&quot;</span><br>KEY2_KEY3 = <span class="hljs-string">&quot;c1545756687e7573db23aa1c3452a098b71a7fbf0fddddde5fc1&quot;</span><br>FLAG_KEY1_KEY3_KEY2 = <span class="hljs-string">&quot;04ee9855208a2cd59091d04767ae47963170d1660df7f56f5faf&quot;</span><br><br>hint1 = <span class="hljs-built_in">bytes</span>.fromhex(FLAG_KEY1_KEY3_KEY2)<br>hint2 = <span class="hljs-built_in">bytes</span>.fromhex(KEY2_KEY3)<br>hint3 = <span class="hljs-built_in">bytes</span>.fromhex(KEY1)<br><br>flag = xor(hint1, hint2, hint3).decode()<br><span class="hljs-built_in">print</span>(flag)<br></code></pre></td></tr></table></figure>
+
+<p>xor is associative.<code>crypto&#123;x0r_i5_ass0c1at1v3&#125;</code> </p>
+<h3 id="Favourite-byte-20-pts"><a href="#Favourite-byte-20-pts" class="headerlink" title="Favourite byte(20 pts)"></a>Favourite byte(20 pts)</h3><p>For the next few challenges, you’ll use what you’ve just learned to solve some more XOR puzzles.</p>
+<p>I’ve hidden some data using XOR with a single byte, but that byte is a secret. Don’t forget to decode from hex first.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">73626960647f6b206821204f21254f7d694f7624662065622127234f726927756d<br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p>Google Single-byte XOR Cipher.  <a target="_blank" rel="noopener" href="https://github.com/arpitbbhayani/decipher-single-byte-xor/blob/master/decipher-single-byte-xor.ipynb">arpitbhayani.me&#x2F;decipher-single-byte-xor</a></p>
+</blockquote>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-comment">##exp.py</span><br><span class="hljs-keyword">from</span> pwn <span class="hljs-keyword">import</span> xor<br>hex_str = <span class="hljs-string">&quot;73626960647f6b206821204f21254f7d694f7624662065622127234f726927756d&quot;</span><br>bytes_str = <span class="hljs-built_in">bytes</span>.fromhex(hex_str)<br><br><span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">256</span>):<br>    <span class="hljs-keyword">try</span>:<br>        flag = xor(bytes_str, i).decode()<br>        <span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;Key <span class="hljs-subst">&#123;i&#125;</span>: <span class="hljs-subst">&#123;flag&#125;</span>&quot;</span>)<br>    <span class="hljs-keyword">except</span> UnicodeDecodeError:<br>        <span class="hljs-keyword">continue</span><br></code></pre></td></tr></table></figure>
+
+<p><code>i = 16 = xor(bytes_str[0], &#39;c&#39;)</code></p>
+<p>0x10 is my favourite byte.<code>crypto&#123;0x10_15_my_f4v0ur173_by7e&#125;</code> </p>
+<h3 id="You-either-know-XOR-you-don’t-30-pts"><a href="#You-either-know-XOR-you-don’t-30-pts" class="headerlink" title="You either know, XOR you don’t(30 pts)"></a>You either know, XOR you don’t(30 pts)</h3><p>I’ve encrypted the flag with my secret key, you’ll never be able to guess it.</p>
+<blockquote>
+<p>Remember the flag format and how it might help you in this challenge!</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">0e0b213f26041e480b26217f27342e175d0e070a3c5b103e2526217f27342e175d0e077e263451150104<br></code></pre></td></tr></table></figure>
+
+<p>💡hint: <code>crypro&#123;&#125;</code>🧐如果你知道的足够多，你就知道了一切。</p>
+<h2 id="MODULAR-ARITHMETIC"><a href="#MODULAR-ARITHMETIC" class="headerlink" title="MODULAR ARITHMETIC"></a>MODULAR ARITHMETIC</h2><h3 id="Greatest-Common-Divisor-15-pts"><a href="#Greatest-Common-Divisor-15-pts" class="headerlink" title="Greatest Common Divisor(15 pts)"></a>Greatest Common Divisor(15 pts)</h3><p>The Greatest Common Divisor (GCD), sometimes known as the highest common factor, is the largest number which divides two positive integers (a,b).</p>
+<p>For <code>a = 12, b = 8</code> we can calculate the divisors of a: <code>&#123;1,2,3,4,6,12&#125;</code> and the divisors of b: <code>&#123;1,2,4,8&#125;</code>. Comparing these two, we see that <code>gcd(a,b) = 4</code>.</p>
+<p>Now imagine we take <code>a = 11, b = 17</code>. Both <code>a</code> and <code>b</code> are prime numbers. As a prime number has only itself and <code>1</code> as divisors, <code>gcd(a,b) = 1</code>.</p>
+<p>We say that for any two integers <code>a,b</code>, if <code>gcd(a,b) = 1</code> then <code>a</code> and <code>b</code> are coprime integers.</p>
+<p>If <code>a</code> and <code>b</code> are prime, they are also coprime. If <code>a</code> is prime and <code>b &lt; a</code> then <code>a</code> and <code>b</code> are coprime.</p>
+<p>Think about the case for <code>a</code> prime and <code>b &gt; a</code>, why are these not necessarily coprime?</p>
+<p>There are many tools to calculate the GCD of two integers, but for this task we recommend looking up <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Euclidean_algorithm">Euclid’s Algorithm</a>.</p>
+<p>Try coding it up; it’s only a couple of lines. Use <code>a = 12, b = 8</code> to test it.</p>
+<p>Now calculate <code>gcd(a,b)</code> for <code>a = 66528, b = 52920</code> and enter it below.</p>
+<blockquote>
+<p>什么是欧几里得算法（辗转相除法）？为什么它是正确的？</p>
+</blockquote>
+<p>$$<br>d &#x3D; gcd(a, b) &#x3D; gcd(b, r)\<br>d|b\implies d|qb,d|a\implies d|a-qb&#x3D;d|r<br>$$</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-comment">## 欧几里得算法</span><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">gcd</span>(<span class="hljs-params">a, b</span>):<br>    <span class="hljs-keyword">while</span> b != <span class="hljs-number">0</span>:<br>        t = a % b<br>        a = b<br>        b = t<br>    <span class="hljs-keyword">return</span> a<br><br>a = <span class="hljs-number">66528</span><br>b = <span class="hljs-number">52920</span><br><span class="hljs-built_in">print</span>(gcd(a, b))<br><span class="hljs-string">&quot;&quot;&quot;</span><br><span class="hljs-string">1512</span><br><span class="hljs-string">&quot;&quot;&quot;</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="Extended-GCD-20-pts"><a href="#Extended-GCD-20-pts" class="headerlink" title="Extended GCD(20 pts)"></a>Extended GCD(20 pts)</h3><p>Let <code>a</code> and <code>b</code> be positive integers.</p>
+<p>The extended Euclidean algorithm is an efficient way to find integers <code>u,v</code> such that</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">a * u + b * v = gcd(a,b)<br></code></pre></td></tr></table></figure>
+
+<p> Later, when we learn to decrypt RSA, we will need this algorithm to calculate the modular inverse of the public exponent.</p>
+<blockquote>
+<p>因为<code>u * x + v * p = gcd(x, p) = 1</code>，所以$ux\equiv 1(mod\ p)$.</p>
+</blockquote>
+<p>Using the two primes <code>p = 26513, q = 32321</code>, find the integers <code>u,v</code> such that</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">p * u + q * v = gcd(p,q)<br></code></pre></td></tr></table></figure>
+
+<p>Enter whichever of <code>u</code> and <code>v</code> is the lower number as the flag.</p>
+<blockquote>
+<p>Knowing that <code>p,q</code> are prime, what would you expect <code>gcd(p,q)</code> to be? For more details on the extended Euclidean algorithm, check out <a target="_blank" rel="noopener" href="https://web.archive.org/web/20230511143526/http://www-math.ucdenver.edu/~wcherowi/courses/m5410/exeucalg.html">this page</a>.</p>
+</blockquote>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-comment">## 扩展欧几里得算法</span><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">Exgcd</span>(<span class="hljs-params">a, b</span>):<br>    <span class="hljs-keyword">if</span> b == <span class="hljs-number">0</span>:<br>        <span class="hljs-keyword">return</span> a, <span class="hljs-number">1</span>, <span class="hljs-number">0</span><br>    d, x, y = Exgcd(b, a % b)<br>    <span class="hljs-keyword">return</span> d, y, x - (a // b) * y<br><br>p = <span class="hljs-number">26513</span><br>q = <span class="hljs-number">32321</span><br><span class="hljs-built_in">print</span>(Exgcd(p, q))<br><span class="hljs-string">&quot;&quot;&quot;</span><br><span class="hljs-string">(1, 10245, -8404)</span><br><span class="hljs-string">&quot;&quot;&quot;</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="Modular-Arithmetic-1-20-pts"><a href="#Modular-Arithmetic-1-20-pts" class="headerlink" title="Modular Arithmetic 1(20 pts)"></a>Modular Arithmetic 1(20 pts)</h3><p>Imagine you lean over and look at a cryptographer’s notebook. You see some notes in the margin:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">4 + 9 = 1<br>5 - 7 = 10<br>2 + 3 = 5<br></code></pre></td></tr></table></figure>
+
+<p>At first you might think they’ve gone mad. Maybe this is why there are so many data leaks nowadays you’d think, but this is nothing more than modular arithmetic modulo 12 (albeit with some sloppy notation).</p>
+<p>You may not have been calling it modular arithmetic, but you’ve been doing these kinds of calculations since you learnt to tell the time (look again at those equations and think about adding hours).</p>
+<p>Formally, “calculating time” is described by the theory of congruences. We say that two integers are congruent modulo m if <code>a ≡ b mod m</code>.</p>
+<p>Another way of saying this, is that when we divide the integer <code>a</code> by <code>m</code>, the remainder is <code>b</code>. This tells you that if m divides a (this can be written as <code>m | a</code>) then <code>a ≡ 0 mod m</code>.</p>
+<p>Calculate the following integers:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">11 ≡ x mod 6<br>8146798528947 ≡ y mod 17<br></code></pre></td></tr></table></figure>
+
+<p>The solution is the smaller of the two integers.</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs py">x = <span class="hljs-number">11</span> % <span class="hljs-number">6</span><br><span class="hljs-built_in">print</span>(x)<br>y = <span class="hljs-number">8146798528947</span> % <span class="hljs-number">17</span><br><span class="hljs-built_in">print</span>(y)<br><span class="hljs-string">&quot;&quot;&quot;</span><br><span class="hljs-string">5</span><br><span class="hljs-string">4</span><br><span class="hljs-string">&quot;&quot;&quot;</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="Modular-Arithmetic-2-20-pts"><a href="#Modular-Arithmetic-2-20-pts" class="headerlink" title="Modular Arithmetic 2(20 pts)"></a>Modular Arithmetic 2(20 pts)</h3><p>We’ll pick up from the last challenge and imagine we’ve picked a modulus <code>p</code>, and we will restrict ourselves to the case when <code>p</code> is prime.</p>
+<p>The integers modulo <code>p</code> define a field, denoted <code>Fp</code>.</p>
+<blockquote>
+<p>If the modulus is not prime, the set of integers modulo <code>n</code> define a ring.</p>
+</blockquote>
+<p>A finite field <code>Fp</code> is the set of integers <code>&#123;0,1,...,p-1&#125;</code>, and under both addition and multiplication there are inverse elements <code>b+</code> and <code>b*</code> for every element <code>a</code> in the set, such that <code>a + b+ = 0</code> and <code>a * b* = 1</code>.</p>
+<blockquote>
+<p> Note that the identity element for addition and multiplication is different! This is because the identity when acted with the operator should do nothing: <code>a + 0 = a</code> and <code>a * 1 = a</code>.</p>
+</blockquote>
+<p>Lets say we pick <code>p = 17</code>. Calculate <code>317 mod 17</code>. Now do the same but with <code>517 mod 17</code>.</p>
+<p>What would you expect to get for <code>716 mod 17</code>? Try calculating that.</p>
+<p>This interesting fact is known as <a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E8%B4%B9%E9%A9%AC%E5%B0%8F%E5%AE%9A%E7%90%86">Fermat’s little theorem</a>. We’ll be needing this (and its generalisations) when we look at RSA cryptography.</p>
+<p>Now take the prime <code>p = 65537</code>. Calculate <code>27324678765465536 mod 65537</code>.</p>
+<p>Did you need a calculator<br>$$<br>a^{p-1}\equiv 1(mod\ p)<br>$$</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs py">a = <span class="hljs-number">273246787654</span><br><span class="hljs-keyword">if</span> a % p != <span class="hljs-number">0</span>:<br>    <span class="hljs-built_in">print</span>(<span class="hljs-number">1</span>)<br><span class="hljs-keyword">else</span>:<br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;Oops!&quot;</span>)<br><span class="hljs-string">&quot;&quot;&quot;</span><br><span class="hljs-string">1</span><br><span class="hljs-string">&quot;&quot;&quot;</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="Modular-Inverting-25-pts"><a href="#Modular-Inverting-25-pts" class="headerlink" title="Modular Inverting(25 pts)"></a>Modular Inverting(25 pts)</h3><p>As we’ve seen, we can work within a finite field <code>Fp</code>, adding and multiplying elements, and always obtain another element of the field.</p>
+<p>For all elements <code>g</code> in the field, there exists a unique integer <code>d</code> such that <code>g * d ≡ 1 mod p</code>.</p>
+<p>This is the multiplicative inverse of <code>g</code>.</p>
+<p><strong>Example</strong>: <code>7 * 8 = 56 ≡ 1 mod 11</code></p>
+<p>What is the inverse element: <code>3 * d ≡ 1 mod 13</code>?</p>
+<blockquote>
+<p>Think about the little theorem we just worked with. How does this help you find the inverse of an element?</p>
+</blockquote>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-built_in">print</span>(<span class="hljs-number">3</span>**<span class="hljs-number">11</span> % <span class="hljs-number">13</span>)<br><span class="hljs-string">&quot;&quot;&quot;</span><br><span class="hljs-string">9</span><br><span class="hljs-string">&quot;&quot;&quot;</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="Quadratic-Residues-25-pts"><a href="#Quadratic-Residues-25-pts" class="headerlink" title="Quadratic Residues(25 pts)"></a>Quadratic Residues(25 pts)</h3><p>We’ve looked at multiplication and division in modular arithmetic, but what does it mean to take the square root modulo an integer?</p>
+<p>For the following discussion, let’s work modulo <code>p = 29</code>. We can take the integer <code>a = 11</code> and calculate <code>a^2 = 5 mod 29</code>.</p>
+<p>As <code>a = 11, a^2 = 5</code>, we say the square root of <code>5</code> is <code>11</code>.</p>
+<p>This feels good, but now let’s think about the square root of <code>18</code>. From the above, we know we need to find some integer <code>a</code> such that <code>a^2 = 18</code></p>
+<p>Your first idea might be to start with <code>a = 1</code> and loop to <code>a = p-1</code>. In this discussion <code>p</code> isn’t too large and we can quickly look.</p>
+<p>Have a go, try coding this and see what you find. If you’ve coded it right, you’ll find that for all <code>a ∈ Fp*</code> you never find an <code>a</code> such that <code>a^2 = 18</code>.</p>
+<p>What we are seeing, is that for the elements of <code>F*p</code>, not every element has a square root. In fact, what we find is that for roughly one half of the elements of <code>Fp*</code>, there is no square root.</p>
+<blockquote>
+<p>We say that an integer <code>x</code> is a <em>Quadratic Residue</em> if there exists an <code>a</code> such that <code>a^2 = x mod p</code>. If there is no such solution, then the integer is a <em>Quadratic Non-Residue</em>.</p>
+</blockquote>
+<p>In other words, <code>x</code> is a quadratic residue when it is possible to take the square root of <code>x</code> modulo an integer <code>p</code>.</p>
+<p>In the below list there are two non-quadratic residues and one quadratic residue.</p>
+<p>Find the quadratic residue and then calculate its square root. Of the two possible roots, submit the smaller one as the flag.</p>
+<blockquote>
+<p>If <code>a^2 = x</code> then (-a)^2 &#x3D; x. So if <code>x</code> is a quadratic residue in some finite field, then there are always two solutions for <code>a</code>.</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">p = 29<br>ints = [14, 6, 11]<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-comment">##exp.py</span><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">quadratic_residues</span>(<span class="hljs-params">x, p</span>):<br>    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">1</span>, p):<br>        <span class="hljs-keyword">if</span> i * i % p == x:<br>            <span class="hljs-keyword">return</span> i<br>    <span class="hljs-keyword">return</span> <span class="hljs-literal">False</span><br><br><span class="hljs-built_in">print</span>(quadratic_residues(<span class="hljs-number">14</span>, <span class="hljs-number">29</span>))<br><span class="hljs-built_in">print</span>(quadratic_residues(<span class="hljs-number">6</span>, <span class="hljs-number">29</span>))<br><span class="hljs-built_in">print</span>(quadratic_residues(<span class="hljs-number">11</span>, <span class="hljs-number">29</span>))<br><span class="hljs-string">&quot;&quot;&quot;</span><br><span class="hljs-string">False</span><br><span class="hljs-string">8</span><br><span class="hljs-string">False</span><br><span class="hljs-string">&quot;&quot;&quot;</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="Legendre-Symbol-35-pts"><a href="#Legendre-Symbol-35-pts" class="headerlink" title="Legendre Symbol(35 pts)"></a>Legendre Symbol(35 pts)</h3><p>In Quadratic Residues we learnt what it means to take the square root modulo an integer. We also saw that taking a root isn’t always possible.</p>
+<p>In the previous case when <code>p = 29</code>, even the simplest method of calculating the square root was fast enough, but as <code>p</code> gets larger, this method becomes wildly unreasonable.</p>
+<p>Lucky for us, we have a way to check whether an integer is a quadratic residue with a single calculation thanks to Legendre. In the following, we will assume we are working modulo a prime <code>p</code>.</p>
+<p>Before looking at Legendre’s symbol, let’s take a brief detour to see an interesting property of quadratic (non-)residues.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">Quadratic Residue * Quadratic Residue = Quadratic Residue<br>Quadratic Residue * Quadratic Non-residue = Quadratic Non-residue<br>Quadratic Non-residue * Quadratic Non-residue = Quadratic Residue<br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p>Want an easy way to remember this? Replace “Quadratic Residue” with <code>+1</code> and “Quadratic Non-residue” with <code>-1</code>, all three results are the same!</p>
+</blockquote>
+<p>So what’s the trick? The <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Legendre_symbol">Legendre Symbol</a> gives an efficient way to determine whether an integer is a quadratic residue modulo an odd prime <code>p</code>.</p>
+<p>Legendre’s Symbol: <code>(a / p) ≡ a(p-1)/2 mod p</code> obeys:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">(a / p) = 1 if a is a quadratic residue and a ≢ 0 mod p<br>(a / p) = -1 if a is a quadratic non-residue mod p<br>(a / p) = 0 if a ≡ 0 mod p<br></code></pre></td></tr></table></figure>
+
+<p>Which means given any integer <code>a</code>, calculating <code>pow(a,(p-1)//2,p)</code> is enough to determine if <code>a</code> is a quadratic residue.</p>
+<p>Now for the flag. Given the following 1024 bit prime and 10 integers, find the quadratic residue and then calculate its square root; the square root is your flag. Of the two possible roots, submit the larger one as your answer.</p>
+<blockquote>
+<p>So Legendre’s symbol tells us which integer is a quadratic residue, but how do we find the square root?! The prime supplied obeys <code>p = 3 mod 4</code>, which allows us easily compute the square root. The answer is online, but you can figure it out yourself if you think about Fermat’s little theorem.</p>
+</blockquote>
+<p>$$<br>x^{\frac{p-1}{2}}\equiv1(mod\ p)\<br>(x^\frac{p+1}{4})^2&#x3D;x^{\frac{p+1}{2}}\equiv x^{}(mod\ p)<br>$$</p>
+<p><strong>Challenge files:</strong><br> - <a target="_blank" rel="noopener" href="https://cryptohack.org/static/challenges/output_479698cde19aaa05d9e9dfca460f5443.txt">output.txt</a></p>
+<h3 id="Modular-Square-Root-35-pts"><a href="#Modular-Square-Root-35-pts" class="headerlink" title="Modular Square Root(35 pts)"></a>Modular Square Root(35 pts)</h3><p>In Legendre Symbol we introduced a fast way to determine whether a number is a square root modulo a prime. We can go further: there are algorithms for efficiently calculating such roots. The best one in practice is called Tonelli-Shanks, which gets its funny name from the fact that it was first described by an Italian in the 19th century and rediscovered independently by Daniel Shanks in the 1970s.</p>
+<p>All primes that aren’t 2 are of the form <code>p ≡ 1 mod 4</code> or <code>p ≡ 3 mod 4</code>, since all odd numbers obey these congruences. As the previous challenge hinted, in the <code>p ≡ 3 mod 4</code> case, a really simple formula for computing square roots can be <a target="_blank" rel="noopener" href="https://crypto.stackexchange.com/a/20994">derived</a> directly from Fermat’s little theorem. That leaves us still with the <code>p ≡ 1 mod 4</code> case, so a more general algorithm is required.</p>
+<p>In a congruence of the form <code>r^2 ≡ a mod p</code>, Tonelli-Shanks calculates <code>r</code>.</p>
+<blockquote>
+<p>Tonelli-Shanks doesn’t work for composite (non-prime) moduli. Finding square roots modulo composites is computationally equivalent to integer factorization - that is, it’s a hard problem.</p>
+</blockquote>
+<p>The main use-case for this algorithm is finding elliptic curve co-ordinates. Its operation is somewhat complex so we’re not going to discuss the details, however, implementations are easy to find and Sage has one built-in.</p>
+<p>Find the square root of <code>a</code> modulo the 2048-bit prime <code>p</code>. Give the <em><strong>smaller</strong></em> of the two roots as your answer.</p>
+<p><strong>Challenge files:</strong><br> - <a target="_blank" rel="noopener" href="https://cryptohack.org/static/challenges/output_abe0beb359a950c8a0a9300897528a9d.txt">output.txt</a></p>
+<p>💡hint: <a target="_blank" rel="noopener" href="https://doc.sagemath.org/html/en/reference/finite_rings/sage/rings/finite_rings/integer_mod.html">Tonelli-Shanks sage</a>🧐</p>
+<h3 id="Chinese-Remainder-Theorem"><a href="#Chinese-Remainder-Theorem" class="headerlink" title="Chinese Remainder Theorem"></a>Chinese Remainder Theorem</h3><p>The Chinese Remainder Theorem gives a unique solution to a set of linear congruences if their moduli are coprime.</p>
+<p>This means, that given a set of arbitrary integers <code>ai</code>, and pairwise coprime integers <code>ni</code>, such that the following linear congruences hold:</p>
+<p> Note “pairwise coprime integers” means that if we have a set of integers <code>&#123;n1, n2, ..., ni&#125;</code>, all pairs of integers selected from the set are coprime: <code>gcd(ni, nj) = 1</code>.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">x ≡ a1 mod n1<br>x ≡ a2 mod n2<br>...<br>x ≡ an mod nn<br></code></pre></td></tr></table></figure>
+
+<p>There is a unique solution <code>x ≡ a mod N</code> where <code>N = n1 * n2 * ... * nn</code>.</p>
+<p>In cryptography, we commonly use the Chinese Remainder Theorem to help us reduce a problem of very large integers into a set of several, easier problems.</p>
+<p>Given the following set of linear congruences:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">x ≡ 2 mod 5<br>x ≡ 3 mod 11<br>x ≡ 5 mod 17<br></code></pre></td></tr></table></figure>
+
+<p>Find the integer <code>a</code> such that <code>x ≡ a mod 935</code></p>
+<p>Starting with the congruence with the largest modulus, use that for <code>x ≡ a mod p</code> we can write <code>x = a + k*p</code> for arbitrary integer <code>k</code>.</p>
+<p>💡hint: <a target="_blank" rel="noopener" href="https://oi-wiki.org/math/number-theory/crt/">CRT</a>🧐</p>
+<h3 id="Adrien’s-Signs-80-pts"><a href="#Adrien’s-Signs-80-pts" class="headerlink" title="Adrien’s Signs(80 pts)"></a>Adrien’s Signs(80 pts)</h3><p>Adrien’s been looking at ways to encrypt his messages with the help of symbols and minus signs. Can you find a way to recover the flag?</p>
+<p><strong>Challenge files:</strong><br> - <a target="_blank" rel="noopener" href="https://cryptohack.org/static/challenges/source_734d7e14251f950935f83d228f8694ab.py">source.py</a><br> - <a target="_blank" rel="noopener" href="https://cryptohack.org/static/challenges/output_80fc6398d2fd9f272186d0af510323f9.txt">output.txt</a></p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="http://aununo.xyz">Aununo</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章連結: </span><span class="post-copyright-info"><a href="http://aununo.xyz/2024/07/14/CryptoHack%2025pts%20write%20up/">http://aununo.xyz/2024/07/14/CryptoHack%2025pts%20write%20up/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版權聲明: </span><span class="post-copyright-info">本部落格所有文章除特別聲明外，均採用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 許可協議。轉載請註明來自 <a href="http://aununo.xyz" target="_blank">Aununo's zone</a>！</span></div></div><div class="tag_share"><div class="post_share"><div class="social-share" data-image="https://i.pinimg.com/564x/1b/0c/4e/1b0c4ecc1b786c0966a57c1088b4a149.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="next-post pull-full"><a href="/2024/07/14/%F0%9F%92%BBSageMath/" title=""><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">下一篇</div><div class="next_info"></div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://i.pinimg.com/564x/1b/0c/4e/1b0c4ecc1b786c0966a57c1088b4a149.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Aununo</div><div class="author-info__description">Hope you have a nice day!</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">4</div></a><a href="/tags/"><div class="headline">標籤</div><div class="length-num">0</div></a><a href="/categories/"><div class="headline">分類</div><div class="length-num">2</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/Aununo"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="mailto:fikavecgold@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope" style="color: #4a7dbe;"></i></a><a class="social-icon" href="https://space.bilibili.com/674199530?spm_id_from=333.1007.0.0" target="_blank" title="Bilibili"><i class="fab fa-bilibili" style="color: #00a1d6;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目錄</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#CryptoHack-25pts-write-up"><span class="toc-number">1.</span> <span class="toc-text">CryptoHack 25pts write up</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#introduction-to-cryptohack"><span class="toc-number">1.1.</span> <span class="toc-text">introduction to cryptohack</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Finding-Flags-2-pts"><span class="toc-number">1.1.1.</span> <span class="toc-text">Finding Flags(2 pts)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Great-Snakes-3-pts"><span class="toc-number">1.1.2.</span> <span class="toc-text">Great Snakes(3 pts)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ASCII-5-pts"><span class="toc-number">1.1.3.</span> <span class="toc-text">ASCII(5 pts)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Hex-5-pts"><span class="toc-number">1.1.4.</span> <span class="toc-text">Hex(5 pts)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Base64-10-pts"><span class="toc-number">1.1.5.</span> <span class="toc-text">Base64(10 pts)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Bytes-and-Big-Integers-10-pts"><span class="toc-number">1.1.6.</span> <span class="toc-text">Bytes and Big Integers(10 pts)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#XOR-starter-10-pts"><span class="toc-number">1.1.7.</span> <span class="toc-text">XOR starter(10 pts)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#XOR-Properties-15-pts"><span class="toc-number">1.1.8.</span> <span class="toc-text">XOR Properties(15 pts)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Favourite-byte-20-pts"><span class="toc-number">1.1.9.</span> <span class="toc-text">Favourite byte(20 pts)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#You-either-know-XOR-you-don%E2%80%99t-30-pts"><span class="toc-number">1.1.10.</span> <span class="toc-text">You either know, XOR you don’t(30 pts)</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#MODULAR-ARITHMETIC"><span class="toc-number">1.2.</span> <span class="toc-text">MODULAR ARITHMETIC</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Greatest-Common-Divisor-15-pts"><span class="toc-number">1.2.1.</span> <span class="toc-text">Greatest Common Divisor(15 pts)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Extended-GCD-20-pts"><span class="toc-number">1.2.2.</span> <span class="toc-text">Extended GCD(20 pts)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Modular-Arithmetic-1-20-pts"><span class="toc-number">1.2.3.</span> <span class="toc-text">Modular Arithmetic 1(20 pts)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Modular-Arithmetic-2-20-pts"><span class="toc-number">1.2.4.</span> <span class="toc-text">Modular Arithmetic 2(20 pts)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Modular-Inverting-25-pts"><span class="toc-number">1.2.5.</span> <span class="toc-text">Modular Inverting(25 pts)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Quadratic-Residues-25-pts"><span class="toc-number">1.2.6.</span> <span class="toc-text">Quadratic Residues(25 pts)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Legendre-Symbol-35-pts"><span class="toc-number">1.2.7.</span> <span class="toc-text">Legendre Symbol(35 pts)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Modular-Square-Root-35-pts"><span class="toc-number">1.2.8.</span> <span class="toc-text">Modular Square Root(35 pts)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Chinese-Remainder-Theorem"><span class="toc-number">1.2.9.</span> <span class="toc-text">Chinese Remainder Theorem</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Adrien%E2%80%99s-Signs-80-pts"><span class="toc-number">1.2.10.</span> <span class="toc-text">Adrien’s Signs(80 pts)</span></a></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/07/14/CryptoHack%2025pts%20write%20up/" title="無標題">無標題</a><time datetime="2024-07-14T02:27:09.527Z" title="發表於 2024-07-14 10:27:09">2024-07-14</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/07/14/%F0%9F%92%BBSageMath/" title="無標題">無標題</a><time datetime="2024-07-14T02:25:19.086Z" title="發表於 2024-07-14 10:25:19">2024-07-14</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/07/10/Dan-Boneh/" title="Dan Boneh">Dan Boneh</a><time datetime="2024-07-10T14:11:58.000Z" title="發表於 2024-07-10 22:11:58">2024-07-10</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/07/05/%E7%B6%AB%E6%80%A7%E4%BB%A3%E6%95%B8/" title="綫性代數">綫性代數</a><time datetime="2024-07-05T15:06:50.000Z" title="發表於 2024-07-05 23:06:50">2024-07-05</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2024 By Aununo</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主題 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text">Hi, welcome to my <a href="https://aununo.xyz">blog</a>!</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="閱讀模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="淺色和深色模式轉換"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="單欄和雙欄切換"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="設定"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目錄"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="返回頂部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=4.13.0"></script><script src="/js/main.js?v=4.13.0"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"><script>if (!window.MathJax) {
+  window.MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      tags: 'ams'
+    },
+    chtml: {
+      scale: 1.1
+    },
+    options: {
+      renderActions: {
+        findScript: [10, doc => {
+          for (const node of document.querySelectorAll('script[type^="math/tex"]')) {
+            const display = !!node.type.match(/; *mode=display/)
+            const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display)
+            const text = document.createTextNode('')
+            node.parentNode.replaceChild(text, node)
+            math.start = {node: text, delim: '', n: 0}
+            math.end = {node: text, delim: '', n: 0}
+            doc.math.push(math)
+          }
+        }, '']
+      }
+    }
+  }
+  
+  const script = document.createElement('script')
+  script.src = 'https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-mml-chtml.min.js'
+  script.id = 'MathJax-script'
+  script.async = true
+  document.head.appendChild(script)
+} else {
+  MathJax.startup.document.state(0)
+  MathJax.texReset()
+  MathJax.typesetPromise()
+}</script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css"><script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/copy-tex.min.js"></script><script>(() => {
+  document.querySelectorAll('#article-container span.katex-display').forEach(item => {
+    btf.wrap(item, 'div', { class: 'katex-wrap'})
+  })
+})()</script></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

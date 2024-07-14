@@ -1,0 +1,287 @@
+<!DOCTYPE html><html lang="zh-TW" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>Aununo's zone | Aununo's zone</title><meta name="author" content="Aununo"><meta name="copyright" content="Aununo"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="💻SageMathLinux环境这里我们使用wsl1在windows系统上使用linux。  启用wsl。 通过Microsoft Store下载安装Ubuntu，设置用户名和密码。 导出到D盘中：wsl --export Ubuntu D:\WSL\Ubuntu\ubuntu.tar。 注销并移除C盘中的发行版：wsl --unregister Ubuntu。 导入到D盘中：wsl --imp">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Aununo&#39;s zone">
+<meta property="og:url" content="http://aununo.xyz/2024/07/14/%F0%9F%92%BBSageMath/index.html">
+<meta property="og:site_name" content="Aununo&#39;s zone">
+<meta property="og:description" content="💻SageMathLinux环境这里我们使用wsl1在windows系统上使用linux。  启用wsl。 通过Microsoft Store下载安装Ubuntu，设置用户名和密码。 导出到D盘中：wsl --export Ubuntu D:\WSL\Ubuntu\ubuntu.tar。 注销并移除C盘中的发行版：wsl --unregister Ubuntu。 导入到D盘中：wsl --imp">
+<meta property="og:locale" content="zh_TW">
+<meta property="og:image" content="https://i.pinimg.com/564x/1b/0c/4e/1b0c4ecc1b786c0966a57c1088b4a149.jpg">
+<meta property="article:published_time" content="2024-07-14T02:25:19.086Z">
+<meta property="article:modified_time" content="2024-07-14T02:34:44.927Z">
+<meta property="article:author" content="Aununo">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.pinimg.com/564x/1b/0c/4e/1b0c4ecc1b786c0966a57c1088b4a149.jpg"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://aununo.xyz/2024/07/14/%F0%9F%92%BBSageMath/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=4.13.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '複製成功',
+    error: '複製錯誤',
+    noSupport: '瀏覽器不支援'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '剛剛',
+    min: '分鐘前',
+    hour: '小時前',
+    day: '天前',
+    month: '個月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.11.1/dist/infinitegrid.min.js',
+    buttonText: '載入更多'
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Aununo\'s zone',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2024-07-14 10:34:44'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+        if (t === 'dark') activateDarkMode()
+        else if (t === 'light') activateLightMode()
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><link rel="stylesheet" href="/css/custom.css"><!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://i.pinimg.com/564x/1b/0c/4e/1b0c4ecc1b786c0966a57c1088b4a149.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">4</div></a><a href="/tags/"><div class="headline">標籤</div><div class="length-num">0</div></a><a href="/categories/"><div class="headline">分類</div><div class="length-num">2</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Links</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="not-top-img" id="page-header"><nav id="nav"><span id="blog-info"><a href="/" title="Aununo's zone"><img class="site-icon" src="https://i.pinimg.com/564x/1b/0c/4e/1b0c4ecc1b786c0966a57c1088b4a149.jpg# image"/><span class="site-name">Aununo's zone</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Links</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav></header><main class="layout" id="content-inner"><div id="post"><div id="post-info"><h1 class="post-title">無標題</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">發表於</span><time class="post-meta-date-created" datetime="2024-07-14T02:25:19.086Z" title="發表於 2024-07-14 10:25:19">2024-07-14</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新於</span><time class="post-meta-date-updated" datetime="2024-07-14T02:34:44.927Z" title="更新於 2024-07-14 10:34:44">2024-07-14</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">閱讀量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div><article class="post-content" id="article-container"><h1 id="💻SageMath"><a href="#💻SageMath" class="headerlink" title="💻SageMath"></a>💻SageMath</h1><h2 id="Linux环境"><a href="#Linux环境" class="headerlink" title="Linux环境"></a>Linux环境</h2><p>这里我们使用wsl1在windows系统上使用linux。</p>
+<ol>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_44663617/article/details/135181642">启用</a>wsl。</li>
+<li>通过Microsoft Store下载安装Ubuntu，设置用户名和密码。</li>
+<li>导出到D盘中：<code>wsl --export Ubuntu D:\WSL\Ubuntu\ubuntu.tar</code>。</li>
+<li>注销并移除C盘中的发行版：<code>wsl --unregister Ubuntu</code>。</li>
+<li>导入到D盘中：<code>wsl --import Ubuntu D:\WSL\Ubuntu D:\WSL\Ubuntu.tar</code>。</li>
+</ol>
+<p>一些基础命令：<code>sudo apt update/upgrade/install xxx/autoremove/clean/...</code>。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs bash">sudo nano /etc/apt/sources.list<br><br>deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal main restricted universe multiverse<br>deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal-updates main restricted universe multiverse<br>deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal-backports main restricted universe multiverse<br>deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal-security main restricted universe multiverse<br></code></pre></td></tr></table></figure>
+
+<p>下面我们准备编写python脚本的IDE。</p>
+<ol>
+<li>在win中下载安装vscode，并安装名为<code>wsl</code>的插件。</li>
+<li>在wsl中输入<code>code .</code>便可以打开vscode。</li>
+<li>新建文件<code>test.py</code>，路径任意，例如<code>/root/test.py</code>。</li>
+<li>写入文件，保存后新建终端，使用<code>python3 test.py</code>命令，得到输出。</li>
+</ol>
+<p>下面我们说一说pip包管理器。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">sudo apt install python3-pip python3-venv<br></code></pre></td></tr></table></figure>
+
+<p>如果下载速度较慢，可以清除下载缓存，更换下载源。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">pip cache purge <span class="hljs-comment">#清除pip的下载缓存</span><br>pip install pwntools -i https://pypi.tuna.tsinghua.edu.cn/simple<br></code></pre></td></tr></table></figure>
+
+<ol>
+<li><p>创建虚拟环境：<code>python3 -m venv myenv</code>。</p>
+</li>
+<li><p>激活虚拟环境：<code>source myenv/bin/activate</code>。</p>
+</li>
+<li><p>安装包：<code>pip install &lt;package_name&gt;</code>。</p>
+</li>
+<li><p>退出：<code>deactivate</code>。</p>
+</li>
+</ol>
+<p>介绍一下ssh的方法clone一些github库：</p>
+<ol>
+<li>创建ssh key：使用<code>ssh-keygen -t rsa -b 4096 -C &quot;your-email&quot;</code>命令，下面的选项全部直接敲回车即可。</li>
+<li>随后使用<code> cat ~/.ssh/id_rsa.pub</code> 命令查看生成的公钥，并完整的复制下来。</li>
+<li>在github仓库界面点击自己的头像，选择<code>settings</code>。进入到设置页面后，点击左侧的<code>SSH and GPG keys</code>选项。点击<code>New SSH key</code>选项，并将复制下来的内容粘贴上去，添加该ssh key的描述。随后点击<code>Add SSH key</code>，并一路点击确认即可。</li>
+<li>可以使用以下命令检查是否已有SSH密钥：<code>ls -al ~/.ssh</code>，如果你看到 <code>id_rsa</code> 和 <code>id_rsa.pub</code> 文件，说明已经存在SSH密钥。</li>
+<li>使用以下命令测试与GitHub的SSH连接：<code>ssh -T git@github.com</code></li>
+</ol>
+<p>如果一切正常，你会看到类似以下的输出：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">Hi username! You<span class="hljs-string">&#x27;ve successfully authenticated, but GitHub does not provide shell access.</span><br></code></pre></td></tr></table></figure>
+
+<p>使用<code>git clone git@github.com:username/repository.git</code>克隆存储库。</p>
+<h2 id="Python-3-基础语法"><a href="#Python-3-基础语法" class="headerlink" title="Python 3 基础语法"></a>Python 3 基础语法</h2><p><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1Sz4y1U77N/?spm_id_from=333.1007.top_right_bar_window_history.content.click&vd_source=e729e179d71c2ffd261e2600a9b03b63">20分钟学完一遍python基础</a></p>
+<h3 id="注释"><a href="#注释" class="headerlink" title="注释"></a>注释</h3><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-comment"># 这是一行注释</span><br><span class="hljs-string">&quot;&quot;&quot;</span><br><span class="hljs-string">这是多行注释</span><br><span class="hljs-string">&quot;&quot;&quot;</span><br><span class="hljs-string">&#x27;&#x27;&#x27;</span><br><span class="hljs-string">这也是多行注释</span><br><span class="hljs-string">&#x27;&#x27;&#x27;</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h3><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs py">a = <span class="hljs-number">1</span><br>b = <span class="hljs-number">1.2</span><br>c = <span class="hljs-string">&quot;word&quot;</span><br>d = <span class="hljs-literal">True</span><br>a = [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>] <span class="hljs-comment">#列表</span><br>b = &#123;<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>&#125; <span class="hljs-comment">#集合</span><br>c = (<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>) <span class="hljs-comment">#元组</span><br>d = &#123;<span class="hljs-string">&#x27;n&#x27;</span>: <span class="hljs-number">1</span>, <span class="hljs-string">&#x27;b&#x27;</span>: <span class="hljs-number">2</span>&#125; <span class="hljs-comment">#字典</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="输入输出"><a href="#输入输出" class="headerlink" title="输入输出"></a>输入输出</h3><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;Hello World!&quot;</span>)<br><span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;hello\tworld&quot;</span>)<br><span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;hello\nworld&quot;</span>)<br><span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;hello world&quot;</span>, end=<span class="hljs-string">&quot;&quot;</span>)<span class="hljs-comment">#不换行</span><br><br><span class="hljs-built_in">print</span>(a)<br><span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;hello <span class="hljs-subst">&#123;a&#125;</span>&quot;</span>)<span class="hljs-comment">#格式</span><br><span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;hello %d&quot;</span> % a)<br><br>a = <span class="hljs-built_in">input</span>(<span class="hljs-string">&quot;please enter:&quot;</span>) <span class="hljs-comment">#输出字符串</span><br>a = <span class="hljs-built_in">int</span>(<span class="hljs-built_in">input</span>())<span class="hljs-comment">#强制类型转换，str/float也可以</span><br><br><span class="hljs-keyword">import</span> random<br>a = random.randint(<span class="hljs-number">1</span>, <span class="hljs-number">100</span>)<span class="hljs-comment">#包含1和100</span><br>b = random.uniform(<span class="hljs-number">1</span>, <span class="hljs-number">100</span>)<span class="hljs-comment">#小数</span><br>c = random.random()<span class="hljs-comment">#0到1之间的小数</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="运算符"><a href="#运算符" class="headerlink" title="运算符"></a>运算符</h3><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs py">a += <span class="hljs-number">1</span><br><br>a / <span class="hljs-number">5</span> <span class="hljs-comment">#小数</span><br>a // <span class="hljs-number">5</span> <span class="hljs-comment">#整数</span><br>a % <span class="hljs-number">2</span> <span class="hljs-comment">#取余</span><br><br><span class="hljs-comment">## 注意python和sagemath的区别</span><br>a ** <span class="hljs-number">10</span> <span class="hljs-comment">#a的10次方</span><br>a ^ <span class="hljs-number">10</span> <span class="hljs-comment">#异或</span><br><br>b = <span class="hljs-keyword">not</span> a<br>c = a <span class="hljs-keyword">or</span> b<br>d = a <span class="hljs-keyword">and</span> c<br><br>s1 = <span class="hljs-string">&quot;O&quot;</span><br>s2 = <span class="hljs-string">&quot;H&quot;</span><br>OH = s1 + s2<br>HH = s2*<span class="hljs-number">2</span><br>OHHH = s1 + s2*<span class="hljs-number">3</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="条件语句"><a href="#条件语句" class="headerlink" title="条件语句"></a>条件语句</h3><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-keyword">if</span> a % <span class="hljs-number">2</span> == <span class="hljs-number">0</span>:<br>    <span class="hljs-built_in">print</span> <span class="hljs-comment">#tab四个空格</span><br><span class="hljs-keyword">else</span>:<br>    <span class="hljs-built_in">print</span><br>    <br><span class="hljs-keyword">if</span> a &lt; <span class="hljs-number">0</span> <span class="hljs-keyword">or</span> a &gt; <span class="hljs-number">100</span>:<br>    <span class="hljs-built_in">print</span><br><span class="hljs-keyword">elif</span> a &lt; <span class="hljs-number">60</span>:<br>    <span class="hljs-built_in">print</span><br><span class="hljs-keyword">else</span>:<br>    <span class="hljs-built_in">print</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="循环语句"><a href="#循环语句" class="headerlink" title="循环语句"></a>循环语句</h3><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-keyword">while</span> a &lt; <span class="hljs-number">10</span>:<br>    a += <span class="hljs-number">1</span><br>    <br><span class="hljs-keyword">while</span> a &lt; <span class="hljs-number">10</span>:<br>    a += <span class="hljs-number">1</span><br>    <span class="hljs-keyword">if</span> a == <span class="hljs-number">5</span>:<br>        <span class="hljs-keyword">break</span> <span class="hljs-comment">#continue</span><br><br><span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">0</span>, <span class="hljs-number">10</span>):<span class="hljs-comment">#[0, 10)</span><br>    <br><span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">10</span>):<span class="hljs-comment">#循环10次，从0到9的列表，[0,5)</span><br>    <span class="hljs-built_in">print</span>(i)<br>    <span class="hljs-keyword">if</span> i==<span class="hljs-number">5</span>:<br>        <span class="hljs-keyword">break</span><br><span class="hljs-keyword">else</span>:<br>    <span class="hljs-built_in">print</span><span class="hljs-comment">#如果循环结束是因为break，那么不会进入else打印</span><br>    <br><span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-string">&quot;ABCDEF&quot;</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="字符串"><a href="#字符串" class="headerlink" title="字符串"></a>字符串</h3><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs py">a = <span class="hljs-string">&quot;my name is xxx&quot;</span><br>a = a[<span class="hljs-number">1</span>:<span class="hljs-number">5</span>]<span class="hljs-comment">#[1,5)，切片</span><br>a = a[<span class="hljs-number">1</span>:]<br>a = a[:<span class="hljs-number">5</span>]<br>a = a[<span class="hljs-number">1</span>:<span class="hljs-number">5</span>:<span class="hljs-number">2</span>]<span class="hljs-comment">#2表示步长</span><br>a = a[-<span class="hljs-number">5</span>:-<span class="hljs-number">1</span>]<span class="hljs-comment">#反转</span><br>a = a.replace(<span class="hljs-string">&quot;xxx&quot;</span>, <span class="hljs-string">&quot;pig&quot;</span>)<br>arr = a.split(<span class="hljs-string">&quot; &quot;</span>)<span class="hljs-comment">#[&#x27;my&#x27;, &#x27;name&#x27;, &#x27;is&#x27;, &#x27;xxx&#x27;]</span><br>string = <span class="hljs-string">&quot;-&quot;</span>.join(arr)<span class="hljs-comment"># my-name-is-xxx</span><br><span class="hljs-string">&quot;hello&quot;</span>.capitalize() <span class="hljs-comment">#将第一个字母转换成大写</span><br><span class="hljs-string">&quot;hello&quot;</span>.title() <span class="hljs-comment">#将每个单词首字母大写</span><br><span class="hljs-string">&quot;hello&quot;</span>.lower() <span class="hljs-comment">#大写转小写</span><br><span class="hljs-string">&quot;hello&quot;</span>.upper() <span class="hljs-comment">#小写转大写</span><br><span class="hljs-string">&quot;   hello&quot;</span>.lstrip() <span class="hljs-comment">#删除左侧空白字符</span><br><span class="hljs-string">&quot;hello   &quot;</span>.rstrip() <span class="hljs-comment">#删除右侧空白字符</span><br><span class="hljs-string">&quot; hello  &quot;</span>.strip() <span class="hljs-comment">#删除两侧空白字符</span><br>string = <span class="hljs-string">&quot;app&quot;</span><br>s = string[<span class="hljs-number">0</span>]<br></code></pre></td></tr></table></figure>
+
+<h3 id="列表、元组、集合和字典"><a href="#列表、元组、集合和字典" class="headerlink" title="列表、元组、集合和字典"></a>列表、元组、集合和字典</h3><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs py">arr = [[<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>], [<span class="hljs-number">4</span>,<span class="hljs-number">5</span>,<span class="hljs-number">6</span>]]<span class="hljs-comment">#矩阵</span><br>a.append(<span class="hljs-string">&quot;abc&quot;</span>)<span class="hljs-comment">#向列表中添加</span><br>a.insert(<span class="hljs-number">1</span>,<span class="hljs-string">&#x27;t&#x27;</span>)<span class="hljs-comment">#在下标为1的前面添加字母t</span><br>a.pop(<span class="hljs-number">0</span>)<br>a.remove(<span class="hljs-string">&quot;happy&quot;</span>)<br>a.clear()<br><span class="hljs-keyword">del</span> a<br>a.copy()<br>a.sort() a = <span class="hljs-built_in">sorted</span>(a)<br><br><span class="hljs-comment">#元组内的元素不能被修改</span><br>d = &#123;<span class="hljs-string">&quot;name&quot;</span>: <span class="hljs-string">&quot;Pig&quot;</span>, <span class="hljs-string">&quot;age&quot;</span>: <span class="hljs-number">20</span>&#125;<br>d.keys() <span class="hljs-comment">#[&#x27;name&#x27;, &#x27;age&#x27;]</span><br>d.values() <span class="hljs-comment">#[&#x27;Pig&#x27;, 20]</span><br>d.items()<span class="hljs-comment">#[(&#x27;name&#x27;, &#x27;Pig&#x27;), (&#x27;age&#x27;, 20)]</span><br>a = &#123;&#125;<span class="hljs-comment">#空字典</span><br>a = <span class="hljs-built_in">set</span>()<span class="hljs-comment">#空集合</span><br></code></pre></td></tr></table></figure>
+
+<h2 id="SageMath"><a href="#SageMath" class="headerlink" title="SageMath"></a>SageMath</h2><p>按照<a target="_blank" rel="noopener" href="https://sagemanifolds.obspm.fr/install_ubuntu.html">文章</a>一步一步来，编译时会禁root。</p>
+<ol>
+<li>建立一个新用户：<code>sudo adduser myuser</code></li>
+<li>切换到新用户：<code>su - myuser</code></li>
+</ol>
+<p>当前myuser是没有sudo权限的。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">sudo visudo<br>myuser ALL=(ALL) NOPASSWD:ALL<br></code></pre></td></tr></table></figure>
+
+<p>或者也可以在Arch上安装SageMath。</p>
+<ol>
+<li><p>在Microsoft Store里找到Arch Linux下载安装，黑框框设置账号密码。</p>
+</li>
+<li><p>第一次接触Arch的话，看一些基础的命令叭~&#96;sudo pacman -Sy&#x2F;-Syu&#x2F;-Rns <package_name>&#x2F;-Scc&#x2F;…&#96;。</p>
+</li>
+</ol>
+<p>但Arch的服务器比较慢，可以通过手动编辑镜像列表文件 <code>/etc/pacman.d/mirrorlist</code>，将速度较快的镜像服务器移到顶部。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">Server = https://mirror.tuna.tsinghua.edu.cn/archlinux/<span class="hljs-variable">$repo</span>/os/<span class="hljs-variable">$arch</span><br>Server = https://mirrors.ustc.edu.cn/archlinux/<span class="hljs-variable">$repo</span>/os/<span class="hljs-variable">$arch</span><br></code></pre></td></tr></table></figure>
+
+<ol start="3">
+<li><p>使用<code>python3</code>检查一下系统里有没有python。</p>
+</li>
+<li><p>o.0接着就是安装sagemath——<code>sudo pacman -S sagemath</code>。</p>
+</li>
+<li><p>等一会儿就成功啦！怎么在sage里调用外来库呢，哭哭&gt;_&lt;<code>sudo pacman -S python-&lt;package_name&gt;</code>。</p>
+</li>
+</ol>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="http://aununo.xyz">Aununo</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章連結: </span><span class="post-copyright-info"><a href="http://aununo.xyz/2024/07/14/%F0%9F%92%BBSageMath/">http://aununo.xyz/2024/07/14/%F0%9F%92%BBSageMath/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版權聲明: </span><span class="post-copyright-info">本部落格所有文章除特別聲明外，均採用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 許可協議。轉載請註明來自 <a href="http://aununo.xyz" target="_blank">Aununo's zone</a>！</span></div></div><div class="tag_share"><div class="post_share"><div class="social-share" data-image="https://i.pinimg.com/564x/1b/0c/4e/1b0c4ecc1b786c0966a57c1088b4a149.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2024/07/14/CryptoHack%2025pts%20write%20up/" title=""><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info"></div></div></a></div><div class="next-post pull-right"><a href="/2024/07/10/Dan-Boneh/" title="Dan Boneh"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">Dan Boneh</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://i.pinimg.com/564x/1b/0c/4e/1b0c4ecc1b786c0966a57c1088b4a149.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Aununo</div><div class="author-info__description">Hope you have a nice day!</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">4</div></a><a href="/tags/"><div class="headline">標籤</div><div class="length-num">0</div></a><a href="/categories/"><div class="headline">分類</div><div class="length-num">2</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/Aununo"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="mailto:fikavecgold@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope" style="color: #4a7dbe;"></i></a><a class="social-icon" href="https://space.bilibili.com/674199530?spm_id_from=333.1007.0.0" target="_blank" title="Bilibili"><i class="fab fa-bilibili" style="color: #00a1d6;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目錄</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%F0%9F%92%BBSageMath"><span class="toc-number">1.</span> <span class="toc-text">💻SageMath</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Linux%E7%8E%AF%E5%A2%83"><span class="toc-number">1.1.</span> <span class="toc-text">Linux环境</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Python-3-%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95"><span class="toc-number">1.2.</span> <span class="toc-text">Python 3 基础语法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B3%A8%E9%87%8A"><span class="toc-number">1.2.1.</span> <span class="toc-text">注释</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="toc-number">1.2.2.</span> <span class="toc-text">数据类型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA"><span class="toc-number">1.2.3.</span> <span class="toc-text">输入输出</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="toc-number">1.2.4.</span> <span class="toc-text">运算符</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9D%A1%E4%BB%B6%E8%AF%AD%E5%8F%A5"><span class="toc-number">1.2.5.</span> <span class="toc-text">条件语句</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BE%AA%E7%8E%AF%E8%AF%AD%E5%8F%A5"><span class="toc-number">1.2.6.</span> <span class="toc-text">循环语句</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2"><span class="toc-number">1.2.7.</span> <span class="toc-text">字符串</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%97%E8%A1%A8%E3%80%81%E5%85%83%E7%BB%84%E3%80%81%E9%9B%86%E5%90%88%E5%92%8C%E5%AD%97%E5%85%B8"><span class="toc-number">1.2.8.</span> <span class="toc-text">列表、元组、集合和字典</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#SageMath"><span class="toc-number">1.3.</span> <span class="toc-text">SageMath</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/07/14/CryptoHack%2025pts%20write%20up/" title="無標題">無標題</a><time datetime="2024-07-14T02:27:09.527Z" title="發表於 2024-07-14 10:27:09">2024-07-14</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/07/14/%F0%9F%92%BBSageMath/" title="無標題">無標題</a><time datetime="2024-07-14T02:25:19.086Z" title="發表於 2024-07-14 10:25:19">2024-07-14</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/07/10/Dan-Boneh/" title="Dan Boneh">Dan Boneh</a><time datetime="2024-07-10T14:11:58.000Z" title="發表於 2024-07-10 22:11:58">2024-07-10</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/07/05/%E7%B6%AB%E6%80%A7%E4%BB%A3%E6%95%B8/" title="綫性代數">綫性代數</a><time datetime="2024-07-05T15:06:50.000Z" title="發表於 2024-07-05 23:06:50">2024-07-05</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2024 By Aununo</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主題 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text">Hi, welcome to my <a href="https://aununo.xyz">blog</a>!</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="閱讀模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="淺色和深色模式轉換"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="單欄和雙欄切換"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="設定"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目錄"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="返回頂部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=4.13.0"></script><script src="/js/main.js?v=4.13.0"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"><script>if (!window.MathJax) {
+  window.MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      tags: 'ams'
+    },
+    chtml: {
+      scale: 1.1
+    },
+    options: {
+      renderActions: {
+        findScript: [10, doc => {
+          for (const node of document.querySelectorAll('script[type^="math/tex"]')) {
+            const display = !!node.type.match(/; *mode=display/)
+            const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display)
+            const text = document.createTextNode('')
+            node.parentNode.replaceChild(text, node)
+            math.start = {node: text, delim: '', n: 0}
+            math.end = {node: text, delim: '', n: 0}
+            doc.math.push(math)
+          }
+        }, '']
+      }
+    }
+  }
+  
+  const script = document.createElement('script')
+  script.src = 'https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-mml-chtml.min.js'
+  script.id = 'MathJax-script'
+  script.async = true
+  document.head.appendChild(script)
+} else {
+  MathJax.startup.document.state(0)
+  MathJax.texReset()
+  MathJax.typesetPromise()
+}</script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css"><script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/copy-tex.min.js"></script><script>(() => {
+  document.querySelectorAll('#article-container span.katex-display').forEach(item => {
+    btf.wrap(item, 'div', { class: 'katex-wrap'})
+  })
+})()</script></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
