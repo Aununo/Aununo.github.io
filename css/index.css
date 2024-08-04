@@ -1490,7 +1490,7 @@ body {
   background: var(--global-bg);
   color: var(--font-color);
   font-size: var(--global-font-size);
-  font-family: Palatino, STXihei, "华文细黑";
+  font-family: STXihei, "华文细黑";
   line-height: 2;
   -webkit-tap-highlight-color: rgba(0,0,0,0);
 }
