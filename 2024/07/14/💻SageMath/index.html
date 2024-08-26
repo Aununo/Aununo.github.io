@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="学习一下SageMath的使用吧！">
+<meta property="og:type" content="article">
+<meta property="og:title" content="💻SageMath">
+<meta property="og:url" content="http://aununo.xyz/2024/07/14/%F0%9F%92%BBSageMath/index.html">
+<meta property="og:site_name" content="Lovie">
+<meta property="og:description" content="学习一下SageMath的使用吧！">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2024-07-14T05:34:10.000Z">
+<meta property="article:modified_time" content="2024-08-06T05:51:28.256Z">
+<meta property="article:author" content="Aununo Suk1">
+<meta name="twitter:card" content="summary">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+          
+        
+    
+    <!-- title -->
+    <title>💻SageMath</title>
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+    
+<link rel="stylesheet" href="/lib/meslo-LG/styles.css">
+
+    
+<link rel="stylesheet" href="/lib/justified-gallery/justifiedGallery.min.css">
+
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- rss -->
+    
+    
+    <!-- jquery -->
+    
+<script src="/lib/jquery/jquery.min.js"></script>
+
+<meta name="generator" content="Hexo 7.3.0"><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+
+<body>
+    <div class="banner">
+<div id="blogtitel" class="blogtitel">Lovie</div>
+<ul id="wrapper" class="wrapper">
+  <div class="sun">
+    <div class="star"></div>
+  </div>
+  <div class="mercury">
+    <div class="planet">
+      <div class="shadow"></div>
+    </div>
+  </div>
+  <div class="venus">
+    <div class="planet">
+      <div class="shadow"></div>
+    </div>
+  </div>
+  <div class="earth">
+    <div class="planet"><div class="shadow"></div></div>
+  </div>
+  <div class="mars">
+    <div class="planet"><div class="shadow"></div></div>
+  </div>
+  <div class="jupiter">
+    <div class="planet"><div class="shadow"></div></div>
+  </div>
+</ul>
+</div>
+
+    <div class="background">
+      
+        <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fa fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fa fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fa fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a target="_blank" rel="noopener" href="http://github.com/Aununo">Projects</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" href="/2024/08/04/%F0%9F%AB%B0The-Missing-Semester-of-Your-CS-Education/"><i class="fa fa-chevron-left" aria-hidden="true" onmouseover='$("#i-prev").toggle();' onmouseout='$("#i-prev").toggle();'></i></a></li>
+        
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa fa-chevron-up" aria-hidden="true" onmouseover='$("#i-top").toggle();' onmouseout='$("#i-top").toggle();'></i></a></li>
+        <li><a class="icon" href="#"><i class="fa fa-share-alt" aria-hidden="true" onmouseover='$("#i-share").toggle();' onmouseout='$("#i-share").toggle();' onclick='$("#share").toggle();return false;'></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://aununo.xyz/2024/07/14/%F0%9F%92%BBSageMath/"><i class="fa fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://aununo.xyz/2024/07/14/%F0%9F%92%BBSageMath/&text=💻SageMath"><i class="fa fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://aununo.xyz/2024/07/14/%F0%9F%92%BBSageMath/&title=💻SageMath"><i class="fa fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://aununo.xyz/2024/07/14/%F0%9F%92%BBSageMath/&is_video=false&description=💻SageMath"><i class="fa fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=💻SageMath&body=Check out this article: http://aununo.xyz/2024/07/14/%F0%9F%92%BBSageMath/"><i class="fa fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://aununo.xyz/2024/07/14/%F0%9F%92%BBSageMath/&title=💻SageMath"><i class="fa fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://aununo.xyz/2024/07/14/%F0%9F%92%BBSageMath/&title=💻SageMath"><i class="fa fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://aununo.xyz/2024/07/14/%F0%9F%92%BBSageMath/&title=💻SageMath"><i class="fa fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://aununo.xyz/2024/07/14/%F0%9F%92%BBSageMath/&title=💻SageMath"><i class="fa fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://aununo.xyz/2024/07/14/%F0%9F%92%BBSageMath/&name=💻SageMath&description="><i class="fa fa-tumblr " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Python-for-Linux"><span class="toc-number">1.</span> <span class="toc-text">Python for Linux</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#git-Clone"><span class="toc-number">2.</span> <span class="toc-text">git Clone</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#install-SageMath"><span class="toc-number">3.</span> <span class="toc-text">install SageMath</span></a></li></ol>
+    </div>
+  </span>
+</div>
+
+      
+      <div class="content index width mx-auto px2 my4">
+          
+          <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        💻SageMath
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">Lovie</span>
+      </span>
+      
+    <div class="postdate">
+        <time datetime="2024-07-14T05:34:10.000Z" itemprop="datePublished">2024-07-14</time>
+    </div>
+
+
+      
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <h1 id="Python-for-Linux"><a href="#Python-for-Linux" class="headerlink" title="Python for Linux"></a>Python for Linux</h1><p>下面我们准备编写python脚本的IDE。以Ubuntu为例。</p>
+<ol>
+<li>在windows中下载安装vscode，并安装名为<code>wsl</code>的插件。</li>
+<li>在wsl中输入<code>code .</code>便可以打开vscode。</li>
+<li>新建文件<code>test.py</code>，路径任意，例如<code>/root/test.py</code>。</li>
+<li>写入文件，保存后新建终端，使用<code>python3 test.py</code>命令，得到输出。</li>
+</ol>
+<p>下面我们说一说pip包管理器。</p>
+<pre class=" language-lang-bash"><code class="language-lang-bash">sudo apt install python3-pip python3-venv
+</code></pre>
+<p>在虚拟环境中安装python包，以便后续管理。</p>
+<ol>
+<li>创建虚拟环境：<code>python3 -m venv myenv</code>。</li>
+<li>激活虚拟环境：<code>source myenv/bin/activate</code>。</li>
+<li><p>安装包：<code>pip install &lt;package_name&gt;</code>。</p>
+</li>
+<li><p>退出：<code>deactivate</code>。</p>
+</li>
+</ol>
+<p>发现下载速度较慢，可以清除下载缓存，更换下载源。</p>
+<pre class=" language-lang-bash"><code class="language-lang-bash">pip cache purge
+pip install pwntools -i https://pypi.tuna.tsinghua.edu.cn/simple
+</code></pre>
+<h1 id="git-Clone"><a href="#git-Clone" class="headerlink" title="git Clone"></a>git Clone</h1><p>使用HTTP协议<code>git clone https://github.com/repo/repo.git</code>经常会遇到网络不佳的问题，可以使用SSH的方法clone一些github库：</p>
+<ol>
+<li>创建ssh key：使用<code>ssh-keygen -t rsa -b 4096 -C &quot;your-email&quot;</code>命令，下面的选项全部直接敲回车即可。</li>
+<li>随后使用<code>cat ~/.ssh/id_rsa.pub</code> 命令查看生成的公钥，并完整的复制下来。</li>
+<li>在github仓库界面点击自己的头像，选择<code>settings</code>。进入到设置页面后，点击左侧的<code>SSH and GPG keys</code>选项。点击<code>New SSH key</code>选项，并将复制下来的内容粘贴上去，添加该ssh key的描述。随后点击<code>Add SSH key</code>，并一路点击确认即可。</li>
+<li>可以使用以下命令检查是否已有SSH密钥：<code>ls -al ~/.ssh</code>，如果你看到 <code>id_rsa</code> 和 <code>id_rsa.pub</code> 文件，说明已经存在SSH密钥。</li>
+<li>使用以下命令测试与GitHub的SSH连接：<code>ssh -T git@github.com</code>。</li>
+</ol>
+<p>如果一切正常，你会看到类似以下的输出：</p>
+<pre class=" language-lang-bash"><code class="language-lang-bash">Hi username! You've successfully authenticated, but GitHub does not provide shell access.
+</code></pre>
+<p>使用<code>git clone git@github.com:username/repository.git</code>命令克隆存储库。</p>
+<h1 id="install-SageMath"><a href="#install-SageMath" class="headerlink" title="install SageMath"></a>install SageMath</h1><p>阅读Sage的官方安装说明<a target="_blank" rel="noopener" href="https://doc.sagemath.org/html/en/installation/index.html#windows">Installation Guide</a>即可。</p>
+<p>按理说可以按照 <a target="_blank" rel="noopener" href="https://sagemanifolds.obspm.fr/install_ubuntu.html">Installing SageMath 10.4 in Ubuntu 22.04 or 24.04</a> 一步一步来，编译时会警告root，可以建立一个新用户，七月初10.3版本我也是这么做的，不知道为什么10.4我这里不行了。</p>
+<p>也可以在Arch Linux上<strong>快速</strong>安装SageMath。第一次接触Arch的话，看一些基础的命令叭<code>sudo pacman -Sy/-Syu/-Rns &lt;package_name&gt;/-Scc/...</code>。</p>
+<p>Arch的服务器比较慢，可以通过手动编辑镜像列表文件 <code>/etc/pacman.d/mirrorlist</code>，将速度较快的镜像服务器移到顶部。</p>
+<pre class=" language-lang-bash"><code class="language-lang-bash">Server = https://mirror.tuna.tsinghua.edu.cn/archlinux/$repo/os/$arch
+Server = https://mirrors.ustc.edu.cn/archlinux/$repo/os/$arch
+</code></pre>
+<p>o.0接着就是安装sagemath——<code>sudo pacman -S sagemath sagemath-doc</code>。</p>
+<p>等一会儿就成功啦！怎么在sage里调用外来库呢，哭哭&gt;_&lt;<code>sudo pacman -S python-&lt;package_name&gt;</code>。</p>
+
+  </div>
+</article>
+
+
+
+      </div>
+      
+       <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a target="_blank" rel="noopener" href="http://github.com/Aununo">Projects</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Python-for-Linux"><span class="toc-number">1.</span> <span class="toc-text">Python for Linux</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#git-Clone"><span class="toc-number">2.</span> <span class="toc-text">git Clone</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#install-SageMath"><span class="toc-number">3.</span> <span class="toc-text">install SageMath</span></a></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://aununo.xyz/2024/07/14/%F0%9F%92%BBSageMath/"><i class="fa fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://aununo.xyz/2024/07/14/%F0%9F%92%BBSageMath/&text=💻SageMath"><i class="fa fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://aununo.xyz/2024/07/14/%F0%9F%92%BBSageMath/&title=💻SageMath"><i class="fa fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://aununo.xyz/2024/07/14/%F0%9F%92%BBSageMath/&is_video=false&description=💻SageMath"><i class="fa fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=💻SageMath&body=Check out this article: http://aununo.xyz/2024/07/14/%F0%9F%92%BBSageMath/"><i class="fa fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://aununo.xyz/2024/07/14/%F0%9F%92%BBSageMath/&title=💻SageMath"><i class="fa fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://aununo.xyz/2024/07/14/%F0%9F%92%BBSageMath/&title=💻SageMath"><i class="fa fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://aununo.xyz/2024/07/14/%F0%9F%92%BBSageMath/&title=💻SageMath"><i class="fa fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://aununo.xyz/2024/07/14/%F0%9F%92%BBSageMath/&title=💻SageMath"><i class="fa fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://aununo.xyz/2024/07/14/%F0%9F%92%BBSageMath/&name=💻SageMath&description="><i class="fa fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+      <ul>
+        <li id="toc"><a class="icon" href="#" onclick='$("#toc-footer").toggle();return false;'><i class="fa fa-list fa-lg" aria-hidden="true"></i> TOC</a></li>
+        <li id="share"><a class="icon" href="#" onclick='$("#share-footer").toggle();return false;'><i class="fa fa-share-alt fa-lg" aria-hidden="true"></i> Share</a></li>
+        <li id="top" style="display:none"><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a></li>
+        <li id="menu"><a class="icon" href="#" onclick='$("#nav-footer").toggle();return false;'><i class="fa fa-bars fa-lg" aria-hidden="true"></i> Menu</a></li>
+      </ul>
+    </div>
+
+  </div>
+</div>
+
+      
+      <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy; 2024 Aununo Suk1
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a target="_blank" rel="noopener" href="http://github.com/Aununo">Projects</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+      
+<script src="/lib/justified-gallery/jquery.justifiedGallery.min.js"></script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- Google Analytics -->
+
+<!-- Disqus Comments -->
+
+
+    </div>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+</body>
+</html>
