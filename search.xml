@@ -4,6 +4,19 @@
   
     
     <entry>
+      <title>☔Probability</title>
+      <link href="/2024/09/12/%E2%98%94Probability/"/>
+      <url>/2024/09/12/%E2%98%94Probability/</url>
+      
+        <content type="html"><![CDATA[<h1 id="概率"><a href="#概率" class="headerlink" title="概率"></a>概率</h1><p>在个别试验中结果的出现具有不确定性，但在大量重复试验中又呈现规律性。称这类非确定性现象为<strong>随机现象</strong>。称大量同类随机现象所呈现的固有规律为随机现象的<strong>统计规律</strong>。</p><ul><li>随机试验</li></ul><p>随机试验具备<strong>可重复性</strong>、<strong>结果可知性</strong>和<strong>不可预言性</strong>。</p><ul><li>随机事件</li></ul><p>在随机试验中可能发生也可能不发生的事情称为随机事件。简称事件。</p><p>随机事件有必然事件、不可能事件、基本事件等等。</p><ul><li>样本空间</li></ul><p>将基本事件映射为样本点，样本点构成的集合是一个样本空间。这一概念使得概率论的研究和集合论紧密联系在一起。</p><p>事件之间的关系及运算本质上就对应着集合的关系和运算。</p><ul><li>古典概型</li></ul><p>设$E$是一个随机试验，若满足（1）仅有有限多个基本事件（2）每个基本事件发生的可能性相等。则称$E$是古典概型的试验。</p><p>古典概率的性质：</p><p>（1）对任意事件$A$，有$0\leq P(A)\leq 1$；（2）$P(\Omega)=1$；（3）若$A_1,…,A_n$互不相容，则$P(\displaystyle\bigcup_{i=1}^{m}A_i)=\sum_{i=1}^{m} P(A_i)$</p><ul><li>几何概型</li></ul><p>突破了古典概型“有限”的限制，必须使得样本空间为欧氏空间，且全体子集可用几何测度度量。</p><ul><li>概率的公理化定义</li></ul><p>波莱尔：概率论与测度论有联系！</p><p>记线段$L$的长度为$m$，（1）任何线段$L$的长度非负，即$m(L)\geq0$（2）将$L$分割为有限段（可列段），则$L$的总长度为</p><script type="math/tex; mode=display">m(L)=\sum_{i=1}^{m}m(L_i)</script><p>定义概率测度具备$0\leq P(A)\leq 1$、$P(\Omega)=1$和$P(\displaystyle\bigcup_{i=1}^{\infty}A_i)=\sum_{i=1}^{\infty} P(A_i)$。</p><ul><li>概率的性质（均可由定义证明）</li></ul><p>$P(\phi)=0$，有限可加性、单调性等。加法定理。</p><ul><li>条件概率</li></ul><script type="math/tex; mode=display">P(A|B)=\frac{P(AB)}{P(B)}</script><ul><li>乘法公式</li></ul><script type="math/tex; mode=display">P(AB)=P(A)P(B|A)</script><ul><li>全概率公式</li></ul><script type="math/tex; mode=display">P(A)=\displaystyle\sum_{i=1}^nP(B_i)P(A|B_i)</script><ul><li>贝叶斯公式</li></ul><script type="math/tex; mode=display">P(B_j|A)=\frac{P(AB_j)}{P(A)}=\frac{P(B_j)P(A|B_j)}{\displaystyle\sum_{i=1}^nP(B_i)P(A|B_i)}</script><ul><li>独立性</li></ul>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>⛱️CNSS-Summer-2024</title>
       <link href="/2024/09/07/%E2%9B%B1%EF%B8%8FCNSS-Summer-2024/"/>
       <url>/2024/09/07/%E2%9B%B1%EF%B8%8FCNSS-Summer-2024/</url>
