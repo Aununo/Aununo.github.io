@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="HandheldFriendly" content="True">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
     <meta name="description" content="群是任意数学对象（字母、数字、函数、矩阵等）组成的集合再加上一种运算，满足以下四条定义：  Closure（封闭性）：$a\circ b&#x3D;c$。集合中的任意两个元素运算仍在集合中。 Associativity（结合性）：$(a\circ b)\circ c&#x3D;a\circ (b\circ c)$。 Neutral（单位元）：$a\circ e&#x3D;a$。 Inverse（逆元）：$a\circ a^{-">
 <meta property="og:type" content="article">
 <meta property="og:title" content="🍼Baby Group">
@@ -14,112 +14,95 @@
 <meta property="og:description" content="群是任意数学对象（字母、数字、函数、矩阵等）组成的集合再加上一种运算，满足以下四条定义：  Closure（封闭性）：$a\circ b&#x3D;c$。集合中的任意两个元素运算仍在集合中。 Associativity（结合性）：$(a\circ b)\circ c&#x3D;a\circ (b\circ c)$。 Neutral（单位元）：$a\circ e&#x3D;a$。 Inverse（逆元）：$a\circ a^{-">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2024-07-28T02:05:23.000Z">
-<meta property="article:modified_time" content="2024-08-27T12:57:46.276Z">
+<meta property="article:modified_time" content="2024-09-14T07:27:41.175Z">
 <meta property="article:author" content="Aununo Gan">
-<meta property="article:tag" content="Computer">
+<meta property="article:tag" content="Math">
+<meta property="article:tag" content="Algebra">
 <meta name="twitter:card" content="summary">
     
     
+      
         
-          
-              <link rel="shortcut icon" href="/images/favicon.ico">
-          
+          <link rel="shortcut icon" href="/images/favicon.ico">
         
+      
+      
         
-          
-            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
-          
+          <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
         
+      
+      
         
-          
-            <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
-          
+          <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
         
+      
     
     <!-- title -->
     <title>🍼Baby Group</title>
+    <!-- async scripts -->
+    <!-- Google Analytics -->
+
+
+    <!-- Umami Analytics -->
+
+
     <!-- styles -->
-    
-<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
-
-    
-<link rel="stylesheet" href="/lib/meslo-LG/styles.css">
-
-    
-<link rel="stylesheet" href="/lib/justified-gallery/justifiedGallery.min.css">
-
     
 <link rel="stylesheet" href="/css/style.css">
 
+    <!-- persian styles -->
+    
     <!-- rss -->
     
     
-    <!-- jquery -->
-    
-<script src="/lib/jquery/jquery.min.js"></script>
-
+	<!-- mathjax -->
+	
+		<script type="text/x-mathjax-config">
+		  MathJax.Hub.Config({
+			tex2jax: {
+			  skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+			  inlineMath: [['$','$']]
+			}
+		  });
+		</script>
+		<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-MML-AM_CHTML' async></script>
+	
 <meta name="generator" content="Hexo 7.3.0"></head>
 
-<body>
-    <div class="banner">
-<div id="blogtitel" class="blogtitel">「la vie」</div>
-<ul id="wrapper" class="wrapper">
-  <div class="sun">
-    <div class="star"></div>
-  </div>
-  <div class="mercury">
-    <div class="planet">
-      <div class="shadow"></div>
-    </div>
-  </div>
-  <div class="venus">
-    <div class="planet">
-      <div class="shadow"></div>
-    </div>
-  </div>
-  <div class="earth">
-    <div class="planet"><div class="shadow"></div></div>
-  </div>
-  <div class="mars">
-    <div class="planet"><div class="shadow"></div></div>
-  </div>
-  <div class="jupiter">
-    <div class="planet"><div class="shadow"></div></div>
-  </div>
-</ul>
-</div>
-
-    <div class="background">
-      
-        <div id="header-post">
-  <a id="menu-icon" href="#"><i class="fa fa-bars fa-lg"></i></a>
-  <a id="menu-icon-tablet" href="#"><i class="fa fa-bars fa-lg"></i></a>
-  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fa fa-chevron-up fa-lg"></i></a>
+<body class="max-width mx-auto px3 ltr">    
+      <div id="header-post">
+  <a id="menu-icon" href="#" aria-label="Menu"><i class="fa-solid fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#" aria-label="Menu"><i class="fa-solid fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" aria-label="Top" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fa-solid fa-chevron-up fa-lg"></i></a>
   <span id="menu">
     <span id="nav">
       <ul>
-         
-          <li><a href="/">Home</a></li>
-         
-          <li><a href="/about/">About</a></li>
-         
-          <li><a href="/archives/">Writing</a></li>
-         
-          <li><a target="_blank" rel="noopener" href="http://github.com/Aununo">Projects</a></li>
-        
+        <!--
+       --><li><a href="/">Home</a></li><!--
+     --><!--
+       --><li><a href="/about/">About</a></li><!--
+     --><!--
+       --><li><a href="/archives/">Writing</a></li><!--
+     --><!--
+       --><li><a href="/tags/">Tag</a></li><!--
+     --><!--
+       --><li><a target="_blank" rel="noopener" href="http://github.com/Aununo">Projects</a></li><!--
+     --><!--
+       --><li><a href="/search/">Search</a></li><!--
+     -->
       </ul>
     </span>
     <br/>
     <span id="actions">
       <ul>
         
-        <li><a class="icon" href="/2024/08/04/%F0%9F%AB%B0The-Missing-Semester-of-Your-CS-Education/"><i class="fa fa-chevron-left" aria-hidden="true" onmouseover='$("#i-prev").toggle();' onmouseout='$("#i-prev").toggle();'></i></a></li>
+        <li><a class="icon" aria-label="Previous post" href="/2024/08/04/%F0%9F%AB%B0The-Missing-Semester-of-Your-CS-Education/"><i class="fa-solid fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
         
         
-        <li><a class="icon" href="/2024/07/21/%F0%9F%90%A7Windows-Subsystem-for-Linux/"><i class="fa fa-chevron-right" aria-hidden="true" onmouseover='$("#i-next").toggle();' onmouseout='$("#i-next").toggle();'></i></a></li>
+        <li><a class="icon" aria-label="Next post" href="/2024/07/21/%F0%9F%90%A7Windows-Subsystem-for-Linux/"><i class="fa-solid fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
         
-        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa fa-chevron-up" aria-hidden="true" onmouseover='$("#i-top").toggle();' onmouseout='$("#i-top").toggle();'></i></a></li>
-        <li><a class="icon" href="#"><i class="fa fa-share-alt" aria-hidden="true" onmouseover='$("#i-share").toggle();' onmouseout='$("#i-share").toggle();' onclick='$("#share").toggle();return false;'></i></a></li>
+        <li><a class="icon" aria-label="Back to top" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="Share post" href="#"><i class="fa-solid fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
       </ul>
       <span id="i-prev" class="info" style="display:none;">Previous post</span>
       <span id="i-next" class="info" style="display:none;">Next post</span>
@@ -129,54 +112,68 @@
     <br/>
     <div id="share" style="display: none">
       <ul>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://aununo.xyz/2024/07/28/%F0%9F%8D%BCBaby-Group/"><i class="fa fa-facebook " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://aununo.xyz/2024/07/28/%F0%9F%8D%BCBaby-Group/&text=🍼Baby Group"><i class="fa fa-twitter " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://aununo.xyz/2024/07/28/%F0%9F%8D%BCBaby-Group/&title=🍼Baby Group"><i class="fa fa-linkedin " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://aununo.xyz/2024/07/28/%F0%9F%8D%BCBaby-Group/&is_video=false&description=🍼Baby Group"><i class="fa fa-pinterest " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="mailto:?subject=🍼Baby Group&body=Check out this article: http://aununo.xyz/2024/07/28/%F0%9F%8D%BCBaby-Group/"><i class="fa fa-envelope " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://aununo.xyz/2024/07/28/%F0%9F%8D%BCBaby-Group/&title=🍼Baby Group"><i class="fa fa-get-pocket " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://aununo.xyz/2024/07/28/%F0%9F%8D%BCBaby-Group/&title=🍼Baby Group"><i class="fa fa-reddit " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://aununo.xyz/2024/07/28/%F0%9F%8D%BCBaby-Group/&title=🍼Baby Group"><i class="fa fa-stumbleupon " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://aununo.xyz/2024/07/28/%F0%9F%8D%BCBaby-Group/&title=🍼Baby Group"><i class="fa fa-digg " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://aununo.xyz/2024/07/28/%F0%9F%8D%BCBaby-Group/&name=🍼Baby Group&description="><i class="fa fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://aununo.xyz/2024/07/28/%F0%9F%8D%BCBaby-Group/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://aununo.xyz/2024/07/28/%F0%9F%8D%BCBaby-Group/&text=🍼Baby Group"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://aununo.xyz/2024/07/28/%F0%9F%8D%BCBaby-Group/&title=🍼Baby Group"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://aununo.xyz/2024/07/28/%F0%9F%8D%BCBaby-Group/&is_video=false&description=🍼Baby Group"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=🍼Baby Group&body=Check out this article: http://aununo.xyz/2024/07/28/%F0%9F%8D%BCBaby-Group/"><i class="fa-solid fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://aununo.xyz/2024/07/28/%F0%9F%8D%BCBaby-Group/&title=🍼Baby Group"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://aununo.xyz/2024/07/28/%F0%9F%8D%BCBaby-Group/&title=🍼Baby Group"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://aununo.xyz/2024/07/28/%F0%9F%8D%BCBaby-Group/&title=🍼Baby Group"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://aununo.xyz/2024/07/28/%F0%9F%8D%BCBaby-Group/&title=🍼Baby Group"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://aununo.xyz/2024/07/28/%F0%9F%8D%BCBaby-Group/&name=🍼Baby Group&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://aununo.xyz/2024/07/28/%F0%9F%8D%BCBaby-Group/&t=🍼Baby Group"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
 </ul>
 
     </div>
-    <div id="toc">
-      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%9C%89%E9%99%90%E7%BE%A4%EF%BC%88finite-group%EF%BC%89"><span class="toc-number">1.</span> <span class="toc-text">有限群（finite group）</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AD%90%E7%BE%A4%EF%BC%88subgroup%EF%BC%89"><span class="toc-number">2.</span> <span class="toc-text">子群（subgroup）</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%99%AA%E9%9B%86%EF%BC%88coset%EF%BC%89"><span class="toc-number">3.</span> <span class="toc-text">陪集（coset）</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Lagrange%E2%80%99s-Theorem"><span class="toc-number">4.</span> <span class="toc-text">Lagrange’s Theorem</span></a></li></ol>
-    </div>
+    
+    
+      <div id="toc">
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%9C%89%E9%99%90%E7%BE%A4%EF%BC%88finite-group%EF%BC%89"><span class="toc-number">1.</span> <span class="toc-text">有限群（finite group）</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AD%90%E7%BE%A4%EF%BC%88subgroup%EF%BC%89"><span class="toc-number">2.</span> <span class="toc-text">子群（subgroup）</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%99%AA%E9%9B%86%EF%BC%88coset%EF%BC%89"><span class="toc-number">3.</span> <span class="toc-text">陪集（coset）</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Lagrange%E2%80%99s-Theorem"><span class="toc-number">4.</span> <span class="toc-text">Lagrange’s Theorem</span></a></li></ol>
+      </div>
+    
   </span>
 </div>
 
-      
-      <div class="content index width mx-auto px2 my4">
-          
-          <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+    
+    <div class="content index py4 ">
+        
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
   <header>
     
-    <h1 class="posttitle" itemprop="name headline">
+    <h1 class="posttitle p-name" itemprop="name headline">
         🍼Baby Group
     </h1>
 
 
 
     <div class="meta">
-      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
-        <span itemprop="name">「la vie」</span>
+      <span class="author p-author h-card" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span class="p-name" itemprop="name">Aununo Gan</span>
       </span>
       
     <div class="postdate">
-        <time datetime="2024-07-28T02:05:23.000Z" itemprop="datePublished">2024-07-28</time>
+      
+        <time datetime="2024-07-28T02:05:23.000Z" class="dt-published" itemprop="datePublished">2024-07-28</time>
+        
+      
     </div>
 
 
       
+
+      
+    <div class="article-tag">
+        <i class="fa-solid fa-tag"></i>
+        <a class="p-category" href="/tags/Algebra/" rel="tag">Algebra</a>, <a class="p-category" href="/tags/Math/" rel="tag">Math</a>
+    </div>
+
 
     </div>
   </header>
   
 
-  <div class="content" itemprop="articleBody">
+  <div class="content e-content" itemprop="articleBody">
     <p>群是任意数学对象（字母、数字、函数、矩阵等）组成的集合再加上一种运算，满足以下四条定义：</p>
 <ul>
 <li><strong>Closure</strong>（封闭性）：$a\circ b=c$。集合中的任意两个元素运算仍在集合中。</li>
@@ -212,7 +209,7 @@ a^{-1}\circ a=a^{-1}\circ (a^{-1})^{-1}=e</script><p>于是我们证明了Left I
 <p>给顶点涂涂颜色再看看？在六边形里写下字母D吧！</p>
 </blockquote>
 <h1 id="子群（subgroup）"><a href="#子群（subgroup）" class="headerlink" title="子群（subgroup）"></a>子群（subgroup）</h1><p>子群是群的一部分，并且其本身恰好是群。例如：偶数集，$\mathbb{D}_6$中的旋转本身也构成一个子群，$\mathbb{D}_3$也是子群，$\mathbb{Z}_9$中有0、3、6这个子群。</p>
-<p>元素$a$的生成子群&lt; a &gt;是指$a,a^2,a^3,…$。这只对有限群有效。比如将偶数群表示为2的生成子群时，我们对负偶数无能为力，需要额外添加单位元和逆元。</p>
+<p>元素$a$的生成子群&lt;$a$&gt;是指$a,a^2,a^3,…$。这只对有限群有效。比如将偶数群表示为2的生成子群时，我们对负偶数无能为力，需要额外添加单位元和逆元。</p>
 <h1 id="陪集（coset）"><a href="#陪集（coset）" class="headerlink" title="陪集（coset）"></a>陪集（coset）</h1><p>整数群中，奇数集合可以由偶数群<2>整体平移1得到，我们称这样的集合为陪集。一个群确实算作自身的陪集。</p>
 <p>回忆一下$\mathbb{D}_6$，6个旋转方法构成一个子群，那么旋转后翻转，也就是&lt;旋转&gt;平移一个“翻转”的距离就构成了一个陪集。也可以把&lt;旋转&gt;平移一个旋转的距离，尽管这样做会把旋转子群内的元素打乱。</p>
 <p>让我们继续这个游戏！&lt;翻转&gt;所生成的子群只有两个元素，翻转一次和翻转两次，显然翻转两次是中性元（什么也没做）。把翻转子群平移60度，就可以得到一个60度的旋转和一个300度旋转后翻转。</p>
@@ -244,90 +241,147 @@ a^{-1}\circ a=a^{-1}\circ (a^{-1})^{-1}=e</script><p>于是我们证明了Left I
 
 
 
-      </div>
-      
-       <div id="footer-post-container">
+        
+          <div id="footer-post-container">
   <div id="footer-post">
 
     <div id="nav-footer" style="display: none">
       <ul>
-         
+        
           <li><a href="/">Home</a></li>
-         
+        
           <li><a href="/about/">About</a></li>
-         
+        
           <li><a href="/archives/">Writing</a></li>
-         
+        
+          <li><a href="/tags/">Tag</a></li>
+        
           <li><a target="_blank" rel="noopener" href="http://github.com/Aununo">Projects</a></li>
+        
+          <li><a href="/search/">Search</a></li>
         
       </ul>
     </div>
 
-    <div id="toc-footer" style="display: none">
-      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%9C%89%E9%99%90%E7%BE%A4%EF%BC%88finite-group%EF%BC%89"><span class="toc-number">1.</span> <span class="toc-text">有限群（finite group）</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AD%90%E7%BE%A4%EF%BC%88subgroup%EF%BC%89"><span class="toc-number">2.</span> <span class="toc-text">子群（subgroup）</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%99%AA%E9%9B%86%EF%BC%88coset%EF%BC%89"><span class="toc-number">3.</span> <span class="toc-text">陪集（coset）</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Lagrange%E2%80%99s-Theorem"><span class="toc-number">4.</span> <span class="toc-text">Lagrange’s Theorem</span></a></li></ol>
-    </div>
+    
+    
+      <div id="toc-footer" style="display: none">
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%9C%89%E9%99%90%E7%BE%A4%EF%BC%88finite-group%EF%BC%89"><span class="toc-number">1.</span> <span class="toc-text">有限群（finite group）</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AD%90%E7%BE%A4%EF%BC%88subgroup%EF%BC%89"><span class="toc-number">2.</span> <span class="toc-text">子群（subgroup）</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%99%AA%E9%9B%86%EF%BC%88coset%EF%BC%89"><span class="toc-number">3.</span> <span class="toc-text">陪集（coset）</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Lagrange%E2%80%99s-Theorem"><span class="toc-number">4.</span> <span class="toc-text">Lagrange’s Theorem</span></a></li></ol>
+      </div>
+    
 
     <div id="share-footer" style="display: none">
       <ul>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://aununo.xyz/2024/07/28/%F0%9F%8D%BCBaby-Group/"><i class="fa fa-facebook fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://aununo.xyz/2024/07/28/%F0%9F%8D%BCBaby-Group/&text=🍼Baby Group"><i class="fa fa-twitter fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://aununo.xyz/2024/07/28/%F0%9F%8D%BCBaby-Group/&title=🍼Baby Group"><i class="fa fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://aununo.xyz/2024/07/28/%F0%9F%8D%BCBaby-Group/&is_video=false&description=🍼Baby Group"><i class="fa fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="mailto:?subject=🍼Baby Group&body=Check out this article: http://aununo.xyz/2024/07/28/%F0%9F%8D%BCBaby-Group/"><i class="fa fa-envelope fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://aununo.xyz/2024/07/28/%F0%9F%8D%BCBaby-Group/&title=🍼Baby Group"><i class="fa fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://aununo.xyz/2024/07/28/%F0%9F%8D%BCBaby-Group/&title=🍼Baby Group"><i class="fa fa-reddit fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://aununo.xyz/2024/07/28/%F0%9F%8D%BCBaby-Group/&title=🍼Baby Group"><i class="fa fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://aununo.xyz/2024/07/28/%F0%9F%8D%BCBaby-Group/&title=🍼Baby Group"><i class="fa fa-digg fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://aununo.xyz/2024/07/28/%F0%9F%8D%BCBaby-Group/&name=🍼Baby Group&description="><i class="fa fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://aununo.xyz/2024/07/28/%F0%9F%8D%BCBaby-Group/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://aununo.xyz/2024/07/28/%F0%9F%8D%BCBaby-Group/&text=🍼Baby Group"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://aununo.xyz/2024/07/28/%F0%9F%8D%BCBaby-Group/&title=🍼Baby Group"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://aununo.xyz/2024/07/28/%F0%9F%8D%BCBaby-Group/&is_video=false&description=🍼Baby Group"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=🍼Baby Group&body=Check out this article: http://aununo.xyz/2024/07/28/%F0%9F%8D%BCBaby-Group/"><i class="fa-solid fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://aununo.xyz/2024/07/28/%F0%9F%8D%BCBaby-Group/&title=🍼Baby Group"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://aununo.xyz/2024/07/28/%F0%9F%8D%BCBaby-Group/&title=🍼Baby Group"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://aununo.xyz/2024/07/28/%F0%9F%8D%BCBaby-Group/&title=🍼Baby Group"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://aununo.xyz/2024/07/28/%F0%9F%8D%BCBaby-Group/&title=🍼Baby Group"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://aununo.xyz/2024/07/28/%F0%9F%8D%BCBaby-Group/&name=🍼Baby Group&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://aununo.xyz/2024/07/28/%F0%9F%8D%BCBaby-Group/&t=🍼Baby Group"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
 </ul>
 
     </div>
 
     <div id="actions-footer">
-      <ul>
-        <li id="toc"><a class="icon" href="#" onclick='$("#toc-footer").toggle();return false;'><i class="fa fa-list fa-lg" aria-hidden="true"></i> TOC</a></li>
-        <li id="share"><a class="icon" href="#" onclick='$("#share-footer").toggle();return false;'><i class="fa fa-share-alt fa-lg" aria-hidden="true"></i> Share</a></li>
-        <li id="top" style="display:none"><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a></li>
-        <li id="menu"><a class="icon" href="#" onclick='$("#nav-footer").toggle();return false;'><i class="fa fa-bars fa-lg" aria-hidden="true"></i> Menu</a></li>
-      </ul>
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fa-solid fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        
+          <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fa-solid fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fa-solid fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
     </div>
 
   </div>
 </div>
 
-      
-      <footer id="footer">
+        
+        <footer id="footer">
   <div class="footer-left">
-    Copyright &copy; 2024 Aununo Gan
+    Copyright &copy;
+    
+    
+    2016-2024
+    Aununo Gan
   </div>
   <div class="footer-right">
     <nav>
       <ul>
-         
-          <li><a href="/">Home</a></li>
-         
-          <li><a href="/about/">About</a></li>
-         
-          <li><a href="/archives/">Writing</a></li>
-         
-          <li><a target="_blank" rel="noopener" href="http://github.com/Aununo">Projects</a></li>
-        
+        <!--
+       --><li><a href="/">Home</a></li><!--
+     --><!--
+       --><li><a href="/about/">About</a></li><!--
+     --><!--
+       --><li><a href="/archives/">Writing</a></li><!--
+     --><!--
+       --><li><a href="/tags/">Tag</a></li><!--
+     --><!--
+       --><li><a target="_blank" rel="noopener" href="http://github.com/Aununo">Projects</a></li><!--
+     --><!--
+       --><li><a href="/search/">Search</a></li><!--
+     -->
       </ul>
     </nav>
   </div>
 </footer>
-      
-<script src="/lib/justified-gallery/jquery.justifiedGallery.min.js"></script>
+
+    </div>
+    <!-- styles -->
+
+
+
+  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'"/>
+
+
+    <!-- jquery -->
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script>
+
+
+
+
+<!-- clipboard -->
+
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.7/clipboard.min.js" crossorigin="anonymous"></script>
+  
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"Copy to clipboard!\">";
+    btn += '<i class="fa-regular fa-clone"></i>';
+    btn += '</span>';
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "Copied!");
+      e.clearSelection();
+    })
+  })
+  </script>
 
 
 <script src="/js/main.js"></script>
 
-<!-- Google Analytics -->
+<!-- search -->
+
+<!-- Baidu Analytics -->
+
+<!-- Cloudflare Analytics -->
 
 <!-- Disqus Comments -->
 
+<!-- utterances Comments -->
 
-    </div>
 <script type="text/x-mathjax-config">
     MathJax.Hub.Config({
         tex2jax: {
