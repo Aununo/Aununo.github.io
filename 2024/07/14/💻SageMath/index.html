@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html class="has-navbar-fixed-top">
+<head>
+    <meta charset="utf-8">
+<title>💻SageMath - Aununo&#39;s Blog</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/outdated-browser/1.1.5/outdatedbrowser.min.css">
+
+
+
+
+
+
+
+
+    <meta name="description" content="Python for Linux 下面我们准备编写python脚本的IDE。以Ubuntu为例。   1. 在windows中下载安装vscode，并安装名为wsl的插件。  2. 在wsl中输入code .便可以打开vscode。  3. 新建文件test.py，路径任意，例如&#x2F;root&#x2F;test.py。  4. 写入文件，保存后新建终端，使用python3 test.py命令，得到输出。  下">
+<meta property="og:type" content="article">
+<meta property="og:title" content="💻SageMath">
+<meta property="og:url" content="http://aununo.xyz/2024/07/14/%F0%9F%92%BBSageMath/index.html">
+<meta property="og:site_name" content="Aununo&#39;s Blog">
+<meta property="og:description" content="Python for Linux 下面我们准备编写python脚本的IDE。以Ubuntu为例。   1. 在windows中下载安装vscode，并安装名为wsl的插件。  2. 在wsl中输入code .便可以打开vscode。  3. 新建文件test.py，路径任意，例如&#x2F;root&#x2F;test.py。  4. 写入文件，保存后新建终端，使用python3 test.py命令，得到输出。  下">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2024-07-14T05:34:10.000Z">
+<meta property="article:modified_time" content="2024-09-14T07:20:46.536Z">
+<meta property="article:author" content="Aununo Gan">
+<meta property="article:tag" content="CTF">
+<meta property="article:tag" content="Crypto">
+<meta name="twitter:card" content="summary">
+
+
+
+
+
+<link rel="icon" href="/favicon.png">
+
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Ovo|Source+Code+Pro">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.min.css">
+
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/lightgallery/1.6.8/css/lightgallery.min.css">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/justifiedGallery/3.6.5/css/justifiedGallery.min.css">
+
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/atom-one-light.min.css">
+
+
+<link rel="stylesheet" href="/css/style.css">
+
+
+<script defer src="//use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
+
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+    
+
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+<body>
+    
+<nav class="navbar is-transparent is-fixed-top navbar-main" role="navigation" aria-label="main navigation">
+    <div class="container">
+        <div class="navbar-brand">
+            <a class="navbar-item navbar-logo" href="/">
+                
+                <img src="/images/logo.png" alt="" height="28">
+                
+            </a>
+            <div class="navbar-burger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+        
+        <div class="navbar-menu navbar-start">
+            
+            <a class="navbar-item "
+               href="/archives">Archives</a>
+            
+        </div>
+        
+        <div class="navbar-menu navbar-end">
+            
+            <a class="navbar-item search" title="Search" href="javascript:;">
+                <i class="fas fa-search"></i>
+            </a>
+            
+            
+            <div class="navbar-item is-hoverable has-dropdown is-hidden-mobile is-hidden-tablet-only toc">
+                <a class="navbar-item" title="Table of Contents">
+                    <i class="fa fa-list"></i>
+                </a>
+                <div class="navbar-dropdown is-right">
+                    
+                    
+                    
+                    
+                    <a class="navbar-item" href="#Python-for-Linux">1&nbsp;&nbsp;<b>Python for Linux</b></a>
+                    
+                    
+                    <hr class="navbar-divider">
+                    
+                    
+                    <a class="navbar-item" href="#git-Clone">2&nbsp;&nbsp;<b>git Clone</b></a>
+                    
+                    
+                    <hr class="navbar-divider">
+                    
+                    
+                    <a class="navbar-item" href="#install-SageMath">3&nbsp;&nbsp;<b>install SageMath</b></a>
+                    
+                </div>
+            </div>
+            
+            
+            <a class="navbar-item" title="GitHub" target="_blank" rel="noopener" href="https://github.com/Aununo">
+                
+                <i class="fab fa-github"></i>
+                
+            </a>
+               
+            
+        </div>
+    </div>
+</nav>
+
+    <section class="section">
+    <div class="container">
+    <article class="article content gallery" itemscope itemprop="blogPost">
+    <h1 class="article-title is-size-3 is-size-4-mobile" itemprop="name">
+        
+            💻SageMath
+        
+    </h1>
+    <div class="article-meta columns is-variable is-1 is-multiline is-mobile is-size-7-mobile">
+        <span class="column is-narrow">
+            
+                <time datetime="2024-07-14T05:34:10.000Z" itemprop="datePublished">Jul 14 2024</time>
+            
+        </span>
+        
+        
+        <span class="column is-narrow">
+            
+            
+            5 minutes read (About 766 words)
+        </span>
+        
+    </div>
+    <div class="article-entry is-size-6-mobile" itemprop="articleBody">
+    
+        <html><head></head><body><h1 id="Python-for-Linux"><a href="#Python-for-Linux" class="headerlink" title="Python for Linux"></a>Python for Linux</h1><p>下面我们准备编写python脚本的IDE。以Ubuntu为例。</p>
+<ol>
+<li>在windows中下载安装vscode，并安装名为<code>wsl</code>的插件。</li>
+<li>在wsl中输入<code>code .</code>便可以打开vscode。</li>
+<li>新建文件<code>test.py</code>，路径任意，例如<code>/root/test.py</code>。</li>
+<li>写入文件，保存后新建终端，使用<code>python3 test.py</code>命令，得到输出。</li>
+</ol>
+<p>下面我们说一说pip包管理器。</p>
+<figure class="highlight bash hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-built_in">sudo</span> apt install python3-pip python3-venv</span><br></pre></td></tr></tbody></table></figure>
+
+<p>在虚拟环境中安装python包，以便后续管理。</p>
+<ol>
+<li><p>创建虚拟环境：<code>python3 -m venv myenv</code>。</p>
+</li>
+<li><p>激活虚拟环境：<code>source myenv/bin/activate</code>。</p>
+</li>
+<li><p>安装包：<code>pip install &lt;package_name&gt;</code>。</p>
+</li>
+<li><p>退出：<code>deactivate</code>。</p>
+</li>
+</ol>
+<p>发现下载速度较慢，可以清除下载缓存，更换下载源。</p>
+<figure class="highlight bash hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">pip cache purge</span><br><span class="line">pip install pwntools -i https://pypi.tuna.tsinghua.edu.cn/simple</span><br></pre></td></tr></tbody></table></figure>
+
+
+
+<h1 id="git-Clone"><a href="#git-Clone" class="headerlink" title="git Clone"></a>git Clone</h1><p>使用HTTP协议<code>git clone https://github.com/repo/repo.git</code>经常会遇到网络不佳的问题，可以使用SSH的方法clone一些github库：</p>
+<ol>
+<li>创建ssh key：使用<code>ssh-keygen -t rsa -b 4096 -C "your-email"</code>命令，下面的选项全部直接敲回车即可。</li>
+<li>随后使用<code> cat ~/.ssh/id_rsa.pub</code> 命令查看生成的公钥，并完整的复制下来。</li>
+<li>在github仓库界面点击自己的头像，选择<code>settings</code>。进入到设置页面后，点击左侧的<code>SSH and GPG keys</code>选项。点击<code>New SSH key</code>选项，并将复制下来的内容粘贴上去，添加该ssh key的描述。随后点击<code>Add SSH key</code>，并一路点击确认即可。</li>
+<li>可以使用以下命令检查是否已有SSH密钥：<code>ls -al ~/.ssh</code>，如果你看到 <code>id_rsa</code> 和 <code>id_rsa.pub</code> 文件，说明已经存在SSH密钥。</li>
+<li>使用以下命令测试与GitHub的SSH连接：<code>ssh -T git@github.com</code>。</li>
+</ol>
+<p>如果一切正常，你会看到类似以下的输出：</p>
+<figure class="highlight bash hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Hi username! You<span class="hljs-string">'ve successfully authenticated, but GitHub does not provide shell access.</span></span><br></pre></td></tr></tbody></table></figure>
+
+<p>使用<code>git clone git@github.com:username/repository.git</code>命令克隆存储库。</p>
+<h1 id="install-SageMath"><a href="#install-SageMath" class="headerlink" title="install SageMath"></a>install SageMath</h1><p>阅读Sage的官方安装说明<a target="_blank" rel="noopener" href="https://doc.sagemath.org/html/en/installation/index.html#windows">Installation Guide</a>即可。</p>
+<p>按理说可以按照 <a target="_blank" rel="noopener" href="https://sagemanifolds.obspm.fr/install_ubuntu.html">Installing SageMath 10.4 in Ubuntu 22.04 or 24.04</a> 一步一步来，编译时会警告root，可以建立一个新用户，七月初10.3版本我也是这么做的，不知道为什么10.4我这里不行了。</p>
+<p>也可以在Arch Linux上<strong>快速</strong>安装SageMath。第一次接触Arch的话，看一些基础的命令叭<code>sudo pacman -Sy/-Syu/-Rns &lt;package_name&gt;/-Scc/...</code>。</p>
+<p>Arch的服务器比较慢，可以通过手动编辑镜像列表文件 <code>/etc/pacman.d/mirrorlist</code>，将速度较快的镜像服务器移到顶部。</p>
+<figure class="highlight bash hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Server = https://mirror.tuna.tsinghua.edu.cn/archlinux/<span class="hljs-variable">$repo</span>/os/<span class="hljs-variable">$arch</span></span><br><span class="line">Server = https://mirrors.ustc.edu.cn/archlinux/<span class="hljs-variable">$repo</span>/os/<span class="hljs-variable">$arch</span></span><br></pre></td></tr></tbody></table></figure>
+
+<p>o.0接着就是安装sagemath——<code>sudo pacman -S sagemath sagemath-doc</code>。</p>
+<p>等一会儿就成功啦！怎么在sage里调用外来库呢，哭哭&gt;_&lt;<code>sudo pacman -S python-&lt;package_name&gt;</code>。</p>
+</body></html>
+    
+    </div>
+    
+    <div class="columns is-variable is-1 is-multiline is-mobile">
+    
+        <span class="column is-narrow"><a class="tag is-light article-tag" href="/tags/CTF/">#CTF</a></span>
+    
+        <span class="column is-narrow"><a class="tag is-light article-tag" href="/tags/Crypto/">#Crypto</a></span>
+    
+    </div>
+    
+    
+    <div class="columns is-mobile is-multiline article-nav">
+        <span class="column is-12-mobile is-half-desktop  article-nav-prev">
+            
+            <a href="/2024/07/21/%F0%9F%90%A7Windows-Subsystem-for-Linux/">🐧Windows Subsystem for Linux</a>
+            
+        </span>
+        <span class="column is-12-mobile is-half-desktop is-hidden-mobile article-nav-next">
+            
+        </span>
+    </div>
+    
+</article>
+
+
+<div class="sharebox">
+    
+<div class="notification is-danger">
+    You need to set <code>install_url</code> to use ShareThis. Please set it in <code>_config.yml</code>.
+</div>
+
+</div>
+
+
+
+<div class="comments">
+    <h3 class="title is-4">Comments</h3>
+    
+<div id="disqus_thread">
+    
+    <div class="notification is-danger">
+        You forgot to set the <code>shortname</code> for Disqus. Please set it in <code>_config.yml</code>.
+    </div>
+    
+    <noscript>Please enable JavaScript to view the <a target="_blank" rel="noopener" href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+</div>
+
+    </div>
+</section>
+    <footer class="footer">
+    <div class="container">
+        <div class="columns content">
+            <div class="column is-narrow has-text-centered">
+                &copy; 2024 Aununo Gan&nbsp;
+                Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> & <a
+                        target="_blank" rel="noopener" href="http://github.com/ppoffice/hexo-theme-minos">Minos</a>
+            </div>
+            <div class="column is-hidden-mobile"></div>
+
+            
+            <div class="column is-narrow">
+                <div class="columns is-mobile is-multiline is-centered">
+                
+                    
+                <a class="column is-narrow has-text-black" title="GitHub" target="_blank" rel="noopener" href="https://github.com/Aununo">
+                    
+                    GitHub
+                    
+                </a>
+                
+                </div>
+            </div>
+            
+            
+        </div>
+    </div>
+</footer>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment-with-locales.min.js"></script>
+
+<!-- test if the browser is outdated -->
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" target="_blank" rel="noopener" href="http://outdatedbrowser.com/">Update my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="//cdnjs.cloudflare.com/ajax/libs/outdated-browser/1.1.5/outdatedbrowser.min.js"></script>
+<script>
+    $(document).ready(function () {
+        // plugin function, place inside DOM ready function
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        })
+    });
+</script>
+
+<script>
+    window.FontAwesomeConfig = {
+        searchPseudoElements: true
+    }
+    moment.locale("en-AU");
+</script>
+
+
+    
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<script>
+    MathJax.Hub.Config({
+        "HTML-CSS": {
+            matchFontHeight: false
+        },
+        SVG: {
+            matchFontHeight: false
+        },
+        CommonHTML: {
+            matchFontHeight: false
+        },
+        tex2jax: {
+            inlineMath: [
+                ['$','$'],
+                ['\\(','\\)']
+            ]
+        }
+    });
+</script>
+
+    
+    
+    
+    
+<script src="//cdnjs.cloudflare.com/ajax/libs/lightgallery/1.6.8/js/lightgallery-all.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/justifiedGallery/3.6.5/js/jquery.justifiedGallery.min.js"></script>
+<script>
+    (function ($) {
+        $(document).ready(function () {
+            if (typeof($.fn.lightGallery) === 'function') {
+                $('.article.gallery').lightGallery({ selector: '.gallery-item' });
+            }
+            if (typeof($.fn.justifiedGallery) === 'function') {
+                $('.justified-gallery > p > .gallery-item').unwrap();
+                $('.justified-gallery').justifiedGallery();
+            }
+        });
+    })(jQuery);
+</script>
+
+    
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.0/clipboard.min.js"></script>
+    <style>
+        .hljs {
+            position: relative;
+        }
+
+        .hljs .clipboard-btn {
+            float: right;
+            color: #9a9a9a;
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+
+        .hljs .clipboard-btn:hover {
+          color: #8a8a8a;
+        }
+
+        .hljs > .clipboard-btn {
+            display: none;
+            position: absolute;
+            right: 4px;
+            top: 4px;
+        }
+
+        .hljs:hover > .clipboard-btn {
+            display: inline;
+        }
+
+        .hljs > figcaption > .clipboard-btn {
+            margin-right: 4px;
+        }
+    </style>
+    <script>
+      $(document).ready(function () {
+        $('figure.hljs').each(function(i, figure) {
+          var codeId = 'code-' + i;
+          var code = figure.querySelector('.code');
+          var copyButton = $('<button>Copy <i class="far fa-clipboard"></i></button>');
+          code.id = codeId;
+          copyButton.addClass('clipboard-btn');
+          copyButton.attr('data-clipboard-target-id', codeId);
+
+          var figcaption = figure.querySelector('figcaption');
+
+          if (figcaption) {
+            figcaption.append(copyButton[0]);
+          } else {
+            figure.prepend(copyButton[0]);
+          }
+        })
+
+        var clipboard = new ClipboardJS('.clipboard-btn', {
+          target: function(trigger) {
+            return document.getElementById(trigger.getAttribute('data-clipboard-target-id'));
+          }
+        });
+        clipboard.on('success', function(e) {
+          e.clearSelection();
+        })
+      })
+    </script>
+
+    
+    
+
+    
+
+
+
+<script src="/js/script.js"></script>
+
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-mask"></div>
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="Type something..." />
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: 'Posts',
+                PAGES: 'Pages',
+                CATEGORIES: 'Categories',
+                TAGS: 'Tags',
+                UNTITLED: '(Untitled)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+
+<script src="/js/insight.js"></script>
+
+    
+</body>
+</html>

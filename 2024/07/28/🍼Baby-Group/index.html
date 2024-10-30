@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html class="has-navbar-fixed-top">
+<head>
+    <meta charset="utf-8">
+<title>🍼Baby Group - Aununo&#39;s Blog</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/outdated-browser/1.1.5/outdatedbrowser.min.css">
+
+
+
+
+
+
+
+
+    <meta name="description" content="群是任意数学对象（字母、数字、函数、矩阵等）组成的集合再加上一种运算，满足以下四条定义：   * Closure（封闭性）：$a\circ b&#x3D;c$。集合中的任意两个元素运算仍在集合中。  * Associativity（结合性）：$(a\circ b)\circ c&#x3D;a\circ (b\circ c)$。  * Neutral（单位元）：$a\circ e&#x3D;a$。  * Inverse（逆元）：">
+<meta property="og:type" content="article">
+<meta property="og:title" content="🍼Baby Group">
+<meta property="og:url" content="http://aununo.xyz/2024/07/28/%F0%9F%8D%BCBaby-Group/index.html">
+<meta property="og:site_name" content="Aununo&#39;s Blog">
+<meta property="og:description" content="群是任意数学对象（字母、数字、函数、矩阵等）组成的集合再加上一种运算，满足以下四条定义：   * Closure（封闭性）：$a\circ b&#x3D;c$。集合中的任意两个元素运算仍在集合中。  * Associativity（结合性）：$(a\circ b)\circ c&#x3D;a\circ (b\circ c)$。  * Neutral（单位元）：$a\circ e&#x3D;a$。  * Inverse（逆元）：">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2024-07-28T02:05:23.000Z">
+<meta property="article:modified_time" content="2024-09-14T07:27:41.175Z">
+<meta property="article:author" content="Aununo Gan">
+<meta property="article:tag" content="Math">
+<meta property="article:tag" content="Algebra">
+<meta name="twitter:card" content="summary">
+
+
+
+
+
+<link rel="icon" href="/favicon.png">
+
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Ovo|Source+Code+Pro">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.min.css">
+
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/lightgallery/1.6.8/css/lightgallery.min.css">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/justifiedGallery/3.6.5/css/justifiedGallery.min.css">
+
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/atom-one-light.min.css">
+
+
+<link rel="stylesheet" href="/css/style.css">
+
+
+<script defer src="//use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
+
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+    
+
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+<body>
+    
+<nav class="navbar is-transparent is-fixed-top navbar-main" role="navigation" aria-label="main navigation">
+    <div class="container">
+        <div class="navbar-brand">
+            <a class="navbar-item navbar-logo" href="/">
+                
+                <img src="/images/logo.png" alt="" height="28">
+                
+            </a>
+            <div class="navbar-burger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+        
+        <div class="navbar-menu navbar-start">
+            
+            <a class="navbar-item "
+               href="/archives">Archives</a>
+            
+        </div>
+        
+        <div class="navbar-menu navbar-end">
+            
+            <a class="navbar-item search" title="Search" href="javascript:;">
+                <i class="fas fa-search"></i>
+            </a>
+            
+            
+            <div class="navbar-item is-hoverable has-dropdown is-hidden-mobile is-hidden-tablet-only toc">
+                <a class="navbar-item" title="Table of Contents">
+                    <i class="fa fa-list"></i>
+                </a>
+                <div class="navbar-dropdown is-right">
+                    
+                    
+                    
+                    
+                    <a class="navbar-item" href="#有限群（finite-group）">1&nbsp;&nbsp;<b>有限群（finite group）</b></a>
+                    
+                    
+                    <hr class="navbar-divider">
+                    
+                    
+                    <a class="navbar-item" href="#子群（subgroup）">2&nbsp;&nbsp;<b>子群（subgroup）</b></a>
+                    
+                    
+                    <hr class="navbar-divider">
+                    
+                    
+                    <a class="navbar-item" href="#陪集（coset）">3&nbsp;&nbsp;<b>陪集（coset）</b></a>
+                    
+                    
+                    <hr class="navbar-divider">
+                    
+                    
+                    <a class="navbar-item" href="#Lagrange’s-Theorem">4&nbsp;&nbsp;<b>Lagrange’s Theorem</b></a>
+                    
+                </div>
+            </div>
+            
+            
+            <a class="navbar-item" title="GitHub" target="_blank" rel="noopener" href="https://github.com/Aununo">
+                
+                <i class="fab fa-github"></i>
+                
+            </a>
+               
+            
+        </div>
+    </div>
+</nav>
+
+    <section class="section">
+    <div class="container">
+    <article class="article content gallery" itemscope itemprop="blogPost">
+    <h1 class="article-title is-size-3 is-size-4-mobile" itemprop="name">
+        
+            🍼Baby Group
+        
+    </h1>
+    <div class="article-meta columns is-variable is-1 is-multiline is-mobile is-size-7-mobile">
+        <span class="column is-narrow">
+            
+                <time datetime="2024-07-28T02:05:23.000Z" itemprop="datePublished">Jul 28 2024</time>
+            
+        </span>
+        
+        
+        <span class="column is-narrow">
+            
+            
+            10 minutes read (About 1449 words)
+        </span>
+        
+    </div>
+    <div class="article-entry is-size-6-mobile" itemprop="articleBody">
+    
+        <html><head></head><body><p>群是任意数学对象（字母、数字、函数、矩阵等）组成的集合再加上一种运算，满足以下四条定义：</p>
+<ul>
+<li><strong>Closure</strong>（封闭性）：$a\circ b=c$。集合中的任意两个元素运算仍在集合中。</li>
+<li><strong>Associativity</strong>（结合性）：$(a\circ b)\circ c=a\circ (b\circ c)$。</li>
+<li><strong>Neutral</strong>（单位元）：$a\circ e=a$。</li>
+<li><strong>Inverse</strong>（逆元）：$a\circ a^{-1}=e$。群中的每个元素都存在逆元。</li>
+</ul>
+<blockquote>
+<p>整数集$\mathbb{Z}$上的加法运算构成了一个群。中性元为 0，相反数即为逆元。</p>
+<p>有理数集$\mathbb{Q}/0$上的乘法运算也构成了一个群。中性元为 1，倒数即为逆元。</p>
+</blockquote>
+<p>你可能意识到有理数集上的加法运算也构成一个群，所以我们有符号$Q^+$和$Q^×$.</p>
+<p>一个群中的元素个数称为群的阶，$|Z|=|Q^+|=|Q^×|=\infty$。</p>
+<blockquote>
+<p>请注意，尽管加法和乘法都具备交换性，但并没有RULE规定群中的元素必须可交换。</p>
+</blockquote>
+<p>$$<br>e\circ e=e<br>$$</p>
+<p>$$<br>(e\circ a)\circ a^{-1}=a\circ a^{-1}<br>$$</p>
+<p>于是我们证明了<a target="_blank" rel="noopener" href="https://math.stackexchange.com/questions/616577/any-set-with-associativity-left-identity-left-inverse-is-a-group-fraleigh">Left Identity = Right Identity</a>。<br>$$<br>(a^{-1})^{-1}=e\circ(a^{-1})^{-1}=a\circ a^{-1}\circ (a^{-1})^{-1}=a\circ e=a<br>$$</p>
+<p>$$<br>a^{-1}\circ a=a^{-1}\circ (a^{-1})^{-1}=e<br>$$</p>
+<p>于是我们证明了Left Inverse = Right Inverse。</p>
+<p>群论中有很多反证法的使用。</p>
+<p>证明群中的单位元唯一：假设有$e_1$和$e_2$，则$e_1=e_1\circ e_2=e_2$。</p>
+<p>证明群中元素的逆元唯一：假设有$a_1$和$a_2$，则$a_1=(a_2\circ a)\circ a_1=a_2\circ e=a_2$。</p>
+<h1 id="有限群（finite-group）"><a href="#有限群（finite-group）" class="headerlink" title="有限群（finite group）"></a>有限群（finite group）</h1><p>$\mathbb{Z}_n$表示$n$阶整数循环群，$|\mathbb{Z}_n|=n$。比如模6同余$|\mathbb{Z}_6|=6$中仅有元素0，1，2，3，4，5。</p>
+<blockquote>
+<p>Dihedral Group：我们研究的数学对象是正多边形，这里我们选择正六边形。群中的元素是使六边形保持原位的变换空间的不同方法，“旋转”和“翻转后旋转”。</p>
+</blockquote>
+<p>$|\mathbb{D}_6|=12$，其中有0，60，120，180，240，300以及翻转后对应的6种旋转。$|\mathbb{D}_n|=2n$。</p>
+<p>此时，Dihedral Group不具备交换性，因为翻转和旋转的顺序决定了六边形的<strong>手性</strong>。</p>
+<blockquote>
+<p>给顶点涂涂颜色再看看？在六边形里写下字母D吧！</p>
+</blockquote>
+<h1 id="子群（subgroup）"><a href="#子群（subgroup）" class="headerlink" title="子群（subgroup）"></a>子群（subgroup）</h1><p>子群是群的一部分，并且其本身恰好是群。例如：偶数集，$\mathbb{D}_6$中的旋转本身也构成一个子群，$\mathbb{D}_3$也是子群，$\mathbb{Z}_9$中有0、3、6这个子群。</p>
+<p>元素$a$的生成子群&lt;$a$&gt;是指$a,a^2,a^3,…$。这只对有限群有效。比如将偶数群表示为2的生成子群时，我们对负偶数无能为力，需要额外添加单位元和逆元。</p>
+<h1 id="陪集（coset）"><a href="#陪集（coset）" class="headerlink" title="陪集（coset）"></a>陪集（coset）</h1><p>整数群中，奇数集合可以由偶数群&lt;2&gt;整体平移1得到，我们称这样的集合为陪集。一个群确实算作自身的陪集。</p>
+<p>回忆一下$\mathbb{D}_6$，6个旋转方法构成一个子群，那么旋转后翻转，也就是&lt;旋转&gt;平移一个“翻转”的距离就构成了一个陪集。也可以把&lt;旋转&gt;平移一个旋转的距离，尽管这样做会把旋转子群内的元素打乱。</p>
+<p>让我们继续这个游戏！&lt;翻转&gt;所生成的子群只有两个元素，翻转一次和翻转两次，显然翻转两次是中性元（什么也没做）。把翻转子群平移60度，就可以得到一个60度的旋转和一个300度旋转后翻转。</p>
+<blockquote>
+<p>群和它的子群是高度对称的。</p>
+</blockquote>
+<h1 id="Lagrange’s-Theorem"><a href="#Lagrange’s-Theorem" class="headerlink" title="Lagrange’s Theorem"></a>Lagrange’s Theorem</h1><p>假设现在有个群，群里有个子群，子群所衍生出的陪集可以整齐地将整个群划分为大小一样的块。</p>
+<p>这里有两点是容易理解的：</p>
+<ol>
+<li>陪集一定覆盖了整个群：因为无论你想得到哪个元素，只需平移对应的差值即可。</li>
+<li>所有的陪集大小相同：平移时显然不会增加元素，那会不会减少呢？假设减少，我们一定可以用逆元把它们平移回去，这样就会凭空增加元素。</li>
+</ol>
+<p>下面有一点是不那么显然的：<strong>所有的陪集不会相互重合</strong>。</p>
+<p>假如你平移了一个子群中的元素，由于封闭性，得到的元素一定在子群里。那假如你平移了一个不在子群中的元素，结果会不会出现在子群里呢？</p>
+<p>例如子群中有$a、b$两个元素，假设$z\circ a=b$，则$z=b\circ a^{-1}$，因为$b$和$a^{-1}$均在子群里，所以与假设矛盾！！</p>
+<p>所以我们得到了一个二分论断：一个陪集要么与原来的子群完全不重合，要么它就是子群！</p>
+<p>同理可证此二分论断不仅在子群和陪集间，在陪集和陪集间同样成立。</p>
+<blockquote>
+<p>（拉格朗日定理）对于群$G$和它的子群$H$，$H$的阶可以整除$G$的阶。</p>
+</blockquote>
+<p>o.0 可是拉格朗日（1736—1813）在群论诞生前就…</p>
+<p>对于一个素数$p$阶群，它的子群只能拥有1个或p个元素，那么它一定是循环群！！！</p>
+<blockquote>
+<p><a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=KufsL2VgELo&amp;t=1547s&amp;ab_channel=Nemean">史上最好的群论入门</a>。</p>
+</blockquote>
+</body></html>
+    
+    </div>
+    
+    <div class="columns is-variable is-1 is-multiline is-mobile">
+    
+        <span class="column is-narrow"><a class="tag is-light article-tag" href="/tags/Math/">#Math</a></span>
+    
+        <span class="column is-narrow"><a class="tag is-light article-tag" href="/tags/Algebra/">#Algebra</a></span>
+    
+    </div>
+    
+    
+    <div class="columns is-mobile is-multiline article-nav">
+        <span class="column is-12-mobile is-half-desktop  article-nav-prev">
+            
+            <a href="/2024/08/04/%F0%9F%AB%B0The-Missing-Semester-of-Your-CS-Education/">🫰The Missing Semester of Your CS Education</a>
+            
+        </span>
+        <span class="column is-12-mobile is-half-desktop  article-nav-next">
+            
+            <a href="/2024/07/21/%F0%9F%90%A7Windows-Subsystem-for-Linux/">🐧Windows Subsystem for Linux</a>
+            
+        </span>
+    </div>
+    
+</article>
+
+
+<div class="sharebox">
+    
+<div class="notification is-danger">
+    You need to set <code>install_url</code> to use ShareThis. Please set it in <code>_config.yml</code>.
+</div>
+
+</div>
+
+
+
+<div class="comments">
+    <h3 class="title is-4">Comments</h3>
+    
+<div id="disqus_thread">
+    
+    <div class="notification is-danger">
+        You forgot to set the <code>shortname</code> for Disqus. Please set it in <code>_config.yml</code>.
+    </div>
+    
+    <noscript>Please enable JavaScript to view the <a target="_blank" rel="noopener" href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+</div>
+
+    </div>
+</section>
+    <footer class="footer">
+    <div class="container">
+        <div class="columns content">
+            <div class="column is-narrow has-text-centered">
+                &copy; 2024 Aununo Gan&nbsp;
+                Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> & <a
+                        target="_blank" rel="noopener" href="http://github.com/ppoffice/hexo-theme-minos">Minos</a>
+            </div>
+            <div class="column is-hidden-mobile"></div>
+
+            
+            <div class="column is-narrow">
+                <div class="columns is-mobile is-multiline is-centered">
+                
+                    
+                <a class="column is-narrow has-text-black" title="GitHub" target="_blank" rel="noopener" href="https://github.com/Aununo">
+                    
+                    GitHub
+                    
+                </a>
+                
+                </div>
+            </div>
+            
+            
+        </div>
+    </div>
+</footer>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment-with-locales.min.js"></script>
+
+<!-- test if the browser is outdated -->
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" target="_blank" rel="noopener" href="http://outdatedbrowser.com/">Update my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="//cdnjs.cloudflare.com/ajax/libs/outdated-browser/1.1.5/outdatedbrowser.min.js"></script>
+<script>
+    $(document).ready(function () {
+        // plugin function, place inside DOM ready function
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        })
+    });
+</script>
+
+<script>
+    window.FontAwesomeConfig = {
+        searchPseudoElements: true
+    }
+    moment.locale("en-AU");
+</script>
+
+
+    
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<script>
+    MathJax.Hub.Config({
+        "HTML-CSS": {
+            matchFontHeight: false
+        },
+        SVG: {
+            matchFontHeight: false
+        },
+        CommonHTML: {
+            matchFontHeight: false
+        },
+        tex2jax: {
+            inlineMath: [
+                ['$','$'],
+                ['\\(','\\)']
+            ]
+        }
+    });
+</script>
+
+    
+    
+    
+    
+<script src="//cdnjs.cloudflare.com/ajax/libs/lightgallery/1.6.8/js/lightgallery-all.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/justifiedGallery/3.6.5/js/jquery.justifiedGallery.min.js"></script>
+<script>
+    (function ($) {
+        $(document).ready(function () {
+            if (typeof($.fn.lightGallery) === 'function') {
+                $('.article.gallery').lightGallery({ selector: '.gallery-item' });
+            }
+            if (typeof($.fn.justifiedGallery) === 'function') {
+                $('.justified-gallery > p > .gallery-item').unwrap();
+                $('.justified-gallery').justifiedGallery();
+            }
+        });
+    })(jQuery);
+</script>
+
+    
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.0/clipboard.min.js"></script>
+    <style>
+        .hljs {
+            position: relative;
+        }
+
+        .hljs .clipboard-btn {
+            float: right;
+            color: #9a9a9a;
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+
+        .hljs .clipboard-btn:hover {
+          color: #8a8a8a;
+        }
+
+        .hljs > .clipboard-btn {
+            display: none;
+            position: absolute;
+            right: 4px;
+            top: 4px;
+        }
+
+        .hljs:hover > .clipboard-btn {
+            display: inline;
+        }
+
+        .hljs > figcaption > .clipboard-btn {
+            margin-right: 4px;
+        }
+    </style>
+    <script>
+      $(document).ready(function () {
+        $('figure.hljs').each(function(i, figure) {
+          var codeId = 'code-' + i;
+          var code = figure.querySelector('.code');
+          var copyButton = $('<button>Copy <i class="far fa-clipboard"></i></button>');
+          code.id = codeId;
+          copyButton.addClass('clipboard-btn');
+          copyButton.attr('data-clipboard-target-id', codeId);
+
+          var figcaption = figure.querySelector('figcaption');
+
+          if (figcaption) {
+            figcaption.append(copyButton[0]);
+          } else {
+            figure.prepend(copyButton[0]);
+          }
+        })
+
+        var clipboard = new ClipboardJS('.clipboard-btn', {
+          target: function(trigger) {
+            return document.getElementById(trigger.getAttribute('data-clipboard-target-id'));
+          }
+        });
+        clipboard.on('success', function(e) {
+          e.clearSelection();
+        })
+      })
+    </script>
+
+    
+    
+
+    
+
+
+
+<script src="/js/script.js"></script>
+
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-mask"></div>
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="Type something..." />
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: 'Posts',
+                PAGES: 'Pages',
+                CATEGORIES: 'Categories',
+                TAGS: 'Tags',
+                UNTITLED: '(Untitled)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+
+<script src="/js/insight.js"></script>
+
+    
+</body>
+</html>
