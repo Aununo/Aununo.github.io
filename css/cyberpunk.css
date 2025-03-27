@@ -10763,6 +10763,12 @@ body > .section {
   overflow: visible;
   border-radius: 0;
 }
+.card:hover,
+.card box-shadow: 0 6px 15px rgba(0,
+.card 0,
+.card 0.15),
+.card 0 0 1px rgba(0,
+.card 0.1),
 .card + .card,
 .card + .column-right-shadow {
   margin-top: 1.5rem;
@@ -10934,6 +10940,30 @@ a.article-nav-next span {
   flex-shrink: 1;
   word-wrap: break-word;
   white-space: normal;
+}
+.article {
+  counter-reset: section;
+}
+.article h2 {
+  counter-reset: sub-section;
+}
+.article h3 {
+  counter-reset: composite;
+}
+.article h4 {
+  counter-reset: detail;
+}
+.article h2:before {
+  content: counter(section) " ";
+  counter-increment: section;
+}
+.article h3:before {
+  content: counter(section) "." counter(sub-section) " ";
+  counter-increment: sub-section;
+}
+.article h4:before {
+  content: counter(section) "." counter(sub-section) "." counter(composite) " ";
+  counter-increment: composite;
 }
 .navbar-main {
   box-shadow: none;
@@ -11353,6 +11383,9 @@ figure.highlight.foldable div.level-left {
 .widget .menu-list li ul {
   margin-right: 0;
 }
+.widget .menu-list a {
+  transition: background-color 0.3s ease-in-out;
+}
 .widget .menu-list .level {
   margin-bottom: 0;
 }
@@ -11370,11 +11403,11 @@ figure.highlight.foldable div.level-left {
   color: $white-invert;
 }
 .widget .tags .tag:first-child {
-  background: #fcee09;
-  color: #121617;
+  background: #f5f5f5;
+  color: #4a4a4a;
 }
 .widget .tags .tag:last-child {
-  background: $light-grey;
+  background: #e7e7e7;
   color: $white-invert;
 }
 .level.is-multiline {
@@ -11412,6 +11445,10 @@ figure.highlight.foldable div.level-left {
   #toc-mask.is-active {
     display: block;
   }
+}
+#toc {
+  max-height: calc(100vh - 22px);
+  overflow-y: scroll;
 }
 .donate {
   position: relative;
