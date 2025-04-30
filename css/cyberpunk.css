@@ -10263,25 +10263,6 @@ body {
 body > .section {
   flex-grow: 1;
 }
-@media screen and (min-width: 1088px) {
-  ::-webkit-scrollbar {
-    width: 8px;
-    height: 8px;
-  }
-  ::-webkit-scrollbar-track {
-    border-radius: 3px;
-    background: rgba(0,0,0,0.06);
-    box-shadow: inset 0 0 5px rgba(0,0,0,0.1);
-  }
-  ::-webkit-scrollbar-thumb {
-    border-radius: 3px;
-    background: rgba(0,0,0,0.12);
-    box-shadow: inset 0 0 10px rgba(0,0,0,0.2);
-  }
-  ::-webkit-scrollbar-thumb:hover {
-    background: rgba(0,0,0,0.24);
-  }
-}
 .ml-0,
 .mx-0 {
   margin-left: 0 !important;
@@ -10810,17 +10791,34 @@ article.media .media-content .title {
   margin: 0;
   line-height: inherit;
 }
+article.article {
+  padding: 1.5rem 1.8rem;
+}
+article.article .title {
+  margin: 0 0 0.5rem -0.1rem !important;
+}
+article.article .title .fas {
+  margin-right: 0.5rem;
+}
 article.article .article-meta,
 article.article .article-tags {
   color: #848484;
 }
 article.article .article-meta {
   overflow-x: auto;
-  margin-bottom: 0.5rem;
+  margin-bottom: 1.5rem !important;
+}
+article.article .article-meta >:first-child {
+  flex-wrap: wrap;
+  width: 100%;
+}
+article.article .article-meta >:first-child >* {
+  flex-grow: 0 !important;
 }
 article.article .content {
   word-wrap: break-word;
   font-size: 1.1rem;
+  letter-spacing: 0.02rem;
 }
 article.article .content h1 {
   font-size: 1.75em;
@@ -10838,9 +10836,10 @@ article.article .content h5 {
   font-size: 1em;
 }
 article.article .content pre {
-  font-size: 0.85em;
+  font-size: 0.95em;
 }
 article.article .content code {
+  font-size: 0.95em;
   padding: 0;
   background: transparent;
   overflow-wrap: break-word;
@@ -10856,7 +10855,7 @@ article.article .content blockquote footer strong + cite {
 }
 article.article .content .message.message-immersive {
   border-radius: 0;
-  margin: 0 -1.5rem 1.5rem -1.5rem;
+  margin: 0 -1.8rem 1.5rem -1.8rem;
 }
 article.article .content .message.message-immersive .message-body {
   border: none;
@@ -10941,6 +10940,15 @@ a.article-nav-next span {
   word-wrap: break-word;
   white-space: normal;
 }
+.has-link-black-ter {
+  transition: 0.2s ease;
+}
+.has-link-black-ter:hover {
+  color: #3273dc !important;
+}
+.has-link-black-ter {
+  color: #242424 !important;
+}
 .article {
   counter-reset: section;
 }
@@ -10954,8 +10962,9 @@ a.article-nav-next span {
   counter-reset: detail;
 }
 .article h2:before {
-  content: counter(section) " ";
+  content: "#" counter(section) " ";
   counter-increment: section;
+  color: #f00; /* 添加这行使编号为红色 */
 }
 .article h3:before {
   content: counter(section) "." counter(sub-section) " ";
@@ -11021,6 +11030,9 @@ a.article-nav-next span {
   .container > .navbar .navbar-menu {
     margin-right: 0rem;
   }
+}
+footer.footer {
+  padding: 1.5rem;
 }
 @media screen and (max-width: 768px) {
   footer.footer .level-start {
@@ -11277,12 +11289,19 @@ footer.footer .level-end .field {
     border-radius: 0;
   }
 }
+div.highlight-tree td.code pre {
+  font-family: Consolas, Menlo, Courier, monospace !important;
+  font-size: 0.9em;
+}
 figure.highlight {
   padding: 0;
   width: 100%;
   position: relative;
   margin: 1em 0 1em !important;
   border-radius: 0;
+}
+figure.highlight span.fold {
+  width: 18px;
 }
 figure.highlight.folded .highlight-body {
   height: 0;

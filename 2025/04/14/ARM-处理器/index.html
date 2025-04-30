@@ -1,0 +1,636 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta><title>「UESTC II」Advanced RISC Machine - Aununo&#039;s Blog</title><link rel="manifest" href="/manifest.json"><meta name="application-name" content="Aununo&#039;s Blog"><meta name="msapplication-TileImage" content="/img/favicon.svg"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Aununo&#039;s Blog"><meta name="apple-mobile-web-app-status-bar-style" content="default"><meta name="description" content="本文是我在准备信软学院⚙️ARM处理器体系结构及其应用这门课考试的时候写下的笔记，同时也记录了这门课的实验任务。         课程目标： CO1：让学生掌握嵌入式系统的基础知识，嵌入式处理器系列，嵌入式系统开发环境，嵌入式操作系统等，培养学生专业知识能力。 CO2：让学生掌握ARM9处理器内核，ARM处理器工作状态，ARM处理器运行模式，ARM寄存"><meta property="og:type" content="blog"><meta property="og:title" content="「UESTC II」Advanced RISC Machine"><meta property="og:url" content="http://aununo.xyz/2025/04/14/ARM-%E5%A4%84%E7%90%86%E5%99%A8/"><meta property="og:site_name" content="Aununo&#039;s Blog"><meta property="og:description" content="本文是我在准备信软学院⚙️ARM处理器体系结构及其应用这门课考试的时候写下的笔记，同时也记录了这门课的实验任务。         课程目标： CO1：让学生掌握嵌入式系统的基础知识，嵌入式处理器系列，嵌入式系统开发环境，嵌入式操作系统等，培养学生专业知识能力。 CO2：让学生掌握ARM9处理器内核，ARM处理器工作状态，ARM处理器运行模式，ARM寄存"><meta property="og:locale" content="en_US"><meta property="og:image" content="http://aununo.xyz/images/ARM-%E5%A4%84%E7%90%86%E5%99%A8/arm.png"><meta property="article:published_time" content="2025-04-14T08:02:30.000Z"><meta property="article:modified_time" content="2025-04-30T06:05:38.016Z"><meta property="article:author" content="Aununo Gan"><meta property="article:tag" content="ARM"><meta property="article:tag" content="Computer Architecture"><meta property="twitter:card" content="summary"><meta property="twitter:image:src" content="http://aununo.xyz/images/ARM-%E5%A4%84%E7%90%86%E5%99%A8/arm.png"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"http://aununo.xyz/2025/04/14/ARM-%E5%A4%84%E7%90%86%E5%99%A8/"},"headline":"「UESTC II」Advanced RISC Machine","image":["http://aununo.xyz/images/ARM-%E5%A4%84%E7%90%86%E5%99%A8/arm.png"],"datePublished":"2025-04-14T08:02:30.000Z","dateModified":"2025-04-30T06:05:38.016Z","author":{"@type":"Person","name":"Aununo Gan"},"publisher":{"@type":"Organization","name":"Aununo's Blog","logo":{"@type":"ImageObject","url":"http://aununo.xyz/img/logo.svg"}},"description":"本文是我在准备信软学院⚙️ARM处理器体系结构及其应用这门课考试的时候写下的笔记，同时也记录了这门课的实验任务。         课程目标： CO1：让学生掌握嵌入式系统的基础知识，嵌入式处理器系列，嵌入式系统开发环境，嵌入式操作系统等，培养学生专业知识能力。 CO2：让学生掌握ARM9处理器内核，ARM处理器工作状态，ARM处理器运行模式，ARM寄存"}</script><link rel="canonical" href="http://aununo.xyz/2025/04/14/ARM-%E5%A4%84%E7%90%86%E5%99%A8/"><link rel="icon" href="/img/favicon.svg"><link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.0.0/css/all.css"><link data-pjax rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@11.7.0/styles/atom-one-light.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;600&amp;family=Source+Code+Pro"><link data-pjax rel="stylesheet" href="/css/default.css"><style>body>.footer,body>.navbar,body>.section{opacity:0}</style><!--!--><!--!--><!--!--><!--!--><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.10.0/dist/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/css/justifiedGallery.min.css"><!--!--><!--!--><!--!--><!--!--><style>.pace{-webkit-pointer-events:none;pointer-events:none;-webkit-user-select:none;-moz-user-select:none;user-select:none}.pace-inactive{display:none}.pace .pace-progress{background:#3273dc;position:fixed;z-index:2000;top:0;right:100%;width:100%;height:2px}</style><script src="https://cdn.jsdelivr.net/npm/pace-js@1.2.4/pace.min.js"></script><!--!--><!--!--><!-- hexo injector head_end start --><script>
+  (function () {
+      function switchTab() {
+          if (!location.hash) {
+            return;
+          }
+
+          const id = '#' + CSS.escape(location.hash.substring(1));
+          const $tabMenu = document.querySelector(`.tabs a[href="${id}"]`);
+          if (!$tabMenu) {
+            return;
+          }
+
+          const $tabMenuContainer = $tabMenu.parentElement.parentElement;
+          Array.from($tabMenuContainer.children).forEach($menu => $menu.classList.remove('is-active'));
+          Array.from($tabMenuContainer.querySelectorAll('a'))
+              .map($menu => document.getElementById($menu.getAttribute("href").substring(1)))
+              .forEach($content => $content.classList.add('is-hidden'));
+
+          if ($tabMenu) {
+              $tabMenu.parentElement.classList.add('is-active');
+          }
+          const $activeTab = document.querySelector(id);
+          if ($activeTab) {
+              $activeTab.classList.remove('is-hidden');
+          }
+      }
+      switchTab();
+      window.addEventListener('hashchange', switchTab, false);
+  })();
+  </script><!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.3.0"></head><body class="is-3-column"><nav class="navbar navbar-main"><div class="container navbar-container"><div class="navbar-brand justify-content-center"><a class="navbar-item navbar-logo" href="/"><img src="/img/logo.svg" alt="Aununo&#039;s Blog" height="28"></a></div><div class="navbar-menu"><div class="navbar-start"><a class="navbar-item" href="/">Home</a><a class="navbar-item" href="/archives">Archives</a><a class="navbar-item" href="/categories">Categories</a><a class="navbar-item" href="/tags">Tags</a><a class="navbar-item" href="/about">About</a></div><div class="navbar-end"><a class="navbar-item" target="_blank" rel="noopener" title="Download on GitHub" href="https://csdiy.wiki/"><i class="fa-solid fa-arrow-right"></i></a><a class="navbar-item is-hidden-tablet catalogue" title="Catalogue" href="javascript:;"><i class="fas fa-list-ul"></i></a><a class="navbar-item search" title="Search" href="javascript:;"><i class="fas fa-search"></i></a></div></div></div></nav><section class="section"><div class="container"><div class="columns"><div class="column order-2 column-main is-8-tablet is-8-desktop is-9-widescreen"><div class="card"><article class="card-content article" role="article"><h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal"><i class="fas fa-angle-double-right"></i>「UESTC II」Advanced RISC Machine</h1><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item"><i class="far fa-calendar-alt"> </i><time dateTime="2025-04-14T08:02:30.000Z" title="2025-04-14T08:02:30.000Z">2025-04-14</time></span><span class="level-item is-hidden-mobile"><i class="far fa-calendar-check"> </i><time dateTime="2025-04-30T06:05:38.016Z" title="2025-04-30T06:05:38.016Z">2025-04-30</time></span><span class="level-item"><i class="far fa-folder-open has-text-grey"></i> <a class="link-muted" href="/categories/Computer-Architecture/">Computer Architecture</a></span><span class="level-item"><i class="far fa-clock"></i>  an hour read (About 12254 words)</span></div></div><div class="content"><article class="message message-immersive is-info">
+    <div class="message-body">
+        <i class="fas fa-info-circle mr-2"></i>
+        本文是我在准备信软学院<b>⚙️ARM处理器体系结构及其应用</b>这门课考试的时候写下的笔记，同时也记录了这门课的实验任务。
+    </div>
+</article>
+
+
+<p><strong>课程目标：</strong></p>
+<p>CO1：让学生掌握嵌入式系统的基础知识，嵌入式处理器系列，嵌入式系统开发环境，嵌入式操作系统等，培养学生专业知识能力。</p>
+<p>CO2：让学生掌握ARM9处理器内核，ARM处理器工作状态，ARM处理器运行模式，ARM寄存器，ARM存储系统，ARM的异常等，培养学生底层硬件的能力。</p>
+<p>CO3：让学生掌握ARM寻址方式和指令系统，ARM的伪指令，ARM的简单编程和ARM的综合编程，培养学生底层综合编程能力。</p>
+<p>CO4：让学生掌握S3C2440嵌入式处理器，掌握S3C2440处理器的外设及应用。培养学生解决复杂系统的能力，如简单的硬件设计，以及基于软硬件的综合设计、编程能力。（不考）</p>
+<span id="more"></span>
+
+
+
+<p><strong>考核方式：</strong></p>
+<p>平时成绩（40%）+期末考试（60%）</p>
+<ul>
+<li>平时成绩：15%期中随堂测验 + 25%作业 + 60%实验</li>
+</ul>
+<p>总评成绩（100）&#x3D; 期中（6）+ 作业（10）+ 实验（24）+ 期末（60）</p>
+<p><strong>Topics Covered：</strong></p>
+<ul>
+<li>嵌入式系统</li>
+<li>ARM 处理器系统结构</li>
+<li>ARM 指令集</li>
+<li>ARM 伪指令及编程</li>
+</ul>
+<h2 id="嵌入式系统基础"><a href="#嵌入式系统基础" class="headerlink" title="嵌入式系统基础"></a>嵌入式系统基础</h2><p><span style="color: #0000FF; text-decoration: underline; font-style: italic; font-weight: bold;">作业题：</span></p>
+<p><strong>一、什么是嵌入式系统？</strong></p>
+<p>通常的定义：嵌入式系统是以应用为中心，以计算机技术为基础，采用可剪裁软硬件，适用于对功能、可靠性、成本、体积、功耗等有严格要求的专用计算机系统。</p>
+<p>通俗的定义：嵌入到对象体系中的专用计算机系统。</p>
+<p>嵌入性、专用性与计算机系统是嵌入式系统的三个基本要素。</p>
+<p><strong>二、嵌入式微处理器的体系结构有哪两种？简单两种体系结构各自的特点。</strong></p>
+<p>嵌入式微处理器的体系结构有冯.诺依曼结构和哈佛结构两种。</p>
+<p>冯.诺依曼结构也称为普林斯顿结构，是一种将程序指令存储器和数据存储器合并在一起的存储器结构。单次取指令长度和取数据的长度相同。</p>
+<p>哈佛结构：是一种将 程序指令存储和数据存储分开的存储器结构。程序指令存储和数据存储分开，单次取指令长度和取数据的长度可以不相同。</p>
+<p><strong>三、简单描述嵌入式实时操作系统中的任务的四个状态。</strong></p>
+<p>实时操作系统中的任务有四个状态：<strong>运行</strong>、<strong>就绪</strong>、<strong>挂起</strong>、<strong>冬眠</strong>。</p>
+<p>运行：获得 CPU 的控制权。</p>
+<p>就绪：进入任务等待队列，等待通过调度转为运行状态。</p>
+<p>挂起：任务发生阻塞，移出任务就绪队列，等待系统实时事件的发生而唤醒，从而转为 就绪 或 运行。</p>
+<p>冬眠：任务完成 或 错误 等原因被清除的任务，也可以认为是系统中不存在的任务。</p>
+<p><strong>四、简述精简指令集 RISC 和复杂指令集 CISC 的主要区别</strong></p>
+<p><img src="/../images/ARM-%E5%A4%84%E7%90%86%E5%99%A8/RISC%E5%92%8CCISC%E7%9A%84%E5%8C%BA%E5%88%AB.png" alt="RISC 和 CISC 的区别"></p>
+<ol>
+<li>以下关于 RISC 和 CISC 说法正确的是( A、C )</li>
+</ol>
+<p>A、RISC 一个周期执行一条指令	B、RISC 相对于 CISC，其指令集实现的功能更多 ×	C、RISC 相对于 CISC 具有更多的寄存器</p>
+<p>D、RISC 能直接处理存储器中的数据 </p>
+<ol start="2">
+<li>嵌入式系统的三个基本要素是（ A、B、C ）</li>
+</ol>
+<p>A：嵌入性	B：专用性 	C：计算机系统	D：通用性</p>
+<ol start="3">
+<li>在以下分类中，属于按实时性划分的是( B、D )。</li>
+</ol>
+<p>A、8 位嵌入式系统。	B、硬实时系统。	C、前后台系统	D、软实时系统</p>
+<ol start="4">
+<li>属于硬件调试工具是（ A、C、D ）。</li>
+</ol>
+<p>A、实时在线仿真器	B、电路开发板	C、逻辑分析仪	D、ROM 仿真器</p>
+<ol start="5">
+<li>在下列嵌入式处理器类型中，集成度最高的是( D )。</li>
+</ol>
+<p>A、嵌入式微处理器	B、嵌入式微控制器	C、嵌入式 DSP 处理器	D、SOC 片上系统</p>
+<ol start="6">
+<li>实时操作系统中的任务的就绪状态是指( B )。</li>
+</ol>
+<p>A、获得 CPU 的控制权。	B、进入任务等待队列，等待通过调度转为运行状态。	C、任务发生阻塞，移出任务就绪队列。</p>
+<p>D、任务完成或错误 等原因被清除的任务。</p>
+<h2 id="ARM-处理器及系统结构"><a href="#ARM-处理器及系统结构" class="headerlink" title="ARM 处理器及系统结构"></a>ARM 处理器及系统结构</h2><h3 id="ARM-处理器简介"><a href="#ARM-处理器简介" class="headerlink" title="ARM 处理器简介"></a>ARM 处理器简介</h3><h3 id="ARM-处理器系列"><a href="#ARM-处理器系列" class="headerlink" title="ARM 处理器系列"></a>ARM 处理器系列</h3><h3 id="ARM9-处理器内核"><a href="#ARM9-处理器内核" class="headerlink" title="ARM9 处理器内核"></a>ARM9 处理器内核</h3><p>以上 PPT。</p>
+<h3 id="ARM-处理器工作状态"><a href="#ARM-处理器工作状态" class="headerlink" title="*ARM 处理器工作状态"></a>*ARM 处理器工作状态</h3><p>嵌入式系统在某些应用场合对存储成本或空间要求比较苛刻，为了让用户更好地控制代码量，于是设计了2套指令系统，分别为ARM指令集和Thumb指令集。其中ARM指令集为32位（字）长度，具有最完整的功能；Thumb指令集为16位（半字）长度，能实现ARM指令集的大部分功能。在功能上可以认为Thumb是ARM指令集的子集。</p>
+<p>ARM微处理器中支持字节（8位）、半字（16位）、字（32位）三种数据类型。</p>
+<h3 id="ARM-处理器运行模式"><a href="#ARM-处理器运行模式" class="headerlink" title="*ARM 处理器运行模式"></a>*ARM 处理器运行模式</h3><p>ARM体系结构支持 7种 运行模式。（PPT 66 页）</p>
+<p>除用户模式外的其它6种处理器模式称为特权模式（Privileged Modes）。在特权模式下，程序可以访问所有的系统资源，也可以任意的进行处理器模式切换。只有在特权模式下才允许对当前程序状态寄存器（CPSR）的所有控制位直接进行读&#x2F;写访问，而在非特权模式下只允许对CPSR的控制位进行间接访问（SWI方式）。</p>
+<h3 id="ARM-寄存器"><a href="#ARM-寄存器" class="headerlink" title="*ARM 寄存器"></a>*ARM 寄存器</h3><p>ARM处理器有如下37个用户可见寄存器。（PPT 72 页）31个通用寄存器以及6个状态寄存器。</p>
+<p>ARM 处理器共有 7 种运行模式，在每一种处理器模式中都有一组相应的寄存器。</p>
+<p>在ARM状态下，任一时刻都可以访问到 16个通用寄存器和1~2个状态寄存器。</p>
+<p>这些条件标志位会根据程序中的算数指令或逻辑指令的执行结果进行改变，而且这些条件标志位可由大多数指令检测以决定指令是否执行。</p>
+<p>（1）N</p>
+<p>本位设置成当前指令执行结果的第31位。当两个由补码表示的有符号整数运算时，N&#x3D;1 表示结果为负数；否则结果为正数或零。</p>
+<p>（2）Z</p>
+<p>Z&#x3D;1 表示运算的结果为零，否则结果不为零。</p>
+<p>（3）C</p>
+<p>分 4 种情况设置 C 的方法：</p>
+<p>① 在加法指令中（包括比较指令CMN），当结果产生了进位，则C&#x3D;1，表示无符号数运算发生上溢出，其它情况下C&#x3D;0;</p>
+<p>② 在减法指令中（包括比较指令CMP），当运算中发生了借位，则C&#x3D;0，其它情况下C&#x3D;1;</p>
+<p>③ 对于在操作数中包含移位操作的运算指令（非加&#x2F;减指令），C被设置成被移位寄存器最后移出去的位;</p>
+<p>④ 对于其它非加&#x2F;减法运算指令，C的值通常不受影响。</p>
+<p>（4）V</p>
+<p>下面分两种情况讨论V的设置方法：</p>
+<p>① 对于加&#x2F;减运算指令，当操作数和运算结果都是以二进制的补码表示的带符号的数时，且运算结果超出了有</p>
+<p>符号运算的范围时溢出。V&#x3D;1 表示符号位溢出；</p>
+<p>② 对于非加&#x2F;减法指令，通常不改变标志位 V 的值。</p>
+<h3 id="ARM-存储系统"><a href="#ARM-存储系统" class="headerlink" title="ARM 存储系统"></a>ARM 存储系统</h3><p>ARM支持大端模式（big-endian）和小端模式（little-endian）两种内存模式。</p>
+<p>在大端模式下，一个字的高地址单元放的是数据的低位；而在小端模式下，数据的低位放在内存中低地址单元中。</p>
+<h3 id="中断和异常的基本概念（不考）"><a href="#中断和异常的基本概念（不考）" class="headerlink" title="中断和异常的基本概念（不考）"></a>中断和异常的基本概念（不考）</h3><h3 id="ARM-的异常"><a href="#ARM-的异常" class="headerlink" title="*ARM 的异常"></a>*ARM 的异常</h3><p>ARM处理器可以响应的中断（异常）有：中断、快中断、复位中断、软中断异常、预取指令中止异常、数据中止异常和未定义指令异常 7 种。</p>
+<p><span style="color: #0000FF; text-decoration: underline; font-style: italic; font-weight: bold;">作业题：</span></p>
+<p><strong>一、ARM</strong> <strong>处理器有几种工作状态？分别是什么？</strong></p>
+<p>ARM 处理器有两种工作状态：ARM 状态和 Thumb 状态。</p>
+<p><strong>二、ARM 处理器有几种运行模式？分别是什么？</strong></p>
+<p>ARM 处理器有 7 种运行模式：用户模式、系统模式、一般中断模式、快速中断模式、管理模式、中止模式和未定义模式。</p>
+<p><strong>三、简单描述</strong> <strong>ARM</strong> <strong>体系结构与纯粹的</strong> <strong>RISC</strong> <strong>体系结构的不同点。</strong></p>
+<p>ARM 内核不是一个纯粹的 RISC 体系结构。ARM 指令集与纯粹的 RISC 的定义有以下几个不同。</p>
+<p>（1）一些特定指令的周期数可变，并不是每条 ARM 指令都是单周期的。</p>
+<p>（2）内嵌的桶形移位器产生了更为复杂的指令，扩展了指令的功能，因此改善了内核的性能。</p>
+<p>（3）支持 16 位的 Thumb 指令集，提高了代码密度。</p>
+<p>（4）支持条件执行：每条指令都可以设置一个执行条件，只有条件满足时才执行。</p>
+<p>（5）增强指令：一些功能强大的数字信号处理指令被加入到 ARM 指令集中。</p>
+<p><strong>四、简单描述</strong> <strong>ARM9</strong> <strong>的</strong> <strong>5</strong> <strong>级流水线</strong></p>
+<p>取指：指令从存储器中取出，放入指令流水线；</p>
+<p>译码：指令译码；</p>
+<p>执行：把一个操作数移位，产生 ALU 的结果。如果指令是 Load 或 Store，在 ALU 中计算存储器的地址；</p>
+<p>缓存&#x2F;数据：如果需要，则访问数据存储器；否则，ALU 的结果只是简单地缓冲一个时钟周期，以便使所有指令具有同样的流水线流程；</p>
+<p>回写：将指令产生的结果写回到寄存器堆，包括任何从寄存器读出的数据。</p>
+<p><strong>五、简单描述</strong> <strong>ARM</strong> <strong>处理器进入异常所采取的操作。</strong></p>
+<p>(1) 在适当的 LR 中保存断点的地址。</p>
+<p>(2) 把当前程序状态寄存器（CPSR）中的内容保存到模式私有寄存器 SPSR 中；</p>
+<p>(3) 将寄存器 CPSR 中的 MODE 域设置为中断（异常）应进入的运行模式；</p>
+<p>(4) 对 CPSR 的 I 位和 F 位进行相应的设置，以防止再次响应同一个中断请求。</p>
+<p>(5) 强制 PC 从相关的异常向量处取指，即到中断向量表中获取中断向量，转向用户所编写的中断（异常）服务程序。</p>
+<p><strong>六、ARM 的快中断（FIQ）采用了几种措施来保证更快的响应速度？这些措施是什么？</strong></p>
+<p>为减少延时，ARM 在快中断中采取了 两个措施：</p>
+<p>（1）专门为快中断配置了较多的私有寄存器，从而可使中断服务程序有足够的寄存器来使用，而不必与被中断服务程序使用同一组寄存器，这样就免去了因寄存器冲突而必需的保护及恢复现场工作。</p>
+<p>（2）ARM 把 FIQ 的中断向量放在了中断（异常）向量表末尾 0X0000001C 处，因此它后面没有其它中断向量，允许用户将中断服务程序直接放在这里。</p>
+<p><strong>七、多选题</strong></p>
+<ol>
+<li>为减少延时，提高中断处理速度，ARM 在快中断中采取了哪些措施（ B、D ）</li>
+</ol>
+<p>A. 配置了高速缓存。	B. 配置了较多的私有寄存器。	C. 更高的中断优先级。</p>
+<p>D. 把 FIQ 的中断向量放在了中断（异常）向量表末尾处。</p>
+<ol start="2">
+<li>下列说法正确的是（ A、B、C、D ）。</li>
+</ol>
+<p>A. 异常实质上也是一种中断，只不过它主要负责处理处理器内部事件</p>
+<p>B. 中断控制器用于中断源和处理器之间，主要用于对处理器可以接收中断源的数目进行扩充及对中断进行必要的管理。</p>
+<p>C. 处理器在现行指令执行结束后，才能响应中断。</p>
+<p>D. 在处理器收到中断请求之后，它们都需要获得中断服务程序首地址——中断向量。</p>
+<ol start="3">
+<li>下列关于 ARM 的说法正确的是（ B、C、D ）</li>
+</ol>
+<p>A. ARM 公司生产的处理器	B. ARM 是一个公司的名称	C. ARM 是一类微处理器的通称	D. ARM 是一种技术的名称</p>
+<p><strong>八、判断题</strong></p>
+<ol>
+<li>ARM9TDMI 核其工作模式有两种：ARM 模式和 Thumb 模式。（ X ）</li>
+<li>当异常发生，进入异常运行模式的时候，处理器会自动禁用中断和快中断，以确保异常处理程序安全运行。（ X ）</li>
+<li>当处理器处于 Thumb 状态时发生了异常，在异常向量地址装入 PC 时，会自动切换到ARM 状态。（ √ ）</li>
+<li>S3C2440 芯片可以通过软件来指定存储器格式，缺省为小端格式。（ √ ）</li>
+<li>在减法指令中，当运算中发生了借位，则 C 标志位&#x3D;1。（ X ）</li>
+<li>ARM 处理器在用户模式下，可以通过修改 CPSR 进入系统模式。（ X ）</li>
+<li>对于计算机系统来说，一个字的长度是 32 位的，半字的长度是 16 位的。（ X ）</li>
+<li>ARM920T 处理器中，对是通过协处理器 P15 来实现对 MMU 的控制的。（ √ ）</li>
+<li>ARM9 的 5 级流水线设计，相对于 ARM7 的 3 级流水线设计，减少了在每个时钟内必须完成的最大工作量，进而允许使用较高的时钟频率。（ √ ）</li>
+<li>ARM处理器采用的是RISC体系结构，因此所有的指令都在一个周期内执行完成。（ X ）</li>
+</ol>
+<p><strong>九、单选题</strong></p>
+<ol>
+<li>如果处理器采用大端存储器格式，假如一个字存放在地址为 A、A+1、A+2、A+3 四个连续的存储单元中，则该字的地址为（ A ）<span style="color: red;">大端下该字的地址定义为最低地址</span></li>
+</ol>
+<p>A．A B．A+1 C．A+2 D．A+3</p>
+<ol start="2">
+<li>ARM7EJ 名称中的 J 后缀，代表（ C ）</li>
+</ol>
+<p>A、支持增强型 DSP 指令	B、支持 Thumb 指令集	C、支持 Jazelle	D、支持 Embedded ICE</p>
+<ol start="3">
+<li>在通用的 CPU 上提供 DSP 能力，是从 ARM 指令集构体系结构版本（ B ）以后开始的。</li>
+</ol>
+<p>A、v4 B、v5 C、v6 D、v7</p>
+<ol start="4">
+<li>ARM 推出的 Cortex 系列包括三个系列，其中实时操作系统而设计的是（ C ）</li>
+</ol>
+<p>A、Cortex-A B、Cortex-B C、Cortex-R D、Cortex-M</p>
+<ol start="5">
+<li>在 ARM9 的 5 级流水线设计中，从寄存器中读取操作数，是在哪个阶段完成的？（ B ）</li>
+</ol>
+<p>A、取指 B、译码 C、执行 D、缓存&#x2F;数据 E、回写</p>
+<ol start="6">
+<li>在 ARM9 的 5 级流水线设计中，计算访存指令访问存储器的地址的操作，是在哪个阶段完成的？（ C ）</li>
+</ol>
+<p>A、取指 B、译码 C、执行 D、缓存&#x2F;数据 E、回写</p>
+<ol start="7">
+<li>ARM 处理器的 7 种运行模式中，处理器复位之后进入（ C ）。</li>
+</ol>
+<p>A．用户模式 B．系统模式 C．管理模式 D．终止模式</p>
+<ol start="8">
+<li>下列 ARM 处理器的运行模式中，不属于异常模式的是（ B ）。</li>
+</ol>
+<p>A．未定义模式 B．系统模式 C．管理模式 D．终止模式。</p>
+<ol start="9">
+<li>R13 通常用于存储（ D ）。</li>
+</ol>
+<p>A．程序计数器 B．中断返回地址 C．子程序返回地址 D．堆栈指针</p>
+<ol start="10">
+<li>程序计数器的值保存在（ D ）中。</li>
+</ol>
+<p>A．R12 B．R13 C．R14 D．R15</p>
+<ol start="11">
+<li>读程序计数器时，指令读出的 R15 的值是当前指令地址加上（ D ）字节。</li>
+</ol>
+<p>A．1 B．2 C．4 D．8</p>
+<h2 id="ARM-指令集"><a href="#ARM-指令集" class="headerlink" title="ARM 指令集"></a>ARM 指令集</h2><h3 id="ARM-指令集简介"><a href="#ARM-指令集简介" class="headerlink" title="ARM 指令集简介"></a>ARM 指令集简介</h3><p>ARM微处理器的ARM指令集 ，所有的指令长度都是<strong>32位</strong> ，并且大多数指令都在一个单独指令周期内执行。</p>
+<p>主要特点包括：</p>
+<ul>
+<li>指令是条件执行的；</li>
+<li>ARM 微处理器的指令集是加载&#x2F;存储型的；</li>
+<li>在多寄存器操作指令中一次最多可以完成 16 个寄存器的数据传送。</li>
+</ul>
+<h4 id="ARM-指令格式"><a href="#ARM-指令格式" class="headerlink" title="ARM 指令格式"></a>ARM 指令格式</h4><p><span style="color: green;">一、指令的一般格式</span></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;opcode&gt; &#123;&lt;cond&gt;&#125; &#123;S&#125; &#123;&lt;Rd&gt;&#125; &#123;, &lt;Rn&gt;&#125; &#123;, &lt;OP2&gt;&#125;</span><br></pre></td></tr></table></figure>
+
+<p>格式中 &lt; &gt; 的内容必不可少，{ } 中的内容可省略。</p>
+<p>opcode 表示操作码，如 ADD 表示算术加法；cond 表示指令执行的条件域，如 EQ、NE 等。</p>
+<p>{ S } 决定指令的执行结果是否影响 CPSR 的值，使用该后缀则指令执行的结将果影响 CPSR 的值，否则不影响。</p>
+<p>Rd 表示目标寄存器存储结果；Rn 为寄存器提供第一个操作数；OP2 表示第二个操作数，可以是立即数、寄存器和寄存器移位操作数。</p>
+<p>在指令格式中，操作码（opcode）是必须指定的部分，不能省略，而其他部分（如 cond、S、Rd、Rn、OP2）都是可选的，可以根据需要选择是否包含在指令中。换句话说，除了操作码外，其他域可以根据具体指令的需求省略或使用。</p>
+<p>例如：指令 <code>ADDEQS R0, R1, #8;</code> 执行结果 <code>R0 = R1 + 8</code>。<code>LDR R3, [R6]</code>：将 R6 寄存器内容所指向的存储单元内容读出，保存在 R3 中，执行条件 AL。<code>BEQ NEXT</code>：分支指令B，加上后缀EQ，变为BEQ，表示“满足条件相等则跳转” 。ADD R0，R1，#2 加法指令ADD，R0&#x3D;R1+2，不带S，计算结果不影响CPSR寄存器。SUBNES R0，R1，#0X03条件执行减法运算（NE），R0&#x3D;R1-0X03，影响CPSR寄存器。</p>
+<p><span style="color: green;">二、指令的机器码</span></p>
+<p>从形式上看，ARM指令在机器中的表示格式是用32位的二进制数表示。</p>
+<p>ARM指令代码一般可以分为5个域：</p>
+<ul>
+<li>第1个域是4位[31:28]的条件码域，4位条件码共有16种组合；</li>
+<li>第2个域是指令代码域[27:20],除了指令编码外，还包含几个很重要的指令特征和可选后缀的编码</li>
+<li>第3个域是第1个操作数寄存器Rn，是4位[19:16],为R0～R15共16个寄存器编码；</li>
+<li>第4个域是目标或源寄存器Rd，是4位[15:12],为R0～R15共16个寄存器编码；</li>
+<li>第5个域是第二个操作数[11:0]。</li>
+</ul>
+<p><span style="color: green;">三、指令的可选后缀</span></p>
+<p>1）S后缀</p>
+<p>指令中使用S后缀时，指令执行后程序状态寄存器的条件标志位将被刷新，不使用S后缀时，指令执行后程序状态寄存器CPSR的条件标志将不会发生变化。</p>
+<p>例:假设R0&#x3D;0x1,R3&#x3D;0x3,指令执行之前CPSR部分标志位为nZcv,分别执行如下指令CPSR的值有何变化？</p>
+<p>SUB R1,R0,R3； R0的值减去R3的值，结果存入R1</p>
+<p>SUBS R1,R0,R3； R0的值减去R3的值，结果存入R1； 影响标志位。</p>
+<p>分析：执行第1条指令对于标志寄存器的值没有任何影响，因此CPSR的值不变。执行第2条指令后CPSR&#x3D;Nzcv</p>
+<p>2）！后缀</p>
+<p>如果指令地址表达式中不含！后缀，则基址寄存器中的地址值不会发生变化。</p>
+<p>指令中的地址表达式中含有!后缀时，指令执行后，基址寄存器中的地址值将发生变化，变化的结果如下：</p>
+<p>基址寄存器中的值（指令执行后）＝指令执行前的值＋地址偏移量</p>
+<p>例 分别执行下面两条指令有何区别？</p>
+<p>LDR R3,[R0,#4] </p>
+<p>LDR R3,[R0,#4]！</p>
+<p>分析：在上述指令中，第1条指令没有后缀！，指令的结果是把R0加4作为地址指针，把这个指针所指向的地址单元所存储的数据读入R3，R0的值不变。第2条指令除了实现以上操作外，还把R0＋4的结果送到R0中。</p>
+<p>使用!后缀需要注意如下事项：</p>
+<p>(1)！后缀必须紧跟在地址表达式后面，而地址表达式要有明确的地址偏移量；</p>
+<p>(2)! 后缀不能用于R15(PC)的后面；</p>
+<p>(3)当用在单个地址寄存器后面时，必须确信这个寄存器有隐性的偏移量，例如“STMIA R7!, {R0 – R3}”此时地址基址寄存器R7的隐性偏移量是16字节。如果R7的初始值为 0X40000000，则该语句结束后为0X40000010</p>
+<p>3）B 后缀</p>
+<p>B后缀的含义是：指令所涉及的数据是一个字节，不是一个字或半字。</p>
+<h4 id="指令的条件码"><a href="#指令的条件码" class="headerlink" title="指令的条件码"></a>指令的条件码</h4><p>ARM 指令的 条件码 和 助记符 如下表所示（PPT 19 页）</p>
+<p><img src="/../images/ARM-%E5%A4%84%E7%90%86%E5%99%A8/%E6%9D%A1%E4%BB%B6%E7%A0%81%E8%A1%A81.png" alt="条件码表1"></p>
+<p><img src="/../images/ARM-%E5%A4%84%E7%90%86%E5%99%A8/%E6%9D%A1%E4%BB%B6%E7%A0%81%E8%A1%A82.png" alt="条件码表2"></p>
+<h4 id="指令分类"><a href="#指令分类" class="headerlink" title="指令分类"></a>指令分类</h4><p>ARM 指令可以分为：分支指令、数据处理指令、存储访问指令、协处理器指令和杂项指令五类。</p>
+<h3 id="ARM-指令的寻址方式"><a href="#ARM-指令的寻址方式" class="headerlink" title="ARM 指令的寻址方式"></a>ARM 指令的寻址方式</h3><h4 id="立即数寻址"><a href="#立即数寻址" class="headerlink" title="立即数寻址"></a>立即数寻址</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ADD R0, R0, #1; R0 &lt;- R0+1</span><br><span class="line">MOV R0, #15; R0 &lt;- 15</span><br></pre></td></tr></table></figure>
+
+<p>循环右移，8位位图。需确认立即数是否可以表示为一个 8 位值（0x00 到 0xFF，十进制 0 到 255）。</p>
+<p><strong>ARM 架构的立即数编码规则（一种常见的形式）：</strong></p>
+<p>许多 ARM 指令中的立即数并不是直接使用一个固定的位数（比如 16 位或 32 位）来表示。相反，它们通常由一个 <strong>8 位的常数 (<code>immed_8</code>)</strong> 和一个 <strong>4 位的循环右移值 (<code>rotate_imm</code>)</strong> 组成。最终的 32 位立即数是通过将这个 8 位常数（零扩展到 32 位）<strong>循环右移 <code>2 * rotate_imm</code> 位</strong> 得到的。</p>
+<p>这意味着，只有那些可以通过将一个 0 到 255 之间的 8 位数值循环右移偶数位（0, 2, 4, …, 30 位）得到的 32 位数值，才是“合法”的立即数。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdint.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="type">uint32_t</span> <span class="title function_">rot</span><span class="params">(<span class="type">uint32_t</span> value, <span class="type">unsigned</span> <span class="type">int</span> shift)</span> &#123;</span><br><span class="line">    shift &amp;= <span class="number">31</span>;</span><br><span class="line">    <span class="keyword">if</span> (shift == <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> value;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> (value &gt;&gt; shift) | (value &lt;&lt; (<span class="number">32</span> - shift));</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">get_arm_immediate_params</span><span class="params">(<span class="type">uint32_t</span> num, <span class="type">uint8_t</span> *immed_8_ptr, <span class="type">uint8_t</span> *rotate_imm_ptr)</span> &#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> r = <span class="number">0</span>; r &lt; <span class="number">16</span>; r++) &#123;</span><br><span class="line">        <span class="type">uint32_t</span> rotated = rot(num, r * <span class="number">2</span>);</span><br><span class="line">        <span class="keyword">if</span> ((rotated &amp; ~<span class="number">0xFF</span>U) == <span class="number">0</span>) &#123;</span><br><span class="line">            *immed_8_ptr = (<span class="type">uint8_t</span>)rotated;</span><br><span class="line">            *rotate_imm_ptr = (<span class="type">uint8_t</span>)r;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="type">uint32_t</span> K;</span><br><span class="line">    <span class="type">uint8_t</span> immed_8_val;</span><br><span class="line">    <span class="type">uint8_t</span> rotate_imm_val;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;请输入一个十六进制数: &quot;</span>);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">scanf</span>(<span class="string">&quot;%x&quot;</span>, &amp;K) != <span class="number">1</span>) &#123;</span><br><span class="line">        <span class="built_in">fprintf</span>(<span class="built_in">stderr</span>, <span class="string">&quot;输入错误，需要一个有效的十六进制数。\n&quot;</span>);</span><br><span class="line">        <span class="keyword">return</span> <span class="number">2</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="type">int</span> result = get_arm_immediate_params(K, &amp;immed_8_val, &amp;rotate_imm_val);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (result == <span class="number">1</span>) &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;输入值 0x%X 是 ARM 立即数。\n&quot;</span>, K);</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;  8 位立即数 (immed_8)   : 0x%02X\n&quot;</span>, immed_8_val);</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;  4 位循环右移量 (rotate_imm): %u\n&quot;</span>, rotate_imm_val);</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;  (实际右移位数       : %u)\n&quot;</span>, rotate_imm_val * <span class="number">2</span>);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;输入值 0x%X 不是 ARM 立即数。\n&quot;</span>, K);</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;0\n&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>MOV R0，#0xF200 ;E3A00CF2. 0xF200 &#x3D;0xF2 ROR(2*C）</p>
+<p>只有能够通过此构造方法得到的才是合法的立即数。</p>
+<h4 id="寄存器寻址"><a href="#寄存器寻址" class="headerlink" title="寄存器寻址"></a>寄存器寻址</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">MOV R1, R2; R1 &lt;- R2</span><br><span class="line">ADD R1, R1, R2; R1 &lt;- R1+R2</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="寄存器移位寻址"><a href="#寄存器移位寻址" class="headerlink" title="寄存器移位寻址"></a>寄存器移位寻址</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ADD R3, R2, R1, LSR #2; R3 &lt;- R2+(R1右移2位)</span><br><span class="line">ADD R3, R2, R1, LSR R0; R3 &lt;- R2+(R1右移R0位)</span><br></pre></td></tr></table></figure>
+
+<p><img src="/../images/ARM-%E5%A4%84%E7%90%86%E5%99%A8/%E7%A7%BB%E4%BD%8D%E6%96%B9%E5%BC%8F.png" alt="移位方式"></p>
+<h4 id="寄存器间接寻址"><a href="#寄存器间接寻址" class="headerlink" title="寄存器间接寻址"></a>寄存器间接寻址</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">LDR R0, [R4]; R0 &lt;- [R4]</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="基址变址寻址"><a href="#基址变址寻址" class="headerlink" title="基址变址寻址"></a>基址变址寻址</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">LDR R0, [R1, #4]; R0 &lt;- mem32[R1+4]</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="多寄存器寻址"><a href="#多寄存器寻址" class="headerlink" title="多寄存器寻址"></a>多寄存器寻址</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">LDMIA R0！，&#123;R1-R4&#125; ；R1←[R0]、R2←[R0＋4]、R3←[R0＋8]、R4←[R0＋12]</span><br></pre></td></tr></table></figure>
+
+<p><strong>注意：对于所有LDM&#x2F;STM指令而言，寄存器序号低的，在低地址单元，序号大的在高地址单元！与书写顺序无关！</strong></p>
+<p><img src="/../images/ARM-%E5%A4%84%E7%90%86%E5%99%A8/%E5%A4%9A%E5%AF%84%E5%AD%98%E5%99%A8%E5%AF%BB%E5%9D%80.png" alt="多寄存器寻址"></p>
+<h4 id="堆栈寻址"><a href="#堆栈寻址" class="headerlink" title="堆栈寻址"></a>堆栈寻址</h4><p>向上生长：向高地址方向生长，称为递增堆栈。</p>
+<p>STMXX是存入到主存，是入栈操作；</p>
+<p>LDMXX是从主存读出到寄存器，是出栈操作。</p>
+<h4 id="相对寻址"><a href="#相对寻址" class="headerlink" title="相对寻址"></a>相对寻址</h4><h3 id="ARM-指令集-1"><a href="#ARM-指令集-1" class="headerlink" title="ARM 指令集"></a>ARM 指令集</h3><h4 id="分支指令"><a href="#分支指令" class="headerlink" title="分支指令"></a>分支指令</h4><p>写汇编程序时，可以跳转到一个绝对地址，如:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">B 0x1234</span><br></pre></td></tr></table></figure>
+
+<p>注： B #0x1234是错误的</p>
+<p>例：已知寄存器 R0 中存放了数据 a，寄存器 R1 中存放了数据 b，编写一个程序段，求取 a 和 b 的最大公约数并将其存入寄存器 R0。</p>
+<p>先写一个 C 语言版本的：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">gcd</span><span class="params">(<span class="type">int</span> a, <span class="type">int</span> b)</span> &#123;</span><br><span class="line">    <span class="keyword">while</span> (a != b) &#123;</span><br><span class="line">        <span class="keyword">if</span> (a &gt; b) &#123;</span><br><span class="line">            a = a - b;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            b = b - a;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> a;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>转换成对应的汇编指令：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">gcd</span><br><span class="line">CMP R0, R1</span><br><span class="line">SUBGT R0, R0, R1</span><br><span class="line">SUBLT R1, R1, R0</span><br><span class="line">BNE gcd</span><br><span class="line">MOV PC LR</span><br></pre></td></tr></table></figure>
+
+<p>B和BL的区别在于：BL在跳转之前会把BL指令的下一条指令地址（断点地址）保存到连接寄存器 LR（R14），因此程序在必要的时候可以通过将 LR 的内容加载到 PC 中，使程序返回到跳转点。</p>
+<p>BL 指令经常被用来调用一个子程序。</p>
+<p>BX 功能：跳转到指令中所指定的目标地址，并实现状态切换。</p>
+<p>BLX 指令的功能是：把程序跳转到指令中所指定的目标地址继续执行，并同时将处理器的工作状态从ARM状态切换到Thumb状态，并将下一条的地址保存到寄存器 LR 中。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">    ; 主程序</span><br><span class="line">    MOV R0, #48        ; 示例输入：R0 = 48</span><br><span class="line">    MOV R1, #18        ; 示例输入：R1 = 18</span><br><span class="line">    BL gcd             ; 调用 gcd 子程序</span><br><span class="line">    ; 结果在 R0 中（这里是 6）</span><br><span class="line">    B end              ; 跳转到程序结束</span><br><span class="line"></span><br><span class="line">gcd:</span><br><span class="line">    CMP R0, R1         ; 比较 R0 和 R1</span><br><span class="line">    SUBGT R0, R0, R1   ; 如果 R0 &gt; R1，则 R0 = R0 - R1</span><br><span class="line">    SUBLT R1, R1, R0   ; 如果 R1 &gt; R0，则 R1 = R1 - R0</span><br><span class="line">    BNE gcd            ; 如果 R0 != R1，继续循环</span><br><span class="line">    BX LR              ; 返回到调用者（使用 BX LR 替代 MOV PC, LR）</span><br><span class="line"></span><br><span class="line">end:</span><br><span class="line">    ; 程序结束（可以添加停止指令，如死循环）</span><br><span class="line">    B end</span><br></pre></td></tr></table></figure>
+
+<h4 id="数据处理指令"><a href="#数据处理指令" class="headerlink" title="数据处理指令"></a>数据处理指令</h4><p>主要完成寄存器中数据的算术和逻辑运算操作。</p>
+<ul>
+<li>操作数来源：所有的操作数要么来自寄存器，要么来自立即数，不会来自存储器。</li>
+<li>操作结果：如果有结果，则结果一定是为32位宽、或64位宽（长乘法指令），并且放在一个或两个寄存器中，不会写入存储器。</li>
+<li>有第二个操作数（除了乘法指令） Operand2 ：切记其三种形式：立即数、寄存器、寄存器移位。</li>
+<li>乘法指令的操作数：全部是寄存器。</li>
+</ul>
+<p><img src="/../images/ARM-%E5%A4%84%E7%90%86%E5%99%A8/%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86%E6%8C%87%E4%BB%A4.png" alt="数据处理指令"></p>
+<p>指令中可以选择s后缀，以影响状态标志。但是比较指令（CMP和CMN）和测试指令(TST和TEQ)不需要后缀S，它们总会直接影响CPSR中的状态标志。</p>
+<p>ADC——带进位加法指令：ADC指令将operand2的数据与Rn的值相加，再加上CPSR中的C条件标志位，结果保存到Rd寄存器。</p>
+<p>例：有 两个128位数，第一个数由高到低存放在寄存器R7—R4 中，第二个数由高到低存放在寄存器 R11—R8 中，</p>
+<p>请编写程序把两个数相加，运算结果由高到低存放到寄存器R3~R0中。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">ADDS R0，R4，R8 ；加低位字，不带进位</span><br><span class="line">ADCS R1，R5，R9 ；加第二个字，带进位</span><br><span class="line">ADCS R2，R6，R10 ；加第三个字，带进位</span><br><span class="line">ADCS R3，R7，R11 ；加第四个字，带进位</span><br></pre></td></tr></table></figure>
+
+<p>SBC——带进位减法指令（81）</p>
+<p>CMP</p>
+<h4 id="存储器访问指令"><a href="#存储器访问指令" class="headerlink" title="存储器访问指令"></a>存储器访问指令</h4><p>基本的加载&#x2F;存储指令仅有5条，分为3种：</p>
+<p>— LDR和STR，单寄存器加载&#x2F;存储指令</p>
+<p>— LDM和STM，多寄存器加载&#x2F;存储指令</p>
+<p>— SWP，寄存器和存储器数据交换指令</p>
+<p>PC（即R15）</p>
+<p>已知（R0）&#x3D;0X00000000和（R1）&#x3D;0X00009000，并已知在存储器中首地址为 0X00009000 的区域中存放了数</p>
+<p>据0X01010101，在首地址为 0X00009004 的区域存放了数据 0X02020202。</p>
+<p>试写出执行了指令 LDR R0，[R1，#4] 后R0 和 R1 中的数据。</p>
+<p>（R0）&#x3D; 0X02020202 （R1）&#x3D; 0X00009000</p>
+<p>试写出执行了指令 LDR R0，[R1，#4]！后的 R0 和 R1 中的数据。</p>
+<p>（R0）&#x3D; 0X02020202 （R1）&#x3D;0X00009004</p>
+<h4 id="协处理器指令（了解）"><a href="#协处理器指令（了解）" class="headerlink" title="协处理器指令（了解）"></a>协处理器指令（了解）</h4><h4 id="杂项指令"><a href="#杂项指令" class="headerlink" title="杂项指令"></a>杂项指令</h4><p><span style="color: #0000FF; text-decoration: underline; font-style: italic; font-weight: bold;">例题：</span></p>
+<p><span style="color: green;">一、算数逻辑运算指令的应用</span></p>
+<p>例2：64位数据运算</p>
+<p>假设R0和R1存放一个64位数据，R0中存放数据的低32位；R2和R3中存放另一个64位数据，R2中存放数据的低32位。对这两个64位数进行加、减和比较运算。（R1，R0）、（R3，R2）</p>
+<p>①两个64位数据的加法运算，结果保存到R0和R1中。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ADDS R0, R0, R2  ;低32位相加，设置CPSR的C标志位。</span><br><span class="line">ADC R1, R1, R3 ;高32位的带位相加</span><br></pre></td></tr></table></figure>
+
+<p>②两个64位数据的减法运算，结果保存到R0和R1中。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">SUBS R0, R0, R2 ;低32位相减，设置CPSR的C标志位。</span><br><span class="line">SBC R1, R1, R3 ;高32位的带位相减</span><br></pre></td></tr></table></figure>
+
+<p>③两个64位数据的比较操作，并设置CPSR中的条件标志位。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">CMP R1, R3 ;比较高32位</span><br><span class="line">CMPEQ R0, R2 ;如果高32位相等，比较低32位</span><br></pre></td></tr></table></figure>
+
+<p>例3：转换内存中数据存储方式</p>
+<p>将寄存器R0中的数据存储方式转换成另一种存储方式。指令执行前R0中数据存储方式为：R0&#x3D;A,B,C,D；指令执行后R0中数据存储方式为：R0&#x3D;D,C,B,A。</p>
+<p><span style="color: green;">二、跳转指令的应用</span></p>
+<p>例3：循环语句</p>
+<p>将内存中从0x400800开始的100个字数据相加，其结果存于R3、R2中（R3中为高32位）。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">	LDR R0, =0x400800</span><br><span class="line">	MOV R1, #100 ;循环计数器</span><br><span class="line">	MOV R2, #0 ;用于低32位累加</span><br><span class="line">	MOV R3, #0 ;用于高32位累加</span><br><span class="line">loop</span><br><span class="line">	LDR R4, [R0], #4</span><br><span class="line">	ADDS R2, R2, R4</span><br><span class="line">	ADC R3, R3, #0</span><br><span class="line">	SUBS R1, R1, #1</span><br><span class="line">	BNE loop;循环计数器不为0,跳到loop继续执行</span><br></pre></td></tr></table></figure>
+
+<p>例4：链表操作中的条件码应用</p>
+<p>在链表中搜索与某一数据相等的元素。</p>
+<p>链表的每个元素包括两个字，第1个字中包含一个字节数据；第2个字中包含指向下一个链表元素的指针，当这个指针为0时表示链表结束。</p>
+<p>代码执行前R0指向链表的头元素，R1中存放将要搜索的数据；代码执行后R0指向第1个匹配的元素，或者当没有匹配元素时，R0为0。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">SEARCH</span><br><span class="line">	CMP R0,#0 ;R0指针是否为空</span><br><span class="line">	LDRNEB R2,[R0] ;读取当前元素中的字节数据</span><br><span class="line">	CMPNE R1,R2 ;判断数据是否为搜索的数据</span><br><span class="line">	LDRNE R0,[R0,#4] ;如果不是,指针R0指向下一个元素</span><br><span class="line">	BNE SEARCH ;跳转到search执行</span><br><span class="line">	MOV PC,LR ;搜索完成，程序返回</span><br></pre></td></tr></table></figure>
+
+<p><span style="color: #0000FF; text-decoration: underline; font-style: italic; font-weight: bold;">作业题：</span></p>
+<p><strong>一、ARM</strong> <strong>指令分为几类？分别是什么？</strong></p>
+<p>ARM 指令有五类：分支指令、数据处理指令、存储访问指令、协处理器指令和杂项指令五类。</p>
+<p><strong>二、ARM 指令有几种寻址方式？分别是什么？</strong></p>
+<p>ARM 指令有八种寻址方式：立即数寻址、寄存器寻址、寄存器移位寻址、寄存器间接寻址、基址变址寻址、多寄存器寻址、堆栈寻址、相对寻址。</p>
+<p><strong>三、单选</strong></p>
+<ol>
+<li>下列指令合法的是（ B ）<span style="color: red;">8位位图</span></li>
+</ol>
+<p>A．MOV R0,#0x132 B．MOV R0,#0x264 </p>
+<p>C．MOV R0,#0x266 D．MOV R0,#0x4C8</p>
+<ol start="2">
+<li>汇编指令 MOV R0,#0x4800, 经编译后，所得到的机器码的低 12 位是（ A ）</li>
+</ol>
+<p>A．0xB12 B．0xB24 C．0xA09 D．0xC48</p>
+<ol start="3">
+<li>假设 R1 寄存器中的值为 ADR，则在执行了指令：STMIA R1!, {R3-R5,R8} 指令后，R1 的</li>
+</ol>
+<p>内容为（ A ）。</p>
+<p>A、R1&#x3D;ADR+16 B、R1&#x3D;ADR+12 </p>
+<p>C、R1&#x3D;ADR-16 D、R1&#x3D;ADR-12</p>
+<ol start="4">
+<li>假设 R1 寄存器中的值为 ADR，则在执行了指令：STMDB R1!, {R3-R5,R8} 指令后，R5</li>
+</ol>
+<p>寄存器中的内容将存放在地址为（ B ）的存储单元中：</p>
+<p>A、ADR-4 B、ADR-8 C、ADR-12 D、ADR-16</p>
+<ol start="5">
+<li>假设 SP 寄存器中的值为 ADR，则在执行了指令：STMED SP!, {R3-R5,LR} 指令后，SP 的</li>
+</ol>
+<p>内容为（ C ）。</p>
+<p>A、ADR+16 B、ADR+12 C、ADR-16 D、ADR-12</p>
+<ol start="6">
+<li>假设 SP 寄存器中的值为 ADR，则在执行了指令：STMED SP!, {R3-R5,LR} 指令后，LR 寄</li>
+</ol>
+<p>存器中的内容将存放在地址为（ A ）的存储单元中。</p>
+<p>A、ADR B、ADR-4 C、ADR-12 D、ADR-16</p>
+<ol start="7">
+<li>假设 SP 寄存器中的值为 ADR，则在执行了指令：LDMEA SP!, {R3-R5,PC} 指令后，地</li>
+</ol>
+<p>址为（ B ）的存储单元的值，将出栈到 PC 寄存器中。</p>
+<p>A、ADR B、ADR-4 C、ADR-12 D、ADR-16</p>
+<h2 id="ARM-伪指令及编程基础"><a href="#ARM-伪指令及编程基础" class="headerlink" title="ARM 伪指令及编程基础"></a>ARM 伪指令及编程基础</h2><ol>
+<li>什么是伪指令？</li>
+</ol>
+<p>人们设计了一些专门用于指导汇编器进行汇编工作的指令，由于这些指令不形成机器码指令，它们只是在汇编器进行汇编工作的过程中起作用，所以被叫做伪指令。</p>
+<ol start="2">
+<li>伪指令有两个特征：①伪指令是一条指令；②伪指令没有指令代码。</li>
+<li>伪指令的作用：①程序定位的作用；②为非指令代码进行定义；③对程序完整性做标注；④有条件的引导程序段。</li>
+</ol>
+<h3 id="通用伪指令"><a href="#通用伪指令" class="headerlink" title="通用伪指令"></a>通用伪指令</h3><p>在 ARM 汇编程序语言中，有如下几种伪指令：</p>
+<ul>
+<li>符号定义</li>
+<li>数据定义</li>
+<li>汇编控制</li>
+<li>其它</li>
+</ul>
+<h4 id="为变量定义或赋值的伪指令"><a href="#为变量定义或赋值的伪指令" class="headerlink" title="为变量定义或赋值的伪指令"></a>为变量定义或赋值的伪指令</h4><p><span style="color: green;">一、声明全局变量伪指令 GBLA、GBLL和GBLS</span></p>
+<p>GBLA 定义一个 全局数字变量，其默认初值为 0 ；</p>
+<p>GBLL 定义一个 全局逻GBLS 定义一个 全局字符串变量，其默认初值为 空 ；辑变量 ，其默认初值为 FALSE（假）；</p>
+<p><span style="color: green;">二、声明局部变量伪指令LCLA、LCLL和LCLS</span></p>
+<p>LCLA、LCLL和LCLS伪指令用于定义一个ARM程序中的局部变量，并将其初始化。</p>
+<p>LCLA 定义一个局部数字变量，其默认初值为 0；LCLL 定义一个局部逻辑变量，其默认初值为 FALSE（假）；LCLS 定义一个局部字符串变量，其默认初值为 空。</p>
+<p>局部变量 的变量名在变量作用范围内必须具有唯一性。在默认情况下，局部变量只在定义该变量的程序段内有效。</p>
+<p><span style="color: green;">三、变量赋值伪指令 SETA、SETL和SETS</span></p>
+<p>伪指令SETA、SETL和SETS 用于给一个已经定义的全局变量或局部变量进行赋值。 注：要顶格写</p>
+<p>SETA伪指令用于给一个数字变量赋值；SETL伪指令用于给一个逻辑变量赋值；SETS伪指令用于给一个字符串变量赋值；</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Test1 SETA 0xAA</span><br></pre></td></tr></table></figure>
+
+<p><span style="color: green;">四、定义寄存器列表伪指令</span></p>
+<p>指令 LDM&#x2F;STM 需要使用一个比较长的寄存器列表，使用伪指令 RLIST 可对一个列表定义一个统一的名称。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">LoReg RLIST &#123;R0-R7&#125; ；定义寄存器列表&#123;R0-R7&#125;</span><br><span class="line">					；的名称为LoReg</span><br><span class="line">STMFD SP!, LoReg 	；堆栈操作使用寄存器列表</span><br><span class="line">RegList RLIST &#123;R0-R5,R8,R10&#125; ；将寄存器列表名称定义</span><br><span class="line">							 ；为RegList，可在ARM指令LDM/STM中</span><br><span class="line">							 ；通过该名称访问寄存器列表</span><br></pre></td></tr></table></figure>
+
+<h4 id="数据定义伪指令"><a href="#数据定义伪指令" class="headerlink" title="数据定义伪指令"></a>数据定义伪指令</h4><p>1、 LTORG</p>
+<p>用于声明一个数据缓冲池（文字池）的开始。</p>
+<p>其目的是，防止在程序中使用LDR之类的指令访问时，可能产生的越界。</p>
+<p>通常把数据缓冲池放在代码段的最后面，或放在无条件转移指令或子程序返回指令之后，这样处理器就不会错误地将数据缓冲池中的数据当作指令来执行。</p>
+<p>2、MAP 和 FIELD</p>
+<p>MAP 用于定义一个结构化的内存表的首地址。FIELD 伪指令用于定义一个结构化内存表中的数据域。MAP 通常和 FIELD 伪指令相配合来定义一个结构化的内存表。</p>
+<p>3、SPACE</p>
+<p>SPACE伪指令用于分配一片连续的存储区域并初始化为 0</p>
+<p>4、DCB分配内存单元并初始化</p>
+<p>5、DCD和DCDU分配存储单元并初始化</p>
+<h4 id="控制程序流向伪指令"><a href="#控制程序流向伪指令" class="headerlink" title="控制程序流向伪指令"></a><strong>控制程序流向伪指令</strong></h4><h4 id="其他伪指令"><a href="#其他伪指令" class="headerlink" title="其他伪指令"></a>其他伪指令</h4><p>1、定义对齐方式伪指令 ALIGN</p>
+<p>2、段定义伪指令AREA</p>
+<p>AREA用于定义一个代码段或数据段。常用的属性如下：</p>
+<p><img src="/../images/ARM-%E5%A4%84%E7%90%86%E5%99%A8/%E5%B8%B8%E7%94%A8%E5%B1%9E%E6%80%A7.png" alt="常用属性"></p>
+<p>一个汇编语言程序 至少 要有一个代码段。</p>
+<p>3、CODE16 和 CODE32</p>
+<p>4、定义程序入口点伪指令 ENTRY</p>
+<p>一个程序（可包含多个源文件）中至少要有一个ENTRY（可以有多个ENTRY，当有多个ENTRY入口时，程序的真正入口点由链接器指定），但一个源文件中最多只能有一个ENTRY（可以没有ENTRY）。</p>
+<p>5、汇编结束伪指令 END</p>
+<p>6、外部可引用符号声明伪指令 EXPORT（或GLOBAL）</p>
+<p>7、IMPORT</p>
+<p>8、EXTERN</p>
+<p>9、等效伪指令 EQU（<code>#define</code>）</p>
+<p>10、GET（或INCLUDE）</p>
+<h3 id="与ARM指令相关的宏指令"><a href="#与ARM指令相关的宏指令" class="headerlink" title="与ARM指令相关的宏指令"></a>与ARM指令相关的宏指令</h3><h4 id="宏"><a href="#宏" class="headerlink" title="宏"></a>宏</h4><p>1、MACRO 和 MEND</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">MACRO ；宏定义指令</span><br><span class="line">$MDATA MAXNUM $NUM1,$NUM2 ；主标号，宏名，参数</span><br><span class="line">语句段</span><br><span class="line">$MDATD.WAY1 ； 宏内标号，必须写为“主标号.宏内标号”</span><br><span class="line">语句段</span><br><span class="line">$MDATA.WAY2 ； 宏内标号</span><br><span class="line">语句段</span><br><span class="line">MEND ； 宏结束指令</span><br><span class="line">主程序中调用该宏：</span><br><span class="line">Lab1 MAXNUM 0x01, 0x02</span><br></pre></td></tr></table></figure>
+
+<p>2、MEXIT</p>
+<p>MEXIT 用于从宏定义中跳转出去。</p>
+<h4 id="宏指令"><a href="#宏指令" class="headerlink" title="宏指令"></a>宏指令</h4><p>在ARM中，还有一种汇编器内置的无参数和标号的宏——宏指令。</p>
+<p>在汇编时，这些宏指令被替换成一条或两条真正的ARM或 Thumb 指令。ARM宏指令有四条，分别是：</p>
+<p>• ADR：小范围的地址读取宏指令；</p>
+<p>• ADRL：中等范围的地址读取宏指令；</p>
+<p>• LDR：大范围的地址读取宏指令；</p>
+<p>• NOP：空操作宏指令。</p>
+<p>ARM汇编程序设计模板要点</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">AREA example,CODE,READONLY</span><br><span class="line">;定义代码段，一个ARM汇编程序至少有一个代码段</span><br><span class="line">ENTRY ;定义程序入口点</span><br><span class="line">……</span><br><span class="line">……</span><br><span class="line">END ;汇编语言程序结束</span><br></pre></td></tr></table></figure>
+
+<p><span style="color: #0000FF; text-decoration: underline; font-style: italic; font-weight: bold;">例题：</span></p>
+<p>该程序执行后：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">	AREA blockcopy,CODE,READONLY </span><br><span class="line">	ENTRY</span><br><span class="line">	LDR R1,=ftt ;将符号ftt的地址加载到寄存器R1中。</span><br><span class="line">	LDR R2,=ftt2 </span><br><span class="line">	LDR R3,[R1] </span><br><span class="line">	LDR R4,[R2] </span><br><span class="line">	LDR R5,[R1, #4] </span><br><span class="line">	LDR R6,[R2, #4] </span><br><span class="line">Src DCD 1,2,3,4,5,6,7,8,1,2,3,4,5,6,7,8,1,2,3,4</span><br><span class="line">StrMem DCB “ABCS”,0 </span><br><span class="line">	MAP Src</span><br><span class="line">ftt FIELD 8</span><br><span class="line">ftt2 FIELD 8 </span><br><span class="line">	END</span><br></pre></td></tr></table></figure>
+
+<p>R3&#x3D; 1 ，R4&#x3D; 3 ，R5&#x3D; 2 ，R6&#x3D; 4</p>
+<p>本门课中（包括考试和作业）如果没有特殊说明，存储方式均默认为小端模式</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">	AREA blockcopy,CODE,READONLY </span><br><span class="line">	ENTRY</span><br><span class="line">	ARM</span><br><span class="line">	LDR R0,=ss1</span><br><span class="line">	LDR R1,=ss2</span><br><span class="line">	LDR R4,[R0]</span><br><span class="line">	ALIGN 4</span><br><span class="line">ss1 DCB 1 </span><br><span class="line">	ALIGN 4,3 </span><br><span class="line">ss2 DCB 3 </span><br><span class="line">	END</span><br></pre></td></tr></table></figure>
+
+<p>该段程序执行完成后，假如R0的值为0x10001000，则R1&#x3D;0x10001003 ，R4&#x3D;0x03000001</p>
+<p><span style="color: #0000FF; text-decoration: underline; font-style: italic; font-weight: bold;">作业题：</span></p>
+<p><strong>六、在列表中查找指定的数据</strong></p>
+<p>要求如下：</p>
+<p>(1) 定义一个存储单元首地址名为 Start 的数据列表，该数据列表包含 5 个字存储单元。第一个单元是列表中数据的数量，其值为 4，即列表中包含 4 个数据。后面四个单元存储的是列表中的 4 个数据：0x0138A, 0x0A21DC, 0x1F5376, 0x9018613。</p>
+<p>(2) 定义一个名为 NewItem 的字存储单元，该单元中包含要查找的数据，该例要求是0x1F5376</p>
+<p>(3) 要求编写一个程序，在 Start 数据列表中查找是否包含 NewItem 单元中的数据。如果包含则把该数据在列表中的位置序号（1、2、3、4）存储到 Index 字存储单元中。否则在Index 字存储单元中存储 0xFFFFFFFF。</p>
+<p>(4) 要求 Start 的数据列表和 NewItem 的字存储单元定义在代码段中（只读的 ROM 区），而 Index 字存储单元要定义在一个名为 mydata 的数据段中（可读写的 RAM 区）。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">	AREA myprog, CODE, REDFONLY</span><br><span class="line">	ENTRY</span><br><span class="line"></span><br><span class="line">Main</span><br><span class="line">	LDR R0, =Start       ; R0 = Start 的地址</span><br><span class="line">	LDR R1, NewItem      ; R1 = NewItem 的值</span><br><span class="line">	LDR R3, Start        ; R3 = Start 的第一个值</span><br><span class="line">	CMP R3, #0           ; 检查 R3 是否为 0</span><br><span class="line">	BEQ Missing          ; 如果 R3 = 0，跳转到 Missing</span><br><span class="line">	</span><br><span class="line">	LDR R4, [R0, #4]!    ; R4 = Start[1]，R0 增加 4</span><br><span class="line">	MOV R2, #1           ; R2 = 1（索引）</span><br><span class="line">Loop</span><br><span class="line">	CMP R1, R4           ; 比较 R1 和 R4</span><br><span class="line">	BEQ Done             ; 如果相等，跳转到 Done</span><br><span class="line">	SUBS R3, R3, #1      ; R3 -= 1（计数器）</span><br><span class="line">	LDR R4, [R0, #4]!    ; R4 = 下一个元素，R0 增加 4</span><br><span class="line">	ADD R2, #1           ; R2 += 1（索引）</span><br><span class="line">	BNE Loop             ; 如果 R3 != 0，继续循环</span><br><span class="line">	</span><br><span class="line">Missing</span><br><span class="line">	MOV R2, #0xFFFFFFFF</span><br><span class="line">	</span><br><span class="line">Done</span><br><span class="line">	LDR R5, =Index       ; R5 = Index 的地址</span><br><span class="line">	STR R2, [R5]         ; 存储 R2 到 Index</span><br><span class="line">	SWI 0x11             ; 退出程序</span><br><span class="line"></span><br><span class="line">Start</span><br><span class="line">	DCD 0x4, 0x0138A, 0x0A21DC, 0x1F5376, 0x9018613]</span><br><span class="line">NewItem</span><br><span class="line">	DCD 0x1F5376</span><br><span class="line">	</span><br><span class="line">	AREA mydata, NOINIT</span><br><span class="line">	MAP 0x40000000</span><br><span class="line">Index</span><br><span class="line">	FIELD 4</span><br><span class="line">	END</span><br></pre></td></tr></table></figure>
+
+<p><strong>九、试把如下 C 函数改写成 ARM指令函数。</strong></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">subxx</span><span class="params">(<span class="type">int</span> x, <span class="type">int</span> y)</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> x - y;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>改写为：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">	AREA TT, CODE, READONLY</span><br><span class="line">	EXPORT subxx</span><br><span class="line">subxx</span><br><span class="line">	SUBS R0, R0, R1</span><br><span class="line">	MOV PC, LR</span><br><span class="line">	END</span><br></pre></td></tr></table></figure>
+
+<p><strong>十、把下面的</strong> <strong>ARM</strong> <strong>指令函数改写成</strong> <strong>C</strong> <strong>语言函数。</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">	AREA tt, CODE, READONLY</span><br><span class="line">	EXPORT strcopy</span><br><span class="line">strcopy</span><br><span class="line">	LDRB R2, [R1], #1</span><br><span class="line">	STRB R2, [R0], #1 ;将 R2 中的字节写入 R0 指向的内存地址。</span><br><span class="line">	CMP R2, #0</span><br><span class="line">	BNE strcopy</span><br><span class="line">	MOV PC, LR</span><br><span class="line">	END</span><br></pre></td></tr></table></figure>
+
+<p>等效于</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">strcopy</span><span class="params">(<span class="type">char</span> *d, <span class="type">char</span> *s)</span> &#123;</span><br><span class="line">    <span class="keyword">while</span> (*s != <span class="string">&#x27;\0&#x27;</span>) &#123;</span><br><span class="line">        *d = *s;</span><br><span class="line">        d = d + <span class="number">1</span>;</span><br><span class="line">        s = s + <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    *d = *s;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<h2 id="期中考试"><a href="#期中考试" class="headerlink" title="期中考试"></a>期中考试</h2><h3 id="判断对错题（30分）"><a href="#判断对错题（30分）" class="headerlink" title="判断对错题（30分）"></a>判断对错题（30分）</h3><ol>
+<li>精简指令集RISC相对复杂指今集CISC,具有更少的指令，指令实现的功能更简单，因此实现同样一个复杂功能，采用RISC指令编写的程序比采用C1SC指令偏写的程序具有更少的代码量。(8分) <strong>错误</strong></li>
+<li>实时操作系统中的任务的硅起态是指任务进入任务等待队列，等待通过调度转为运行状态。（5分）<strong>错误</strong></li>
+<li>ARM体系结构与纯粹的RISC体系结构不完全相同。(12分) <strong>正确</strong></li>
+<li>在 ARM 状态下， 任一时刻都可以访问到 16 个通用寄存器和 2 个状态寄存器。(5 分) <strong>错误</strong></li>
+</ol>
+<h3 id="阅读程序并填空题（39分）"><a href="#阅读程序并填空题（39分）" class="headerlink" title="阅读程序并填空题（39分）"></a>阅读程序并填空题（39分）</h3><p>（注：假设 RAM 区存储单元上电后缺省值都为 0）</p>
+<p>1、阅读程序，并根据要求填空。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">AREA myprog, CODE, READONLY</span><br><span class="line"></span><br><span class="line">LDR R0, =MyData</span><br><span class="line">LDR R1, =Des_RAM</span><br><span class="line"></span><br><span class="line">STRB R4, [R3,#-1]</span><br><span class="line">LDR R4, [R1]</span><br><span class="line">B</span><br><span class="line">LDR R2, =FLD2</span><br><span class="line">LDR R3, =FLD_C</span><br><span class="line">SUB R6, R2, R0</span><br><span class="line">SUB R7, R3, R1</span><br><span class="line">LDR R4, [R2,#4]</span><br><span class="line">STR R4, [R3,#-4]!</span><br><span class="line">SUB R8, R2, R0</span><br><span class="line">SUB R9, R3, R1</span><br><span class="line">LDR R4, [R2],#-4</span><br><span class="line">STR R4, [R3,#-4]!</span><br><span class="line">MOV R12, #4</span><br><span class="line">LDR R4, [R0,R12,LSL #02]</span><br><span class="line">STR R4, [R3,#-4]</span><br><span class="line">MOV R12, #5</span><br><span class="line">LDRB R4, [R0,R12,LSL #02]</span><br><span class="line"></span><br><span class="line">MyData DCD 1, 2, 3, 4, 5, 6, 7, 8, 9, 0xA, 0xB,</span><br><span class="line">DCD 0xC,0xD, 0xE, 0xF</span><br><span class="line">MAP MyData</span><br><span class="line">FLD1 FIELD 4</span><br><span class="line">FLD2 FIELD 8</span><br><span class="line">FLD3 FIELD 8</span><br><span class="line">AREA mydata, DATA, READWRITE</span><br><span class="line">Des_RAM SPACE 40</span><br><span class="line">MAP Des_RAM</span><br><span class="line">FLD_A FIELD 4</span><br><span class="line">FLD_B FIELD 8</span><br><span class="line">FLD_C FIELD 8</span><br><span class="line">END</span><br></pre></td></tr></table></figure>
+
+<p>上述程序执行后，下列各寄存器的值分别是多少？R6 &#x3D; 4，R7 &#x3D; 12，R8 &#x3D; 4，R9 &#x3D; 8。</p>
+<p>从 Des_RAM 地址开始的连续 3 个字单元的内容是：0x6000005，2，3。</p>
+<p>2、阅读程序，并根据要求填空。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">	GBLA Len</span><br><span class="line">	GBLS StrA</span><br><span class="line">	GBLS StrB</span><br><span class="line">	GBLS StrC</span><br><span class="line">	GBLL VL</span><br><span class="line">StrA SETS &quot;My String!&quot;</span><br><span class="line">VL SETL &#123;True&#125;</span><br><span class="line">StrB SETS :STR: 0x12345678</span><br><span class="line">StrC SETS StrA :CC: StrB :RIGHT: 3</span><br><span class="line">Len SETA :LEN: StrC</span><br><span class="line">DAdr EQU DataA</span><br><span class="line">	AREA mycode, CODE, READONLY </span><br><span class="line">	ENTRY </span><br><span class="line">	LDR R0, =DAdr</span><br><span class="line">	ADRR1, StrS1</span><br><span class="line">	LDR R2, =StrS2</span><br><span class="line">	LDR R3, =DataB</span><br><span class="line">	LDRB R4,[R0]</span><br><span class="line">	LDR R5, =Len</span><br><span class="line">	MOV R6, #?StrS2</span><br><span class="line">End1 B End1</span><br><span class="line">DataA DCD 0x11223344</span><br><span class="line">StrS1 DCB StrB,0</span><br><span class="line">	ALIGN 4</span><br><span class="line">StrS2 DCB &quot;$StrC$VL$Len&quot;,0</span><br><span class="line">DataB DCD 0x01</span><br><span class="line">	END</span><br></pre></td></tr></table></figure>
+
+<p>假设上述程序执行后，寄存器 R0 的值为：0x20，则下列各寄存器的值分别是多少？</p>
+<p>R1 &#x3D; 36，R2 &#x3D; 48，R3 &#x3D; 64，R4 &#x3D; 68，R5 &#x3D; 3。</p>
+<p>起始地址为 Str52 的连续内存单元中，所存放的字符串为（注：该字符串以 0 为结束标记）：678T00000003。</p>
+<h3 id="编程题（31分）"><a href="#编程题（31分）" class="headerlink" title="编程题（31分）"></a>编程题（31分）</h3><p>假设系统采用S3C2440处理器，要求实现C语言和汇编语言的混合编程。</p>
+<p>（1）使用汇编语言实现一个名为 MYFUN 的子程序：</p>
+<ol>
+<li>该函数有4个输入的int类型参数</li>
+<li>在该汇编子程序中调用C函数<code>cg()</code>，以实现下面的功能：<code>int MYFUN(int a, int b, int c, int d) &#123;return -cg(c,d,a,b,a+c,b+d)&#125;</code></li>
+<li>在C语言的main函数中调用该汇编MYFUN函数。<u>注：汇编所需的启动代码不用编写，只需要编写MYFUN函数实现部分，假设该MYFUN函数在一个名为ARMcode.s的汇编源程序中实现。ARMcode.s需要包含完整汇编程序结构，需要保护和恢复现场。</u>（18分）</li>
+</ol>
+<p>（2）编写完整的C语言程序：</p>
+<ol>
+<li>使用嵌入式汇编方式，编写<code>int FunXY(int x, int y)</code>，要求执行：<ul>
+<li>把参数 x 按位取反后，再进行循环右移6位的操作，得到中间结果a，</li>
+<li>把参数 y 取绝对值后，再与a进行逻辑异或操作。其结果作为函数的返回值返回。</li>
+</ul>
+</li>
+<li>在 C 语言的 <code>main</code> 函数中调用汇编函数 MYFUN，输入的参数分别为 14，25，38，49。</li>
+<li>在 C 语言程序的 <code>main</code> 函数中，编写一段代码，用于判断当前 CPU 的工作状态是 ARM 态还是 Thumb 态。如果是 ARM 态，则把变量 Tflag 设置为 1，否则把变量 Tflag 设置为 0。</li>
+<li>在 C 语言程序的 <code>main</code> 函数中调用函数 FunXY，函数的输入参数为：0x12345678 和 -2。</li>
+</ol>
+<p>（3）注意：要遵守 ATPCS 规范，程序结构要完整。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">cg</span><span class="params">(<span class="type">int</span> a1, <span class="type">int</span> a2, <span class="type">int</span> a3, inta4, <span class="type">int</span> a5, <span class="type">int</span> a6)</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> (a1+a2+a3+a4)*a5-a6;</span><br><span class="line">&#125;</span><br><span class="line"><span class="type">int</span> Tflag;</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="实验一-指令系统及寻址方式"><a href="#实验一-指令系统及寻址方式" class="headerlink" title="实验一 指令系统及寻址方式"></a>实验一 指令系统及寻址方式</h2><ul>
+<li>搭建实验环境</li>
+</ul>
+<p>安装 MDK Keil uVision5 及 MDK79525(MDK5-ARM9 支持包)，学会在 Keil 中编程 ARM 汇编代码文件，掌握 rebuild 和 debug 等基本操作。</p>
+<ul>
+<li>实验内容</li>
+</ul>
+<p>对40多条常用的指令，使用不同的寻址方式进行测试，并通过查看寄存器、存储器、程序状态寄存器的内容，检查是否与期望一致。</p>
+<p><img src="/../images/ARM-%E5%A4%84%E7%90%86%E5%99%A8/%E5%AE%9E%E9%AA%8C%E4%B8%80.png" alt="实验一"></p>
+</div><div class="article-licensing box"><div class="licensing-title"><p>「UESTC II」Advanced RISC Machine</p><p><a href="http://aununo.xyz/2025/04/14/ARM-处理器/">http://aununo.xyz/2025/04/14/ARM-处理器/</a></p></div><div class="licensing-meta level is-mobile"><div class="level-left"><div class="level-item is-narrow"><div><h6>Author</h6><p>Aununo Gan</p></div></div><div class="level-item is-narrow"><div><h6>Posted on</h6><p>2025-04-14</p></div></div><div class="level-item is-narrow"><div><h6>Updated on</h6><p>2025-04-30</p></div></div><div class="level-item is-narrow"><div><h6>Licensed under</h6><p><a class="icon" rel="noopener" target="_blank" title="Creative Commons" href="https://creativecommons.org/"><i class="fab fa-creative-commons"></i> </a><a class="icon" rel="noopener" target="_blank" title="Attribution" href="https://creativecommons.org/licenses/by/4.0/"><i class="fab fa-creative-commons-by"></i> </a><a class="icon" rel="noopener" target="_blank" title="Noncommercial" href="https://creativecommons.org/licenses/by-nc/4.0/"><i class="fab fa-creative-commons-nc"></i> </a></p></div></div></div></div></div><hr style="height:1px;margin:1rem 0"><div class="level is-mobile is-flex"><div class="article-tags is-size-7 is-uppercase"><i class="fas fa-tags has-text-grey"></i> <a class="link-muted" rel="tag" href="/tags/ARM/">ARM, </a><a class="link-muted" rel="tag" href="/tags/Computer-Architecture/">Computer Architecture </a></div></div><!--!--></article></div><div class="card"><div class="card-content"><h3 class="menu-label has-text-centered">Like this article? Support the author with</h3><div class="buttons is-centered"><a class="button donate" data-type="alipay"><span class="icon is-small"><i class="fab fa-alipay"></i></span><span>Alipay</span><span class="qrcode"><img src="/" alt="Alipay"></span></a><a class="button donate" href="/" target="_blank" rel="noopener" data-type="buymeacoffee"><span class="icon is-small"><i class="fas fa-coffee"></i></span><span>Buy me a coffee</span></a><a class="button donate" data-type="wechat"><span class="icon is-small"><i class="fab fa-weixin"></i></span><span>Wechat</span><span class="qrcode"><img src="https://pic1.imgdb.cn/item/6810a12858cb8da5c8d45496.png" alt="Wechat"></span></a></div></div></div><nav class="post-navigation mt-4 level is-mobile"><div class="level-end"><a class="article-nav-next level level-item link-muted" href="/2025/02/28/Baby-Group/"><span class="level-item">Group Theory</span><i class="level-item fas fa-chevron-right"></i></a></div></nav><!--!--></div><div class="column column-left is-4-tablet is-4-desktop is-3-widescreen  order-1 is-sticky"><div class="card widget" data-type="profile"><div class="card-content"><nav class="level" style="margin-bottom:1rem"><div class="level-item has-text-centered flex-shrink-1"><div><figure class="image is-128x128 mx-auto mb-2"><img class="avatar" src="/img/avatar.png" alt="Aununo"></figure><p class="title is-size-4 is-block" style="line-height:inherit;">Aununo</p><p class="is-size-6 is-block">问题出现我再告诉大家</p><p class="is-size-6 is-flex justify-content-center"><i class="fas fa-map-marker-alt mr-1"></i><span>Chengdu, China</span></p></div></div></nav><nav class="level menu-list is-mobile" style="margin-bottom:1rem"><a class="level-item has-text-centered is-marginless" href="/archives/"><div><p class="heading">Posts</p><div><p class="title">5</p></div></div></a><a class="level-item has-text-centered is-marginless" href="/categories/"><div><p class="heading">Categories</p><div><p class="title">4</p></div></div></a><a class="level-item has-text-centered is-marginless" href="/tags/"><div><p class="heading">Tags</p><div><p class="title">11</p></div></div></a></nav><div class="level"><a class="level-item button is-primary is-rounded" href="mailto:aununo@outlook.com" target="_blank" rel="noopener"><i class="fas fa-envelope"></i>  Email Me</a></div><div class="level is-mobile is-multiline"><a class="level-item button is-transparent is-marginless" target="_blank" rel="me noopener" title="Github" href="https://github.com/Aununo"><i class="fab fa-github"></i></a></div></div></div><div class="card widget" id="toc" data-type="toc"><div class="card-content"><div class="menu"><h3 class="menu-label">Catalogue</h3><ul class="menu-list"><li><a class="level is-mobile" href="#嵌入式系统基础"><span class="level-left"><span class="level-item">1</span><span class="level-item">嵌入式系统基础</span></span></a></li><li><a class="level is-mobile" href="#ARM-处理器及系统结构"><span class="level-left"><span class="level-item">2</span><span class="level-item">ARM 处理器及系统结构</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#ARM-处理器简介"><span class="level-left"><span class="level-item">2.1</span><span class="level-item">ARM 处理器简介</span></span></a></li><li><a class="level is-mobile" href="#ARM-处理器系列"><span class="level-left"><span class="level-item">2.2</span><span class="level-item">ARM 处理器系列</span></span></a></li><li><a class="level is-mobile" href="#ARM9-处理器内核"><span class="level-left"><span class="level-item">2.3</span><span class="level-item">ARM9 处理器内核</span></span></a></li><li><a class="level is-mobile" href="#ARM-处理器工作状态"><span class="level-left"><span class="level-item">2.4</span><span class="level-item">*ARM 处理器工作状态</span></span></a></li><li><a class="level is-mobile" href="#ARM-处理器运行模式"><span class="level-left"><span class="level-item">2.5</span><span class="level-item">*ARM 处理器运行模式</span></span></a></li><li><a class="level is-mobile" href="#ARM-寄存器"><span class="level-left"><span class="level-item">2.6</span><span class="level-item">*ARM 寄存器</span></span></a></li><li><a class="level is-mobile" href="#ARM-存储系统"><span class="level-left"><span class="level-item">2.7</span><span class="level-item">ARM 存储系统</span></span></a></li><li><a class="level is-mobile" href="#中断和异常的基本概念（不考）"><span class="level-left"><span class="level-item">2.8</span><span class="level-item">中断和异常的基本概念（不考）</span></span></a></li><li><a class="level is-mobile" href="#ARM-的异常"><span class="level-left"><span class="level-item">2.9</span><span class="level-item">*ARM 的异常</span></span></a></li></ul></li><li><a class="level is-mobile" href="#ARM-指令集"><span class="level-left"><span class="level-item">3</span><span class="level-item">ARM 指令集</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#ARM-指令集简介"><span class="level-left"><span class="level-item">3.1</span><span class="level-item">ARM 指令集简介</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#ARM-指令格式"><span class="level-left"><span class="level-item">3.1.1</span><span class="level-item">ARM 指令格式</span></span></a></li><li><a class="level is-mobile" href="#指令的条件码"><span class="level-left"><span class="level-item">3.1.2</span><span class="level-item">指令的条件码</span></span></a></li><li><a class="level is-mobile" href="#指令分类"><span class="level-left"><span class="level-item">3.1.3</span><span class="level-item">指令分类</span></span></a></li></ul></li><li><a class="level is-mobile" href="#ARM-指令的寻址方式"><span class="level-left"><span class="level-item">3.2</span><span class="level-item">ARM 指令的寻址方式</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#立即数寻址"><span class="level-left"><span class="level-item">3.2.1</span><span class="level-item">立即数寻址</span></span></a></li><li><a class="level is-mobile" href="#寄存器寻址"><span class="level-left"><span class="level-item">3.2.2</span><span class="level-item">寄存器寻址</span></span></a></li><li><a class="level is-mobile" href="#寄存器移位寻址"><span class="level-left"><span class="level-item">3.2.3</span><span class="level-item">寄存器移位寻址</span></span></a></li><li><a class="level is-mobile" href="#寄存器间接寻址"><span class="level-left"><span class="level-item">3.2.4</span><span class="level-item">寄存器间接寻址</span></span></a></li><li><a class="level is-mobile" href="#基址变址寻址"><span class="level-left"><span class="level-item">3.2.5</span><span class="level-item">基址变址寻址</span></span></a></li><li><a class="level is-mobile" href="#多寄存器寻址"><span class="level-left"><span class="level-item">3.2.6</span><span class="level-item">多寄存器寻址</span></span></a></li><li><a class="level is-mobile" href="#堆栈寻址"><span class="level-left"><span class="level-item">3.2.7</span><span class="level-item">堆栈寻址</span></span></a></li><li><a class="level is-mobile" href="#相对寻址"><span class="level-left"><span class="level-item">3.2.8</span><span class="level-item">相对寻址</span></span></a></li></ul></li><li><a class="level is-mobile" href="#ARM-指令集-1"><span class="level-left"><span class="level-item">3.3</span><span class="level-item">ARM 指令集</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#分支指令"><span class="level-left"><span class="level-item">3.3.1</span><span class="level-item">分支指令</span></span></a></li><li><a class="level is-mobile" href="#数据处理指令"><span class="level-left"><span class="level-item">3.3.2</span><span class="level-item">数据处理指令</span></span></a></li><li><a class="level is-mobile" href="#存储器访问指令"><span class="level-left"><span class="level-item">3.3.3</span><span class="level-item">存储器访问指令</span></span></a></li><li><a class="level is-mobile" href="#协处理器指令（了解）"><span class="level-left"><span class="level-item">3.3.4</span><span class="level-item">协处理器指令（了解）</span></span></a></li><li><a class="level is-mobile" href="#杂项指令"><span class="level-left"><span class="level-item">3.3.5</span><span class="level-item">杂项指令</span></span></a></li></ul></li></ul></li><li><a class="level is-mobile" href="#ARM-伪指令及编程基础"><span class="level-left"><span class="level-item">4</span><span class="level-item">ARM 伪指令及编程基础</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#通用伪指令"><span class="level-left"><span class="level-item">4.1</span><span class="level-item">通用伪指令</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#为变量定义或赋值的伪指令"><span class="level-left"><span class="level-item">4.1.1</span><span class="level-item">为变量定义或赋值的伪指令</span></span></a></li><li><a class="level is-mobile" href="#数据定义伪指令"><span class="level-left"><span class="level-item">4.1.2</span><span class="level-item">数据定义伪指令</span></span></a></li><li><a class="level is-mobile" href="#控制程序流向伪指令"><span class="level-left"><span class="level-item">4.1.3</span><span class="level-item">控制程序流向伪指令</span></span></a></li><li><a class="level is-mobile" href="#其他伪指令"><span class="level-left"><span class="level-item">4.1.4</span><span class="level-item">其他伪指令</span></span></a></li></ul></li><li><a class="level is-mobile" href="#与ARM指令相关的宏指令"><span class="level-left"><span class="level-item">4.2</span><span class="level-item">与ARM指令相关的宏指令</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#宏"><span class="level-left"><span class="level-item">4.2.1</span><span class="level-item">宏</span></span></a></li><li><a class="level is-mobile" href="#宏指令"><span class="level-left"><span class="level-item">4.2.2</span><span class="level-item">宏指令</span></span></a></li></ul></li></ul></li><li><a class="level is-mobile" href="#期中考试"><span class="level-left"><span class="level-item">5</span><span class="level-item">期中考试</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#判断对错题（30分）"><span class="level-left"><span class="level-item">5.1</span><span class="level-item">判断对错题（30分）</span></span></a></li><li><a class="level is-mobile" href="#阅读程序并填空题（39分）"><span class="level-left"><span class="level-item">5.2</span><span class="level-item">阅读程序并填空题（39分）</span></span></a></li><li><a class="level is-mobile" href="#编程题（31分）"><span class="level-left"><span class="level-item">5.3</span><span class="level-item">编程题（31分）</span></span></a></li></ul></li><li><a class="level is-mobile" href="#实验一-指令系统及寻址方式"><span class="level-left"><span class="level-item">6</span><span class="level-item">实验一 指令系统及寻址方式</span></span></a></li></ul></div></div><style>#toc .menu-list > li > a.is-active + .menu-list { display: block; }#toc .menu-list > li > a + .menu-list { display: none; }</style><script src="/js/toc.js" defer></script></div></div><!--!--></div></div></section><footer class="footer"><div class="container"><div class="level"><div class="level-start"><a class="footer-logo is-block mb-2" href="/"><img src="/img/logo.svg" alt="Aununo&#039;s Blog" height="28"></a><p class="is-size-7"><span>&copy; 2025 Aununo Gan</span>  Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> &amp; <a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a></p><p class="is-size-7">© 2019</p></div><div class="level-end"><div class="field has-addons"><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Creative Commons" href="https://creativecommons.org/"><i class="fab fa-creative-commons"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/"><i class="fab fa-creative-commons-by"></i></a></p></div></div></div></div></footer><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script><script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script><script>moment.locale("en");</script><script>var IcarusThemeSettings = {
+            article: {
+                highlight: {
+                    clipboard: true,
+                    fold: 'unfolded'
+                }
+            }
+        };</script><script data-pjax src="/js/column.js"></script><script src="/js/animation.js"></script><a id="back-to-top" title="Back to top" href="javascript:;"><i class="fas fa-chevron-up"></i></a><script data-pjax src="/js/back_to_top.js" defer></script><!--!--><!--!--><!--!--><script src="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.js" defer></script><script>window.addEventListener("load", () => {
+      window.cookieconsent.initialise({
+        type: "info",
+        theme: "edgeless",
+        static: false,
+        position: "bottom-left",
+        content: {
+          message: "This website uses cookies to improve your experience.",
+          dismiss: "Got it!",
+          allow: "Allow cookies",
+          deny: "Decline",
+          link: "Learn more",
+          policy: "Cookie Policy",
+          href: "https://www.cookiesandyou.com/",
+        },
+        palette: {
+          popup: {
+            background: "#edeff5",
+            text: "#838391"
+          },
+          button: {
+            background: "#4b81e8"
+          },
+        },
+      });
+    });</script><script src="https://cdn.jsdelivr.net/npm/lightgallery@1.10.0/dist/js/lightgallery.min.js" defer></script><script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/js/jquery.justifiedGallery.min.js" defer></script><script>window.addEventListener("load", () => {
+            if (typeof $.fn.lightGallery === 'function') {
+                $('.article').lightGallery({ selector: '.gallery-item' });
+            }
+            if (typeof $.fn.justifiedGallery === 'function') {
+                if ($('.justified-gallery > p > .gallery-item').length) {
+                    $('.justified-gallery > p > .gallery-item').unwrap();
+                }
+                $('.justified-gallery').justifiedGallery();
+            }
+        });</script><!--!--><!--!--><script type="text/javascript" id="MathJax-script" async>MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']]
+      },
+      svg: {
+        fontCache: 'global'
+      },
+      chtml: {
+        matchFontHeight: false
+      }
+    };</script><script src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-mml-chtml.js"></script><script src="https://cdn.jsdelivr.net/npm/pjax@0.2.8/pjax.min.js"></script><script src="/js/pjax.js"></script><!--!--><!--!--><!--!--><script data-pjax src="/js/main.js" defer></script><div class="searchbox"><div class="searchbox-container"><div class="searchbox-header"><div class="searchbox-input-container"><input class="searchbox-input" type="text" placeholder="Type something..."></div><a class="searchbox-close" href="javascript:;">×</a></div><div class="searchbox-body"></div></div></div><script src="/js/insight.js" defer></script><script>document.addEventListener('DOMContentLoaded', function () {
+            loadInsight({"contentUrl":"/content.json"}, {"hint":"Type something...","untitled":"(Untitled)","posts":"Posts","pages":"Pages","categories":"Categories","tags":"Tags"});
+        });</script></body></html>
